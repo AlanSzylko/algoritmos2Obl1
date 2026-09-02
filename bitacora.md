@@ -9,10 +9,7 @@
 > abiertas. Si se usó IA ese día, indicar herramienta, consulta y qué se hizo con la
 > respuesta. Una bitácora escrita íntegramente el día de la entrega implica pérdida de puntos.
 
-## AAAA-MM-DD — Nombre
-- Ejemplo: Leí la letra del ejercicio 1. Primera idea: ... pero la restricción de
-  complejidad pide ..., así que ...
 
-## AAAA-MM-DD — En conjunto
-- Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
-- Pasan los casos de prueba 1 a 4 del ejercicio 1.
+## 2026-09-02 —  Los dos
+
+- Creamos el repo a partir del template del obl y verificamos el flujo inicial de Git/GitHub, los commits.
