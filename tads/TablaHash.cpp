@@ -21,13 +21,13 @@ private:
     bool (*sonIguales)(K,K);
 
 public:
-    HashAbierto(int nuevoLargo, int *(funcionDeHashParam)(k), bool (*sonIgualesParam)(K,K)){
+    TablaHash(int nuevoLargo, int (*funcionDeHashParam)(K), bool (*sonIgualesParam)(K,K)){
         largo = nuevoLargo;
         funcionDeHash = funcionDeHashParam;
         sonIguales = sonIgualesParam;
         tabla = new Nodo*[largo]();
     }
-    ~HashAbierto() {
+    ~TablaHash() {
         for (int i = 0; i< largo; i++){
             while(tabla[i]){
                 Nodo* temp = tabla[i];
@@ -35,7 +35,7 @@ public:
                 delete temp;
             }
             delete tabla[i];
-            tabla[i]->NULL;
+            tabla[i] = NULL;
         } 
         delete[] tabla;
         tabla = NULL;
