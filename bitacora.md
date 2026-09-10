@@ -17,3 +17,9 @@
 Empecé el ejercicio 1 y creé en tads -> AVL.h. Definí el nodo genérico y la clase AVL con su raíz.
 Hice las funciones altura, balance, rotaciones(izq y der) y equilibrio. Usé altura 0 para una hoja y -1 para un árbol vacío.
 Consulté a Codex para entender el funcionamiento y como escribir en codigo templates, struct, class, public y private.
+
+
+## 2026-10-09 — Alan
+Termine el tad AVL con las funciones rango, búsquedas y recorridos. 
+Usé GitHub Copilot como apoyo para comprender la diferencia entre funciones públicas y privadas.
+Arranque ej 1, falta terminarlo
