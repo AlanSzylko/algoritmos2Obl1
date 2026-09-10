@@ -1,6 +1,8 @@
 #ifndef AVL_H
 #define AVL_H
 
+#include <iostream>
+
 template<typename T>
 struct NodoAVL{
     T dato;
@@ -22,6 +24,16 @@ template <typename T>
 class AVL {
 private:
     NodoAVL<T>* raiz;
+
+
+    NodoAVL<T>* minimo(NodoAVL<T>* r){
+        while (r->izq != nullptr) {
+            r = r->izq;
+        }
+        return r;
+    }
+
+
 
     int obtenerAlt(NodoAVL<T>* r) {
         if (r == nullptr) return -1;
@@ -93,10 +105,88 @@ private:
     }
 
 
+
+
+    NodoAVL<T>* insertarRec(NodoAVL<T>* r, T dato){
+        if(!r)return new NodoAVL<T>(dato);
+        if(r->dato > dato) r->izq=insertarRec(r->izq, dato);
+        else if(r->dato < dato) r->der = insertarRec(r->der, dato);  
+        else {
+            return r;
+        }
+        return equilibrar(r);
+
+    }
+
+
+    void destruir(NodoAVL<T>* r){
+        if(r==nullptr) return;
+        destruir(r->der);
+        destruir(r->izq);
+        delete r;
+        r=nullptr;
+
+    }
+
+    void rangoRec(NodoAVL<T>* r, T inf, T sup){
+        if(r==nullptr) return;
+        if(r->dato > inf) {
+            rangoRec(r->izq, inf, sup);
+        }
+        if (r->dato >= inf && r->dato <= sup) {
+            std::cout << r->dato << '\n';
+        }
+        if(r->dato < sup) {
+            rangoRec(r->der, inf, sup);
+        }
+    }
+
+    bool buscarRec(NodoAVL<T>* r, T dato){
+
+        if(r==nullptr) return false;
+        if(r->dato > dato) return buscarRec(r->izq, dato);
+        else if(r->dato < dato) return buscarRec(r->der, dato);
+        return true;
+    }
+
+
+
 public:
     AVL() {
         raiz = nullptr;
     }
+
+    void insertar(T dato){
+        raiz = insertarRec(raiz, dato);
+    }
+
+
+    ~AVL()
+    {
+        destruir(raiz);
+    }
+
+    bool esVacio(){
+        return (raiz==nullptr);
+    }
+    
+    int altura(){
+        return obtenerAlt(raiz);
+    }
+
+    bool buscar(T dato){
+        return buscarRec(raiz, dato);
+    }
+
+    void rango(T inf, T sup){
+        rangoRec(raiz, inf, sup);
+    }
+
+
+
 };
+
+   
+
 
 #endif
