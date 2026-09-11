@@ -18,7 +18,7 @@ Empecé el ejercicio 1 y creé en tads -> AVL.h. Definí el nodo genérico y la 
 Hice las funciones altura, balance, rotaciones(izq y der) y equilibrio. Usé altura 0 para una hoja y -1 para un árbol vacío.
 Consulté a Codex para entender el funcionamiento y como escribir en codigo templates, struct, class, public y private.
 
-## 2026-07-10 - Tiago
+## 2026-10-09 - Tiago
 Arranqué el ejercicio 2, cree el TAD en el archivo TablaHash.cpp AGREGAR
 
 ## 2026-10-09 — Alan
