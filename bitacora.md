@@ -20,3 +20,8 @@ Consulté a Codex para entender el funcionamiento y como escribir en codigo temp
 
 ## 2026-07-10 - Tiago
 Arranqué el ejercicio 2, cree el TAD en el archivo TablaHash.cpp AGREGAR
+
+## 2026-10-09 — Alan
+Termine el tad AVL con las funciones rango, búsquedas y recorridos. 
+Usé GitHub Copilot como apoyo para comprender la diferencia entre funciones públicas y privadas.
+Arranque ej 1, falta terminarlo
