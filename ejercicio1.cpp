@@ -4,7 +4,7 @@
 #include <limits>
 
 
-#include "tads/AVL.h"
+#include "tads/AVL.cpp"
 
 
 
@@ -14,10 +14,9 @@ int main()
 {
     AVL<long long> monedas;
     AVL<string> pinturas;
-
-
     int cant;
     cin >> cant;
+    
     for(int i = 0 ; i<cant ; i++){
         string propuesta;
         char coleccion;

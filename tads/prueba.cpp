@@ -2,7 +2,7 @@
 
 
 #include <iostream>
-#include "AVL.h"
+#include "AVL.cpp"
 
 int main()
 {
