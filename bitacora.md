@@ -28,3 +28,6 @@ Arranque ej 1, falta terminarlo
 
 ## 2026-15-09 - Tiago
 Terminé el ejercicio1. Implementé la lógica para chequear la busqueda y el rango. Investigué sobre la utilización del doble ">>" en el cin para asociar a dos variables contiguas. Corrí tests con ayuda de Claude y confirmé que el output esperado y real coincidan.
+
+## 2026-15-09 — Alan
+Implemente funcionnes main y  fusionar, quedo terminado el ejercicio 3

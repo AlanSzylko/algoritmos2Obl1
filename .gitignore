@@ -1,5 +1,7 @@
 *.out
 *.exe
+tmp/
+output/
 ejercicio1
 ejercicio2
 ejercicio3
