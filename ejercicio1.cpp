@@ -16,7 +16,7 @@ int main()
     AVL<string> pinturas;
     int cant;
     cin >> cant;
-    
+
     for(int i = 0 ; i<cant ; i++){
         string propuesta;
         char coleccion;
@@ -33,7 +33,41 @@ int main()
                 monedas.insertar(moneda);
             }
         }
-            // falta el caso que propuesta es buscar o rango 
-
+        if (propuesta =="BUSCAR"){
+            if(coleccion=='P'){
+                string pintura;
+                cin >> pintura;
+                if(pinturas.buscar(pintura)){
+                    cout << "si" << "\n";
+                }
+                else{
+                    cout << "no" << "\n";
+                }
+            }
+            else{
+                long long moneda;
+                cin >> moneda;
+                if(monedas.buscar(moneda)){
+                    cout << "si"<< "\n";
+                }
+                else{
+                    cout << "no"<< "\n";
+                }
+            }
+        }
+        if(propuesta == "RANGO"){
+            if(coleccion=='P'){
+                string pinturaDesde;
+                string pinturaHasta;
+                cin >> pinturaDesde >> pinturaHasta;
+                pinturas.rango(pinturaDesde,pinturaHasta);
+            }
+            else{
+                long long monedaDesde;
+                long long monedaHasta;
+                cin >> monedaDesde >> monedaHasta;
+                monedas.rango(monedaDesde,monedaHasta);
+            }
+        }
     }
 }

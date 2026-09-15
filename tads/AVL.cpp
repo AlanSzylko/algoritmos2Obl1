@@ -8,8 +8,8 @@ class AVL {
 private:
     struct NodoAVL{
         T dato;
-        NodoAVL<T>* izq;
-        NodoAVL<T>* der;
+        NodoAVL* izq;
+        NodoAVL* der;
         int altura;
 
         //constructor
@@ -21,20 +21,20 @@ private:
             altura = 0;
         }
     };
-    NodoAVL<T>* raiz;
-    NodoAVL<T>* minimo(NodoAVL<T>* r){
+    NodoAVL* raiz;
+    NodoAVL* minimo(NodoAVL* r){
         while (r->izq != nullptr) {
             r = r->izq;
         }
         return r;
     }
 
-    int obtenerAlt(NodoAVL<T>* r) {
+    int obtenerAlt(NodoAVL* r) {
         if (r == nullptr) return -1;
         return r->altura;
     }
 
-    void actualizarAlt(NodoAVL<T>* r) {
+    void actualizarAlt(NodoAVL* r) {
         if (r == nullptr) return;
 
         int altDer = obtenerAlt(r->der);
@@ -47,15 +47,15 @@ private:
         }
     }
     
-    int balance(NodoAVL<T>* r) {
+    int balance(NodoAVL* r) {
         if (r == nullptr) return 0;
         int b = obtenerAlt(r->der) - obtenerAlt(r->izq);
         return b;
     }
 
-    NodoAVL<T>* rotIzq(NodoAVL<T>* r) {
-        NodoAVL<T>* b = r->der;
-        NodoAVL<T>* c = b->izq;
+    NodoAVL* rotIzq(NodoAVL* r) {
+        NodoAVL* b = r->der;
+        NodoAVL* c = b->izq;
 
         b->izq = r;
         r->der = c;
@@ -65,9 +65,9 @@ private:
         return b;
     }
 
-    NodoAVL<T>* rotDer( NodoAVL< T>* r){
-        NodoAVL<T>* b = r->izq;
-        NodoAVL<T>* c = b->der;
+    NodoAVL* rotDer( NodoAVL* r){
+        NodoAVL* b = r->izq;
+        NodoAVL* c = b->der;
 
         b->der = r;
         r->izq = c;
@@ -77,7 +77,7 @@ private:
         return b;
     }
 
-    NodoAVL<T>* equilibrar(NodoAVL<T>* r){
+    NodoAVL* equilibrar(NodoAVL* r){
         if(r == nullptr) return r;
         actualizarAlt(r);
         int b = balance(r);
@@ -101,8 +101,8 @@ private:
 
 
 
-    NodoAVL<T>* insertarRec(NodoAVL<T>* r, T dato){
-        if(!r)return new NodoAVL<T>(dato);
+    NodoAVL* insertarRec(NodoAVL* r, T dato){
+        if(!r)return new NodoAVL(dato);
         if(r->dato > dato) r->izq=insertarRec(r->izq, dato);
         else if(r->dato < dato) r->der = insertarRec(r->der, dato);  
         else {
@@ -113,7 +113,7 @@ private:
     }
 
 
-    void destruir(NodoAVL<T>* r){
+    void destruir(NodoAVL* r){
         if(r==nullptr) return;
         destruir(r->der);
         destruir(r->izq);
@@ -122,7 +122,7 @@ private:
 
     }
 
-    void rangoRec(NodoAVL<T>* r, T inf, T sup){
+    void rangoRec(NodoAVL* r, T inf, T sup){
         if(r==nullptr) return;
         if(r->dato > inf) {
             rangoRec(r->izq, inf, sup);
@@ -135,7 +135,7 @@ private:
         }
     }
 
-    bool buscarRec(NodoAVL<T>* r, T dato){
+    bool buscarRec(NodoAVL* r, T dato){
 
         if(r==nullptr) return false;
         if(r->dato > dato) return buscarRec(r->izq, dato);

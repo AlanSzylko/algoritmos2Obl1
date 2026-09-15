@@ -19,9 +19,12 @@ Hice las funciones altura, balance, rotaciones(izq y der) y equilibrio. Usé alt
 Consulté a Codex para entender el funcionamiento y como escribir en codigo templates, struct, class, public y private.
 
 ## 2026-10-09 - Tiago
-Arranqué el ejercicio 2, cree el TAD en el archivo TablaHash.cpp AGREGAR
+Creé el TAD TablaHash en el archivo TablaHash.cpp. #### AGREGAR
 
 ## 2026-10-09 — Alan
 Termine el tad AVL con las funciones rango, búsquedas y recorridos. 
 Usé GitHub Copilot como apoyo para comprender la diferencia entre funciones públicas y privadas.
 Arranque ej 1, falta terminarlo
+
+## 2026-15-09 - Tiago
+Terminé el ejercicio1. Implementé la lógica para chequear la busqueda y el rango. Investigué sobre la utilización del doble ">>" en el cin para asociar a dos variables contiguas. Corrí tests con ayuda de Claude y confirmé que el output esperado y real coincidan.
