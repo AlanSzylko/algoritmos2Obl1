@@ -1,0 +1,294 @@
+PAGE 1
+Semejanza de matrices    
+1
+11 1 1 1
+1 1
+11 1
+~ , .
+' ' '
+' , " '
+"
+A A A I AI
+A P AP PA P A A P A P
+A P AP A Q A Q
+A Q P APQ PQ A PQ
+
+   
+ 
+ 
+
+    
+ 
+  
+
+
+
+ Reflexiva. 
+ Simétrica.  
+ Tran
+Propiedades: 
+ ya que 
+ 
+La semej
+sitiva.  
+ relación de equanza es un ivalea ncia.
+1
+, '
+( ~ ') '
+n n n n
+n n
+A A
+A A P A P AP
+ 
+ 
+ 
+ 
+Se dice que dos matrices   son
+denotado  si existe  invertible tal que
+semejante s  
+
+Ejercicios: matrices semejantes tienen igual: ,
+traza (suma de diagonalrango (vemos
+det
+ a 
+ 
+y con
+erminant
+tinuaci
+e
+ ), ón).
+PAGE 2
+Rango de una matriz
+,
+, .
+m n
+n m
+A
+y Ax
+
+ 
+Dada una  matriz   la identificamos con la 
+transformación lineal de  definida por 
+
+ 
+1
+11 12 1
+2 (1) (2) ( )
+1 2
+1 2
+(1) (2) ( ), , , .
+n
+n
+n
+m m mn
+n
+n
+xa a a xAx x A x A x A
+a a a x
+A A A A
+                    
+
+     
+donde recordamos que son las columnas de   
+ (1) (2) ( )
+Im( ) :
+Im( ) . . , , , .
+n
+n m
+A Ax x
+A s g A A A
+ 
+  
+La imagen  es el conjunto de todas las
+combinaciones lineales de las columnas de la matriz,
+Se le llama  de la 
+matriz a la dimensión de este s
+ 
+  
+ube
+rang
+sp io
+o
+ac
+
+
+( ) dim(Im( )) .r A A  
+PAGE 3
+Rango de una matriz
+(1) (2) (3) (4)
+1 2 0 1
+0 0 1 1
+2 4 0 2
+A A A A
+A
+     
+Ej: 
+  
+(1) (2) ( )( ) dim(Im( )) dim . . , , , . nr A A s g A A A  
+(1) (3)
+(2) (1)
+(4) (1) (3)
+,
+2
+A A
+A A
+A A A
+
+ 
+ L.I.
+( ) 2r A 
+(1) (3), Im( ) bA A A    
+ 
+( ) , ( ) .
+dim ( ) ( ). 0
+( ) ( )
+( ) ( )
+n q
+p m
+r A m r A n
+A n r A Ax
+r AB r A B
+r BA r A B
+B
+
+
+ 
+  
+ 
+ 
+
+
+
+
+Propiedades: 
+Grados de libertad del sistema
+ para cualquier matriz . 
+ para cualquier matriz .  
+En ambas, hay iguald
+ 
+  .
+ad s
+ 
+i e
+ 
+ 
+ 
+ 
+ 
+
+
+
+s cuadrada, invertible.  
+PAGE 4
+Rango y escalerización
+Análogamente, las operaciones de columnas corresponden
+a multiplicar a derecha por una matriz invertible. 
+1 2 0 1
+0 0 1 1
+2 4 0 2
+A
+     
+1 0 0
+0 0 1
+0 1 0
+P
+        
+ invertible
+1 2 0 1
+2 4 0 2
+0 0 1 1
+PA
+      
+1 0 0
+0 1 0
+2 0 1
+E
+         
+ invertible
+1 2 0 1
+0 0 1 1
+0 0 0 0
+EA
+      
+1 2 0 1
+0 0 1 1
+2 4 0 2
+A
+     
+
+
+Las siguientes operaciones preservan el rango: 
+ Permutar filas o columnas.
+ Restar a una fila (columna) un múltiplo de otra.
+PAGE 5
+Rango y escalerización
+# 0Aquí los elementos 
+Para una matriz genérica, si la escalerizo hasta la forma:
+#
+0
+0 0 #
+0 0 0 0
+0 0 0 0 0
+A
+         
+
+
+     
+
+( )
+r
+r r A
+Entonces las primeras 
+columnas son base de 
+la imagen, 
+ r
+m r
+r n r
+1 2 0 1
+0 0 1 1
+0 0 0 0
+     
+1 0 2 1
+0 1 0 1
+0 0 0 0
+     
+2r
+1 2 0 1
+0 0 1 1
+2 4 0 2
+     
+Ej:  
+PAGE 6
+Rango por filas
+.n r
+En la versión escalerizada vemos que la dimensión del 
+subespacio de  generado por las  es tambiéilas n f
+#
+0
+0 0 #
+0 0 0 0
+0 0 0 0 0
+         
+
+
+     
+
+rango por filas 
+rango por columnas
+(1)
+( )
+( 1)
+( )
+r
+r
+m
+A
+A
+A
+A
+
+
+
+ 
+ ( ) ( ) Tr A r A
+Equivalentemente,

@@ -1,0 +1,340 @@
+PAGE 1
+Matriz asociada a una Transformación Lineal   (1) (2) ( ) (1) (2) ( )
+:
+,
+n m
+b b
+T
+v v v w w w
+
+       
+ 
+ 
+   
+Sea una transformación lineal 
+donde los espacios vectoriales  tienen bases respecti
+, , , , , ,
+vas
+,      
+ 
+(1) (1)
+(1) (1) (2) ( )
+11 21 1 .m
+m
+v T v
+T v a w a w a w
+
+   
+  
+
+Transformando el vector  tenemos 
+Lo generamos con la base :  
+.
+  
+11
+21(1) (1)
+1
+m
+m
+a
+aA T v
+a
+        
+
+Al vector de coordena
+ coor
+das 
+dlo denotamos com .o   
+PAGE 2
+ 
+( )
+( ) (1) (2) ( )
+1 2
+2, ,
+.
+j
+j m
+j j mj
+j n v
+T v a w a w a w
+
+  
+
+
+Del mismo modo, para  transformamos    
+y obtenemos 
+  
+1
+2( ) ( )
+j
+jj j
+mj
+a
+aT v A
+a
+         
+coord  
+ 
+(1) (2) ( )
+11 12 1
+1 2
+.
+n
+n
+m n
+m m mn
+A A A
+a a
+a a
+T
+a
+A
+a
+A T
+      
+
+
+
+   
+
+
+ 
+  
+ 
+Juntando todas estas columnas obtenemos una matriz,
+que se llama la  a  en las bases 
+   Notación
+, 
+: 
+matriz asociada
+PAGE 3
+Propiedad fundamental 
+1
+2(1) (2) ( )
+1 2 . .n
+n
+n
+v
+x
+xv x v x v x v x v
+x
+
+           
+ 
+
+
+  
+ 
+Para un vector cualquiera lo escribimos en la base 
+Es decir: coord
+ 
+1
+2(1) (2) ( )
+1 2
+( )
+. .m
+m
+m
+w T v
+y
+yw y w y w y w y w
+y
+ 
+           
+ 
+También, escribimos al transformado  en la base 
+Es
+ 
+  coor de : dcir
+
+
+ 
+y AxSe cumple: 
+PAGE 4
+Demostración:         
+(1) (2) ( )
+1 2
+(1) (2) ( )
+1 2
+(1) (2) ( )
+1 11 21 1
+(1) (2) ( )
+2 12 22 2
+(1) (2) ( )
+1 2
+( )
+n
+n
+n
+n
+m
+m
+m
+m
+m
+n n n mn
+v x v x v x v
+w T v x T v x T v x T v
+x a w a w a w
+x a w a w a w
+x a w a w a w
+  
+    
+   
+   
+    
+
+
+
+
+ 
+Transformando y usando linealidad: 
+    
+(1) (2)
+11 1 12 2 1 21 1 22 2 2
+( )
+1 1 2 2
+n n n n
+m
+m m mn n
+w a x a x a x w a x a x a x w
+a x a x a x w
+       
+    
+ 
+ 
+Reordenando tenemos:
+PAGE 5
+1 11 1 12 2 1 1
+11 12 1
+2 21 1 22 2 2 2
+1 2
+1 1 2 2
+n n
+n
+n n
+m m mn
+m m m mn n n
+y a x a x a x x a a ay a x a x a x x
+a a ay a x a x a x x
+                                                
+        
+   
+(1) (2)
+11 1 12 2 1 21 1 22 2 2
+( )
+1 1 2 2
+1 2
+n n n n
+m
+m m mn n
+m
+y y
+y
+w a x a x a x w a x a x a x w
+a x a x a x w
+       
+    
+       
+   
+y Ax
+ w v Tcoord  coord  
+     
+PAGE 6
+Interpretación
+coord
+( )
+( )A
+v
+x
+w T
+y T Ax 
+
+
+Cualquier transformación lineal  entre espacios 
+de dimensión finita equivale a una transformación 
+entre los respectivos vectores de coordenadas:
+Esta última esta dada por multiplicación
+: n m
+AA T 
+ con una matriz fija.
+En adelante, escribimos en lugar de   .  
+ 
+coord
+m n 
+T 
+AT 
+v w
+x y
+PAGE 7
+Transformación compuesta w T S u T S u 
+ T  S 
+T S
+:T S   es una transformación linea   l.  
+: ( )Id Id v v  Transformación identidad. cumple  .    
+1 1 1
+:
+: .
+T
+T T T Id T T Id  
+
+    
+ Transformación inversa: si es biyectiva 
+,
+, 
+   cumple   
+ 
+ 
+ T 1T
+PAGE 8
+Matriz asociada a la compuesta
+ T  S 
+T S
+u
+coord coord
+m n  A  z
+coord
+p  B x y
+v
+w
+
+z Ay ABx
+A T
+ 
+
+  
+y Bx
+B S
+
+
+   C AB
+T S T S
+         
+PAGE 9
+Matriz asociada a la inversa
+ 
+1T
+  T 
+Id
+ 
+1 0 0
+0 1
+0 0 1
+n nIId 
+        
+
+ 
+   
+
+Tomando la misma base , la transformación identidad 
+tiene matriz asociada:
+   
+
+   
+
+
+1I Id T T  
+         
+ 
+1 1A A T T   Si entonces  (matriz inversa).
+      

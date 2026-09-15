@@ -1,0 +1,113 @@
+# 2. Linealidad: definición, alcance y ejemplos
+
+## Qué preserva una transformación lineal
+
+Una transformación lineal T:V→W relaciona espacios sobre el mismo cuerpo K y cumple T(u+v)=T(u)+T(v) y T(αv)=αT(v) para todos los vectores y escalares admisibles. Juntas equivalen a T(αu+βv)=αT(u)+βT(v): una dirección se obtiene aplicando sucesivamente las dos propiedades; la otra, eligiendo α=β=1 o β=0.
+
+Por repetición, T(Σcⱼvⱼ)=ΣcⱼT(vⱼ). Es el principio de superposición de la p. 1 del manuscrito. Se necesita una identidad para entradas arbitrarias; verificar solo algunos números no demuestra linealidad.
+
+Toda transformación lineal lleva 0_V a 0_W: T(0_V)=T(0·v)=0·T(v)=0_W. Si T(0)≠0, no es lineal. La recíproca es falsa: f:R→R, f(x)=x², cumple f(0)=0 pero f(1+1)=4 ≠ 2=f(1)+f(1).
+
+## Ejemplos del manuscrito, pp. 1-2
+
+**Proyección T:R³→R², T(x,y,z)=(x,y).** Para u=(u₁,u₂,u₃), v=(v₁,v₂,v₃), T(αu+βv)=(αu₁+βv₁,αu₂+βv₂)=αT(u)+βT(v). Se pierde la coordenada z. El codominio escrito es R²; si se usara R³ con salida (x,y,0), cambiaría la sobreyectividad.
+
+**Rotación T:R²→R², T(x,y)=(y,-x).** Es lineal por la misma comparación de coordenadas. Geométricamente gira 90° en sentido horario. Conserva el origen, longitudes y ángulos, pero solo la preservación de combinaciones es la definición de linealidad.
+
+**Traslación T(x,y,z)=(x+1,y,z).** No es lineal: T(0,0,0)=(1,0,0). También T(u+v) tiene un solo «+1» en la primera coordenada, mientras que T(u)+T(v) tiene «+2».
+
+**Derivación D:Pₙ→Pₙ, D(p)=p'.** Es lineal porque (αp+βq)'=αp'+βq'. El resultado tiene grado como máximo n-1, pero pertenece a Pₙ. Para n=0 toda derivada es cero. La derivación se utiliza aquí sobre R o C.
+
+## Definir T a partir de una base
+
+Si B=(b₁,…,bₙ) es base y se eligen arbitrariamente w₁,…,wₙ∈W, existe una única transformación lineal con T(bⱼ)=wⱼ. Se define T(Σcⱼbⱼ)=Σcⱼwⱼ. La unicidad de coordenadas hace que la definición no sea ambigua; sumar y escalar coordenadas demuestra linealidad. Toda transformación con esas imágenes debe obedecer la misma fórmula.
+
+Si la lista de entrada fuera dependiente, no se podrían elegir las imágenes arbitrariamente: una relación Σcⱼbⱼ=0 obliga a ΣcⱼT(bⱼ)=0. Esto explica por qué las bases son el punto de partida de la representación matricial.
+
+===
+
+# 2. Núcleo e imagen: definiciones y pruebas
+
+## Núcleo y su carácter de subespacio
+
+N(T)={v∈V:T(v)=0_W}. Vive en el dominio y describe la información que T anula. Contiene al cero. Si u,v∈N(T), entonces T(αu+βv)=α0_W+β0_W=0_W. Por tanto N(T) es subespacio de V, como se demuestra en la p. 3 del manuscrito.
+
+Para la proyección (x,y,z)↦(x,y), N(T)={(0,0,z)}=s.g.(e₃). Para la rotación (x,y)↦(y,-x), T(v)=0 obliga a x=y=0, luego N(T)={0}. Para la derivación, p'=0 significa que p es constante: N(D)=s.g.(1).
+
+## Imagen y su carácter de subespacio
+
+Im(T)={w∈W:existe v∈V con T(v)=w}. Vive en el codominio. Contiene 0_W=T(0_V). Dados y=T(u) y z=T(v), αy+βz=T(αu+βv), por lo que la combinación también pertenece a Im(T). Es un subespacio de W.
+
+La proyección del ejemplo tiene imagen R²: (a,b) es imagen de (a,b,0). La rotación también tiene imagen R²: (a,b) es imagen de (-b,a). Para D:Pₙ→Pₙ con n≥1, Im(D)=Pₙ₋₁: toda derivada tiene ese grado máximo, y cualquier q=Σ_(j=0)^(n-1)aⱼxʲ tiene una primitiva p=Σaⱼxʲ⁺¹/(j+1) en Pₙ. Para n=0, la imagen es {0}.
+
+**La igualdad de conjuntos requiere ambos sentidos.** Mostrar que las imágenes cumplen cierta condición solo prueba una inclusión. Falta demostrar que cada objeto con esa condición puede obtenerse transformando alguna entrada.
+
+## El ejemplo matricial del manuscrito, pp. 4-5
+
+Para una matriz A fija, T_A(v)=Av es lineal porque A(αu+βv)=αAu+βAv. En particular A=[[2,-1],[-4,2]] da T(x,y)=(2x-y,-4x+2y).
+
+El sistema homogéneo exige y=2x; la segunda ecuación es -2 veces la primera. Entonces N(T)=s.g.((1,2)). Para la imagen, sea salida (t,z). El sistema 2x-y=t, -4x+2y=z es compatible si y solo si z=-2t. Si se cumple, x=0, y=-t es una preimagen. Por tanto Im(T)=s.g.((1,-2)).
+
+## Todas las preimágenes de una salida
+
+Si T(v₀)=w, entonces T(v)=w equivale a T(v-v₀)=0. Por tanto las preimágenes son exactamente v₀+N(T). Esta propiedad explica por qué un núcleo no trivial produce varias entradas con una misma salida. Para el ejemplo anterior, las preimágenes de (t,-2t) son (0,-t)+s(1,2).
+
+===
+
+# 2. Invertibilidad y teorema de la dimensión
+
+## Inyectividad, sobreyectividad y biyectividad
+
+T es inyectiva si T(u)=T(v) implica u=v. Para una transformación lineal, esto equivale a N(T)={0}. Si es inyectiva, T(v)=0=T(0) obliga a v=0. Recíprocamente, si el núcleo es trivial, T(u)=T(v) implica u-v∈N(T), luego u=v.
+
+T es sobreyectiva si Im(T)=W: cada elemento del codominio tiene preimagen. Es biyectiva si además esa preimagen es única. Entonces existe T⁻¹:W→V, con T⁻¹∘T=Id_V y T∘T⁻¹=Id_W. La demostración de que T⁻¹ es lineal se desarrolla también en el ejercicio 1.10(b).
+
+## Teorema rango-nulidad, manuscrito pp. 7-9
+
+= dim(V) = dim N(T) + dim Im(T), para V de dimensión finita.
+
+La siguiente es la prueba por preimágenes de una base de la imagen, siguiendo el manuscrito. Elegí (w₁,…,wₘ) base de Im(T). Para cada j existe vⱼ con T(vⱼ)=wⱼ. Elegí además (u₁,…,uₖ) base de N(T). Afirmamos que (v₁,…,vₘ,u₁,…,uₖ) es base de V.
+
+**Independencia:** en una relación Σaⱼvⱼ+Σbᵢuᵢ=0, aplicar T elimina la segunda suma y da Σaⱼwⱼ=0. Como los wⱼ son L.I., aⱼ=0. La relación restante Σbᵢuᵢ=0 obliga a bᵢ=0 porque los uᵢ son L.I.
+
+**Generación:** dado v∈V, su imagen es combinación T(v)=Σaⱼwⱼ=T(Σaⱼvⱼ). Entonces v-Σaⱼvⱼ está en N(T), por lo que vale Σbᵢuᵢ. Despejar v lo expresa usando la lista propuesta. Como es base, dim(V)=m+k.
+
+El rango se define como r(T)=dim Im(T), y la nulidad como dim N(T). De la fórmula, nulidad=dim(V)-rango. El rango no puede superar dim(V) ni dim(W). Cuando ambas dimensiones son n, inyectiva ⇔ rango n ⇔ sobreyectiva ⇔ invertible.
+
+## Aplicaciones del manuscrito y restricciones de dimensión
+
+Para la proyección R³→R², rango 2 y nulidad 1: 3=1+2. Para la derivación Pₙ→Pₙ, con n≥1, rango n y nulidad 1: n+1=1+n. Para [[2,-1],[-4,2]], ambos subespacios tienen dimensión 1: 2=1+1.
+
+Si dim(V)>dim(W), ninguna transformación lineal V→W puede ser inyectiva: el rango no alcanza dim(V). Si dim(V)<dim(W), no puede ser sobreyectiva. En dimensiones distintas no vale intercambiar ambas propiedades. Un isomorfismo entre espacios finitos exige que sus dimensiones sean iguales.
+
+===
+
+# 2. Práctico 1: simetría y matrices complejas
+
+## Ejercicio 1.7(a): simetría respecto de una recta
+
+En R², sea L una recta por el origen. Elegí un vector u sobre L y un vector n perpendicular a L, ambos no nulos. Cada v se escribe de manera única como v=au+bn. La simetría respecto de L conserva la componente sobre L e invierte la perpendicular: T(v)=au-bn.
+
+Sumar dos vectores suma sus dos componentes, y multiplicar por un escalar multiplica ambas por él. Conservar una e invertir la otra respeta esas operaciones: T es lineal. También T(T(v))=v, pues invertir dos veces la componente perpendicular la restaura.
+
+T(v)=0 exige a=b=0, así N(T)={0}. Todo w es imagen de T(w), por lo que Im(T)=R². Es invertible y T⁻¹=T. La hipótesis «recta por el origen» es esencial: una reflexión respecto de una recta que no pase por el origen no conserva el cero.
+
+## Ejercicio 1.7(b): multiplicación a derecha
+
+En V=W=C²ˣ² se define T(A)=AB, con B=[[1,-i],[i,1]]. La multiplicación por una matriz fija es lineal: T(αA+βC)=(αA+βC)B=αAB+βCB.
+
+MATRIX
+A = [ a  b ]       AB = [ a+ib  -ia+b ]
+    [ c  d ]            [ c+id  -ic+d ]
+
+En cada fila, la segunda entrada es -i veces la primera. Para que AB=0 basta y es necesario a+ib=0 y c+id=0. Por tanto a=-ib y c=-id, con b,d libres en C.
+
+= N(T) = s.g.([[ -i,1 ],[ 0,0 ]], [[ 0,0 ],[ -i,1 ]]); dim N(T)=2.
+
+Toda salida tiene forma [[u,-iu],[v,-iv]]. Recíprocamente, tomando A=[[u,0],[v,0]] se obtiene esa salida. Luego:
+
+= Im(T) = s.g.([[ 1,-i ],[ 0,0 ]], [[ 0,0 ],[ 1,-i ]]); r(T)=2.
+
+Las bases son complejas: sus coeficientes pueden ser cualquier número de C. El control rango-nulidad da 4=2+2, ya que C²ˣ² tiene dimensión 4 sobre C. T no es invertible; también se ve que det(B)=1-(-i)i=0.
+
+**Interpretación:** aunque A tenga cuatro entradas libres, AB queda determinado por dos escalares u,v. Las otras dos entradas están forzadas por la relación entre columnas. Ese es el significado del rango 2 en este espacio de matrices.

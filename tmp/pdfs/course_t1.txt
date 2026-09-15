@@ -1,0 +1,219 @@
+# 1. Espacios vectoriales: definición completa
+
+## Los objetos y las operaciones
+
+Un espacio vectorial sobre K es un conjunto V con una suma V × V → V y un producto por escalares K × V → V. Los elementos de V se llaman vectores y los de K, escalares. La suma de dos vectores y el producto de un escalar por un vector deben seguir perteneciendo a V: esto es el cierre de las operaciones.
+
+Para todos u,v,w ∈ V y α,β ∈ K se exigen las siguientes propiedades. Cada igualdad habla de las operaciones del espacio, que no necesariamente son operaciones entre flechas.
+
+**Suma:** (u+v)+w = u+(v+w) (asociatividad); u+v = v+u (conmutatividad); existe 0_V con v+0_V = v; para cada v existe -v con v+(-v) = 0_V.
+
+**Producto por escalares:** α(βv) = (αβ)v; α(u+v) = αu+αv; (α+β)v = αv+βv; 1v = v.
+
+La expresión «grupo conmutativo» usada en las diapositivas resume las cuatro propiedades de la suma. No agrega una operación distinta. La estructura completa se denota (V,K,+,·).
+
+## Consecuencias de los axiomas
+
+**El cero es único:** si 0 y 0' son neutros, 0 = 0+0' = 0'. **El opuesto es único:** si v+w = 0 y v+z = 0, sumar -v a ambas igualdades da w = z. Por la misma razón vale la cancelación: u+v = u+w implica v = w.
+
+**0v = 0_V:** como (0+0)v = 0v+0v, la cancelación deja 0v = 0_V. **α0_V = 0_V:** de α(0_V+0_V) = α0_V+α0_V se obtiene lo mismo. **(-1)v = -v:** v+(-1)v = (1-1)v = 0_V.
+
+Si αv = 0_V, entonces α = 0 o v = 0_V: cuando α ≠ 0, multiplicamos por α⁻¹ y queda v = 0_V. Distinguir el cero escalar del cero vectorial ayuda a interpretar pruebas de independencia.
+
+## Ejemplo: Kⁿ
+
+En Kⁿ los vectores son listas de n escalares. Se suman coordenada a coordenada y α(v₁,…,vₙ) = (αv₁,…,αvₙ). Los axiomas se heredan de las operaciones de K. Por ejemplo, la coordenada j de (u+v)+w es (uⱼ+vⱼ)+wⱼ = uⱼ+(vⱼ+wⱼ).
+
+En R² y R³ se pueden dibujar como flechas desde el origen. Sumar corresponde a la regla del paralelogramo; un escalar positivo cambia la longitud conservando el sentido, uno negativo lo invierte y cero produce el vector nulo. Esta interpretación ayuda, pero las definiciones también valen sin un dibujo.
+
+===
+
+# 1. Matrices, polinomios y funciones como vectores
+
+## El espacio Kᵐˣⁿ
+
+Sus elementos son matrices con m filas y n columnas. La suma y el producto por escalares se hacen entrada a entrada; por eso satisfacen los axiomas. El cero es la matriz de ceros y -A tiene cada entrada cambiada de signo. **El producto de matrices no es la operación escalar-vector de esta definición.**
+
+La matriz Eᵢⱼ tiene un 1 en (i,j) y ceros en el resto. Toda A se escribe de forma única como ΣᵢΣⱼ aᵢⱼEᵢⱼ. Por tanto las mn matrices Eᵢⱼ forman una base y la dimensión es mn.
+
+En la p. 8 del tema 1 se identifican matrices con tuplas apilando columnas. Para 2 × 2, [[a,b],[c,d]] pasa a (a,c,b,d). También se puede ordenar como (a,b,c,d), si se fija la base (E₁₁,E₁₂,E₂₁,E₂₂), como en el práctico. Son convenciones distintas y válidas: no deben mezclarse durante una misma cuenta.
+
+## El espacio Pₙ(K)
+
+Un polinomio p = a₀+a₁x+…+aₙxⁿ se identifica por sus coeficientes. Pₙ incluye polinomios de grado menor que n y al polinomio cero. La suma conserva grado ≤ n y multiplicar por un escalar también; el cero escalar puede anular todos los coeficientes.
+
+Dos polinomios son iguales si coinciden todos los coeficientes. Así 1,x,…,xⁿ generan Pₙ y son L.I.: si c₀+c₁x+…+cₙxⁿ es el polinomio nulo, cada cⱼ es cero. La dimensión es n+1. El conjunto de polinomios de grado **exactamente** n no es un subespacio: no contiene al cero y puede perder grado al sumar.
+
+## Funciones continuas y dimensión infinita
+
+C([a,b],R), con a < b, contiene las funciones continuas del intervalo en R. Sus operaciones se definen punto a punto: (f+g)(x) = f(x)+g(x), (αf)(x) = αf(x). Sumas y múltiplos de funciones continuas son continuos, y los axiomas se verifican evaluando en cada x. El vector cero es la función idénticamente nula.
+
+Este espacio no admite una base finita. Para cualquier n, las funciones 1,x,…,xⁿ son L.I. en el intervalo: un polinomio que vale cero en todo un intervalo tiene infinitas raíces y debe ser el polinomio cero. Hay conjuntos L.I. tan grandes como se quiera. Por eso no hay una identificación **lineal** con Rᵏ para ningún k finito.
+
+## El cuerpo de escalares forma parte del problema
+
+Los mismos axiomas definen espacios complejos usando escalares en C. Cⁿ tiene base compleja (e₁,…,eₙ), dimensión n; visto como espacio real tiene base (e₁,ie₁,…,eₙ,ieₙ), dimensión 2n. Decir «dimensión» sin fijar el cuerpo puede ser ambiguo. En los prácticos, cuando se escribe C³, el cuerpo es C salvo indicación contraria.
+
+===
+
+# 1. Subespacios y subespacio generado
+
+## Criterio de subespacio y demostración
+
+Un subconjunto S de V es subespacio si con las operaciones heredadas también es espacio vectorial. Basta comprobar 0_V ∈ S, cierre por suma y cierre por escalares. Las propiedades asociativa, conmutativa y distributivas ya valen en V y siguen valiendo al restringir los vectores a S; los opuestos pertenecen a S porque -v = (-1)v.
+
+Equivalente: S es no vacío y αu+βv ∈ S para todos u,v ∈ S y α,β ∈ K. Eligiendo α = β = 0 se obtiene el cero; eligiendo α = β = 1 se obtiene el cierre por suma; tomando β = 0 se obtiene el producto escalar.
+
+**No alcanza con que S esté contenido en V.** El plano x+y+z = 1 no contiene al cero. El conjunto xy = 0 contiene al cero, pero no a la suma de (1,0) y (0,1). Cada condición del criterio cumple una función.
+
+## Combinaciones lineales y generación
+
+Una combinación lineal de v₁,…,vₖ es cualquier suma Σcⱼvⱼ con coeficientes en K. El subespacio generado es el conjunto de todas esas sumas. Contiene al cero eligiendo coeficientes cero. Si u = Σaⱼvⱼ y w = Σbⱼvⱼ, entonces αu+βw = Σ(αaⱼ+βbⱼ)vⱼ vuelve a ser una combinación de los mismos vectores. Queda probado que es subespacio.
+
+Es el **menor subespacio que contiene a los generadores**: cualquier subespacio que contenga cada vⱼ debe contener todas sus combinaciones. La lista genera V cuando su subespacio generado es todo V. Agregar un vector que ya era combinación no agranda ese subespacio.
+
+## Ejemplos de las diapositivas
+
+**Tema 1, p. 17:** (1,0,0) y (1,1,0) generan el plano horizontal, pues α(1,0,0)+β(1,1,0) = (α+β,β,0). Cualquier (x,y,0) se obtiene eligiendo β = y y α = x-y.
+
+**Tema 1, p. 7:** en S = {(x,y,z): x-3y+2z=0}, x = 3y-2z. Por tanto S = s.g.((3,1,0),(-2,0,1)). Las coordenadas segunda y tercera prueban independencia, de modo que son base. El vector e₁ = (1,0,0) no satisface la ecuación de S; al agregarlo se completa una base de R³.
+
+**Tema 1, pp. 13 y 15:** S = {p ∈ Pₙ: p(3)=0}. En coeficientes, a₀+3a₁+…+3ⁿaₙ=0. Para n ≥ 1, el teorema del factor da p=(x-3)q con q∈Pₙ₋₁. Una base es (x-3,x(x-3),…,xⁿ⁻¹(x-3)); la multiplicación por x-3 no crea una relación nula entre polinomios distintos. Dimensión n. Para n=0, S={0}.
+
+===
+
+# 1. Independencia: equivalencias y crecimiento
+
+## Tres formulaciones del mismo concepto
+
+Una lista v₁,…,vₖ es L.I. si Σcⱼvⱼ=0 implica que todos los cⱼ son cero. Es L.D. cuando existe una relación nula con algún coeficiente no cero. La relación nula con todos los coeficientes cero existe siempre y se llama trivial.
+
+**Equivalencia 1:** ser L.I. equivale a que ningún vector sea combinación de los restantes. Si una relación no trivial tiene cᵣ ≠ 0, despejar da vᵣ = -Σ_(j≠r)(cⱼ/cᵣ)vⱼ. Recíprocamente, pasar al mismo lado una expresión de vᵣ como combinación de los demás da una relación no trivial: su coeficiente es 1.
+
+**Equivalencia 2:** ser L.I. equivale a que cada vector del subespacio generado tenga una única expresión. Si Σaⱼvⱼ = Σbⱼvⱼ, restar produce Σ(aⱼ-bⱼ)vⱼ = 0 y la independencia obliga a aⱼ=bⱼ. En sentido contrario, si las expresiones son únicas, el cero no puede tener otra expresión que la trivial.
+
+Estas pruebas corresponden a la p. 20 del tema 1. No afirman que cualquier vector de V tenga expresión: eso requiere además que la lista genere V.
+
+## Agregar un vector sin perder independencia
+
+**Proposición, pp. 21-22:** si v₁,…,vₖ son L.I. y w no pertenece a su subespacio generado, entonces v₁,…,vₖ,w son L.I.
+
+**Prueba completa:** supongamos Σcⱼvⱼ + dw = 0. Si d ≠ 0, despejamos w = -Σ(cⱼ/d)vⱼ, contradiciendo la hipótesis. Entonces d = 0. La igualdad restante involucra solo v₁,…,vₖ, que son L.I.; por eso todos los cⱼ son cero. La única relación es la trivial.
+
+Si, por el contrario, w pertenece al subespacio generado, la lista ampliada es L.D. por la primera equivalencia. Esto da un procedimiento para construir bases: solo se agregan vectores que aportan una dirección nueva.
+
+## Ejemplos de las diapositivas
+
+**P. 19:** u=(1,0,1), v=(1,1,0) son L.I.: la segunda coordenada de αu+βv=0 da β=0 y la primera α=0. Al agregar w=(2,1,1), la relación u+v-w=0 demuestra dependencia.
+
+**Pp. 18, 21 y 24:** (1,0,0), (1,1,0), (1,0,2) son L.I.; en una relación nula se despeja primero el tercer coeficiente por la coordenada z, después el segundo por y y luego el primero por x. Generan R³ porque (x,y,z)=(x-y-z/2)(1,0,0)+y(1,1,0)+(z/2)(1,0,2). El cuarto vector de la p. 18, (0,0,1), es la mitad del tercero menos la mitad del primero: es redundante.
+
+===
+
+# 1. Bases, dimensión y extensión
+
+## Por qué la dimensión está bien definida
+
+Una base es una lista L.I. que genera el espacio. La dimensión finita de V es la cantidad de elementos de una base. Para que la definición tenga sentido hay que saber que todas las bases tienen igual tamaño.
+
+**Resultado de comparación:** si u₁,…,uᵣ son L.I. y v₁,…,vₛ generan V, entonces r ≤ s. Es un resultado de apoyo para las afirmaciones de dimensión de las diapositivas.
+
+**Demostración por reemplazo:** expresá u₁ como combinación de los vⱼ. Como u₁ ≠ 0, algún coeficiente no es cero; despejando ese vⱼ se lo puede reemplazar por u₁ sin perder generación. Supongamos que ya reemplazamos k vectores por u₁,…,uₖ. Expresá uₖ₊₁ en ese generador. Debe aparecer algún v todavía no reemplazado con coeficiente no cero; si no, uₖ₊₁ sería combinación de los anteriores u y se contradiría la independencia. Reemplazá ese v. Solo hay s lugares: no se pueden incorporar más de s vectores L.I.
+
+Si B y C son bases, aplicando el resultado en ambos sentidos se obtiene |B| ≤ |C| y |C| ≤ |B|. Luego tienen la misma cantidad de elementos. Esto justifica hablar de dim(V).
+
+## Consecuencias y procedimientos
+
+Si dim(V)=n, toda lista L.I. tiene a lo sumo n elementos y todo generador tiene al menos n. Una lista de n vectores es base si es L.I.: si no generara, se podría agregar otro vector fuera del generado y obtener n+1 L.I., imposible. También es base si genera: una dependencia permitiría quitar un vector y conservar un generador de n-1, imposible.
+
+De un generador finito se obtiene una base quitando vectores que sean combinación de los demás. El proceso termina y no cambia el subespacio generado. Una lista L.I. se completa a una base agregando vectores fuera de lo ya generado; termina a lo sumo al alcanzar n vectores.
+
+Si S es subespacio de V finito, una base de S se puede completar a una de V. Por tanto dim(S) ≤ dim(V). Si S es propio, falta algún vector y se debe agregar al menos uno, así dim(S) < dim(V). En particular, **S ⊆ W y dim(S)=dim(W) finita implican S=W**.
+
+## Bases canónicas y el espacio nulo
+
+En Kⁿ, eⱼ tiene un 1 en la coordenada j y ceros en las demás: (e₁,…,eₙ) es base porque v = Σvⱼeⱼ de forma única. En matrices se usan las Eᵢⱼ y en Pₙ los monomios 1,x,…,xⁿ.
+
+El espacio {0} tiene dimensión cero y base vacía. La lista que contiene al vector cero es dependiente, por lo que no es una base. En dimensión infinita no hay un generador finito; el ejemplo de funciones continuas muestra conjuntos L.I. de tamaños arbitrariamente grandes.
+
+===
+
+# 1. Bases de polinomios y coordenadas
+
+## La base trasladada de la p. 25
+
+Para a fijo, B_a=(1,x-a,(x-a)²,…,(x-a)ⁿ) es una base de Pₙ(K). No se cambia la variable del espacio: se eligen nuevos polinomios como vectores de referencia.
+
+**Generación, por eliminación del término de mayor grado:** si p tiene coeficiente principal cₙ, entonces p-cₙ(x-a)ⁿ tiene grado ≤ n-1, porque (x-a)ⁿ tiene coeficiente principal 1. Repetimos con el resto hasta llegar al término constante. Así p=Σcⱼ(x-a)ʲ. Es la división sucesiva indicada en la diapositiva.
+
+**Independencia:** supongamos Σcⱼ(x-a)ʲ=0 como identidad. Evaluar en x=a da c₀=0. Derivar una vez y evaluar en a da c₁=0. Derivar k veces y evaluar en a da k!cₖ=0: los términos de grado menor desaparecen y los de grado mayor conservan un factor x-a. Sobre R o C, k! ≠ 0, luego cₖ=0 para cada k. La lista es L.I.
+
+Como consecuencia, las coordenadas de p en B_a son p(a),p'(a),p''(a)/2!,…,p⁽ⁿ⁾(a)/n!. Aquí p⁽ⁿ⁾ indica la derivada de orden n. Es una identidad exacta para polinomios, sin resto, porque no hay términos de grado mayor que n.
+
+## Definición y cálculo de coordenadas
+
+Sea B=(b₁,…,bₙ) base de V. Existe una única columna c tal que v=Σcⱼbⱼ; esa columna es [v]_B. Para calcularla se iguala la combinación al vector dado y se resuelve el sistema. Si V son matrices se comparan entradas; si son polinomios se comparan coeficientes.
+
+**Ejemplo de la p. 27:** B=((1,1,0),(1,0,1),(0,0,1)) y v=(2,1,0). Las ecuaciones son c₁+c₂=2, c₁=1 y c₂+c₃=0. Así [v]_B=(1,1,-1). La reconstrucción (1,1,0)+(1,0,1)-(0,0,1)=(2,1,0) verifica el resultado.
+
+## El isomorfismo de coordenadas de la p. 28
+
+La aplicación coord_B: V → Kⁿ, v ↦ [v]_B, es lineal: al sumar expresiones en la base se suman coeficientes, y al multiplicar por α se multiplican los coeficientes por α. Es inyectiva por la unicidad de la expresión y sobreyectiva porque cualquier columna c representa Σcⱼbⱼ. Su inversa es precisamente esa reconstrucción.
+
+Una correspondencia lineal biyectiva se llama **isomorfismo**. Por tanto todo espacio de dimensión n sobre K es isomorfo a Kⁿ. Esto no significa que un polinomio sea literalmente una columna: significa que, elegida una base, las operaciones pueden trasladarse sin perder información. Es el puente que permitirá representar transformaciones mediante matrices.
+
+===
+
+# 1. Suma e intersección: prueba del teorema
+
+## Las operaciones producen subespacios
+
+U∩W contiene los vectores que están simultáneamente en U y W. El cero está en ambos y cualquier combinación de dos vectores de la intersección permanece en ambos. Por tanto la intersección es subespacio.
+
+U+W={u+w:u∈U,w∈W}. Contiene 0=0+0. Si u+w y u'+w' están en la suma, α(u+w)+β(u'+w')=(αu+βu')+(αw+βw') vuelve a estar en ella. Por tanto también es subespacio. Para calcular la intersección se juntan condiciones; para la suma se juntan generadores.
+
+## Teorema de dimensiones, pp. 34-37
+
+= dim(U+W) = dim(U)+dim(W)-dim(U∩W).
+
+**Preparación:** tomá B₀=(z₁,…,zₖ) base de U∩W. Completala con B₁=(u₁,…,uᵣ) hasta una base de U y con B₂=(w₁,…,wₛ) hasta una base de W. Entonces dim(U)=k+r y dim(W)=k+s.
+
+**Generación:** cualquier u+w se escribe combinando B₀ y B₁ para la parte u, y B₀ y B₂ para la parte w. Al sumar queda una combinación de B₀,B₁,B₂. Luego esa lista genera U+W.
+
+**Independencia:** supongamos Σaᵢzᵢ+Σbⱼuⱼ+Σcₗwₗ=0. Entonces h=Σaᵢzᵢ+Σbⱼuⱼ=-Σcₗwₗ pertenece a U y a W. Como B₀ genera la intersección, h=Σdᵢzᵢ. Sustituir en h=-Σcₗwₗ da Σdᵢzᵢ+Σcₗwₗ=0. B₀,B₂ es base de W, luego todos los dᵢ y cₗ son cero. En la relación inicial queda Σaᵢzᵢ+Σbⱼuⱼ=0; B₀,B₁ es base de U, luego también aᵢ=bⱼ=0.
+
+La lista es base y tiene k+r+s=(k+r)+(k+s)-k elementos. Esto prueba la fórmula. No se omitió el paso de independencia: contar generadores sin probar que son base no demostraría la dimensión.
+
+## Ejemplo geométrico de la p. 32
+
+U={(x,y,z):y=0} y W={(x,y,z):x=0}. Su intersección es el eje z, con base ((0,0,1)). Una base de U es (e₃,e₁) y una de W es (e₃,e₂). Juntar sin repetir da (e₃,e₁,e₂), base de R³. Así dim(U+W)=2+2-1=3. La suma no es directa porque comparten el eje z.
+
+La unión U∪W, en cambio, no es todo R³ ni es subespacio: e₁ pertenece a U, e₂ a W, pero e₁+e₂ no está en ninguno. **Unión y suma no son sinónimos.**
+
+===
+
+# 1. Suma directa y aplicaciones complejas
+
+## Definición y todas sus consecuencias
+
+La suma U+W es directa si U∩W={0}; se escribe U⊕W. En ese caso la fórmula de dimensión da dim(U⊕W)=dim(U)+dim(W), y juntar una base de U con una de W produce una base de la suma.
+
+Cada vector de U⊕W se escribe **de forma única** como u+w. La existencia viene de la definición de suma. Para la unicidad, si u+w=u'+w', entonces u-u'=w'-w pertenece a U∩W y debe ser cero. Así u=u' y w=w'.
+
+Recíprocamente, si todas las descomposiciones son únicas, un z∈U∩W proporciona z=z+0=0+z; la unicidad obliga a z=0. Por tanto la unicidad es equivalente a que la suma sea directa.
+
+Escribir **V=U⊕W** agrega la afirmación de que la suma cubre todo V. En dimensión finita puede comprobarse mediante intersección trivial y dim(U)+dim(W)=dim(V). Solamente sumar dimensiones no prueba que la intersección sea trivial.
+
+## Práctico 1, ejercicio 1.5(c)
+
+En C³, S está definido por x=z, y=iz. Así S=s.g.((1,i,1)), dimensión 1. W está definido por x-y-z=0, luego x=y+z y W=s.g.((1,1,0),(1,0,1)), dimensión 2.
+
+Un vector de la intersección debe ser t(1,i,1) y satisfacer x-y-z=0. Sustituir da t-it-t=-it=0, luego t=0. La intersección tiene dimensión 0; la suma tiene dimensión 1+2=3 y coincide con C³. Se cumple C³=S⊕W. Todos los parámetros de este argumento son complejos.
+
+## Práctico 1, ejercicio 1.6(c)
+
+Ahora S={(x,y,z):x=0,y=iz}=s.g.((0,i,1)) y W={(x,y,z):y=-iz}=s.g.((1,0,0),(0,-i,1)). Sus dimensiones son 1 y 2. En la intersección, iz=-iz, luego 2iz=0 y z=0; también x=y=0. Por tanto C³=S⊕W.
+
+Podemos exhibir la descomposición de cualquier v=(x,y,z). Escribimos v=(0,it,t)+(x,-is,s). Las ecuaciones son t+s=z e i(t-s)=y. Como y/i=-iy, resulta t=(z-iy)/2 y s=(z+iy)/2. Son valores únicos: el cálculo hace visible la suma directa.
+
+**Qué conviene poder explicar:** «directa» significa que las contribuciones de cada subespacio se pueden recuperar sin ambigüedad; no significa que deban ser perpendiculares. La definición aquí no usa producto interno ni ángulos.

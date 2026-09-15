@@ -1,0 +1,230 @@
+PAGE 1
+Valores y vectores propios
+:
+0
+.( )
+v T
+T
+T v v
+
+
+
+  
+
+ espacio vectorial sobre ,   transformación lineal. 
+es  de  vector propio valor propio
+  
+ co   n   si
+   
+
+
+
+.
+.
+,0
+n n
+n
+A
+v A
+Av v
+
+
+
+  
+
+vector propio
+Análogamente, dada una matriz 
+es de  con   valo sr prop i i o  
+
+ 
+( )T v v 
+v
+Geométricamente, la transformación no afecta la "dirección" 
+de un vector propio. Le puede cambiar el tamaño y/o sentido.
+( ) , 0.T v v       
+v
+PAGE 2
+Subespacio propio
+:
+: 0 :
+( ) ( ) ( ).
+,
+:
+,
+v v
+T v T v v v
+v w
+v w
+T
+T
+T
+ 
+    
+
+
+
+
+
+
+
+ 
+Sea 
+ Si es vector propio de también lo es  para 
+ Si son vectores propios de asociados al valor 
+   propio  entonces  tambi
+m
+é
+ismo 
+n lo 
+ 
+e
+ 
+   
+ 
+s (si es 
+ 
+( ) ( ) ( ) ( ).
+0).
+T v w T v T w v w v w        
+
+    : ( ) : ( ) 0 .v T v v v T Id v T Id
+
+  
+
+        
+El conjunto de vectores propios asociados a un valor propio 
+, más el vector su propio nulo, forman el bespaci  
+    
+o
+   
+
+PAGE 3
+Vectores propios con matriz asociada
+( )
+( ) 0.
+T v v Ax x
+A I x
+ 
+
+  
+  
+b A T  Sea  ,    
+coord
+ 
+coord
+m n 
+T 
+A 
+v ( )T v
+x Ax
+ 
+11 21 1 1
+12 22 2 2
+1 2
+0
+0
+0
+n
+n
+n n nn n
+a a a x
+a a a xA I x
+a a a x
+
+
+
+                                 
+
+
+     
+
+ 
+ det 0A I
+
+  
+Para que  sea valor propio, el sistema de ecuaciones 
+homogéneo debe admitir soluciones no nulas 
+ SISTEMA INDETERMINADO 
+PAGE 4
+Polinomio característico ) et
+,
+d
+n n
+A
+A
+A I  
+
+  
+ polinomio característico Dada una matriz  se llama a
+11 21 1
+12 22 2 1
+1 1 0
+1 2
+) .
+.
+n
+n n n
+A n n
+n n nn
+a a a
+a a a p p p p
+a a a
+n
+A
+
+    
+
+
+
+
+
+     
+
+
+    
+
+Polino
+raic
+mio de grado  en la variable 
+Sus  son los valores propios des e 
+. 
+  
+1
+1 01 1 ( ) det( ) .n n
+n np p Tr A p A 
+    
+Algunos coeficientes:
+PAGE 5
+Propiedades del polinomio característico         
+1 1 1det det det det det
+.det
+I I A IP AP P A P P P
+A I
+  
+
+       
+
+ 
+ Matrices semejantes tienen el mismo polinomio característico:
+ 
+ ) det det ).T
+TT
+AA A I A I            
+ 
+,
+), .T
+T
+T
+A T
+ 
+
+Consecuencia: para una transformación lineal
+el polinomio característico de su matriz asociada  
+no depende de la elección de base 
+Lo llamamos por tanto polinomio característi e 
+ 
+ co d
+ 
+
+TA AConsecuencia: y  tienen los mismos valores propios.
+No así los vectores propios.

@@ -1,0 +1,61 @@
+# 7. Práctico 2: todas las matrices del ejercicio 2.8
+
+## Inciso (i): una diagonalización real 2 × 2
+
+A=[[0,2],[2,0]] tiene χ_A(λ)=λ²-4=(λ-2)(λ+2). Para λ=2, 2y=2x impone y=x: E₂=s.g.((1,1)). Para λ=-2, 2y=-2x impone y=-x: E₋₂=s.g.((1,-1)).
+
+MATRIX
+P = [ 1  1 ]          D = diag(2,-2)
+    [ 1 -1 ]
+
+det(P)=-2 y AP=PD. Es diagonalizable sobre R y, por la misma base, sobre C. También P⁻¹=(1/2)P, lo que permite comprobar directamente P⁻¹AP=D.
+
+## Inciso (ii): una matriz compleja 2 × 2
+
+A=[[4,1-i],[1+i,5]]. Como (1-i)(1+i)=2, χ_A(λ)=(4-λ)(5-λ)-2=λ²-9λ+18=(λ-3)(λ-6).
+
+**Para λ=3:** x+(1-i)y=0, luego x=(-1+i)y. La segunda ecuación se cumple al sustituir: (1+i)(-1+i)y+2y=-2y+2y=0. Así E₃=s.g.((-1+i,1)).
+
+**Para λ=6:** -2x+(1-i)y=0, luego x=(1-i)y/2. Elegimos y=2 para evitar fracciones: E₆=s.g.((1-i,2)).
+
+MATRIX
+P = [ -1+i  1-i ]      D = diag(3,6)
+    [   1    2  ]
+
+det(P)=-3+3i ≠ 0. Las columnas verifican sus ecuaciones de vector propio, así D=P⁻¹AP. La matriz se estudia sobre C aunque sus dos valores propios sean reales: sus entradas y sus vectores de referencia son complejos.
+
+No es necesario suponer un teorema especial sobre matrices hermíticas para resolver este inciso. Basta calcular el polinomio y obtener una base propia. El inciso (iii), desarrollado en las aplicaciones, incluye una raíz repetida y requiere comparar multiplicidades.
+
+===
+
+# 7. Práctico 2: ejercicio 2.8(iv)
+
+## Separar el bloque que ya está diagonal
+
+MATRIX
+A = [ 5    0      0   ]
+    [ 0   -1    -1+i  ]
+    [ 0  -1-i     0   ]
+
+La primera coordenada no se mezcla con las otras. El polinomio es (5-λ) por el determinante del bloque inferior: (-1-λ)(-λ)-(-1+i)(-1-i)=λ²+λ-2=(λ+2)(λ-1).
+
+Los valores propios son 5,-2 y 1, distintos. Ya sabemos que A es diagonalizable sobre C, pero para responder el inciso se deben construir las bases y las matrices P y D.
+
+**Para λ=5:** el bloque inferior menos 5I es invertible, así y=z=0 y x es libre. E₅=s.g.((1,0,0)).
+
+**Para λ=-2:** la primera ecuación fuerza x=0. En el bloque inferior, y+(-1+i)z=0 da y=(1-i)z. La otra ecuación, (-1-i)y+2z=0, se satisface porque (-1-i)(1-i)=-2. Por tanto E₋₂=s.g.((0,1-i,1)).
+
+**Para λ=1:** x=0 y -2y+(-1+i)z=0, de donde y=(-1+i)z/2. Tomar z=2 da E₁=s.g.((0,-1+i,2)).
+
+MATRIX
+P = [ 1    0      0   ]       D = diag(5,-2,1)
+    [ 0   1-i   -1+i  ]
+    [ 0    1      2   ]
+
+det(P)=3-3i ≠ 0, y AP=PD. Así D=P⁻¹AP. La suma de los valores propios es 5-2+1=4, que coincide con la traza 5-1+0. El producto es -10, que coincide con det(A).
+
+## Qué enseña el conjunto del ejercicio 2.8
+
+Los incisos (i), (ii) y (iv) tienen tantos valores distintos como su dimensión, por lo que el criterio suficiente decide la existencia de diagonalización. En el inciso (iii), el valor 2 aparece dos veces y hay que mostrar que E₂ tiene dimensión 2. En todos los casos construir P exige vectores, no solo raíces del polinomio.
+
+Las matrices complejas de este ejercicio no requieren cambiar los métodos: Gauss, determinantes y comparación de dimensiones siguen funcionando sobre C. Lo que cambia es la aritmética de los escalares.

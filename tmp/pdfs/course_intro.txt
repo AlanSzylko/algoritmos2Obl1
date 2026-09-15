@@ -1,0 +1,83 @@
+TITLE parcial 1 Algebra
+
+## Apunte completo para aprender los temas 1 a 7
+
+Este documento desarrolla la teoría de los siete archivos suministrados y resuelve los ejercicios de los dos prácticos. Está organizado para una primera lectura: introduce los conceptos, explica cómo usarlos y demuestra los resultados que conectan un tema con el siguiente.
+
+**El tema 6 es «vvp.pdf»: valores y vectores propios.** El recorrido termina en diagonalización, de acuerdo con el material indicado para este parcial. La cobertura se refiere a esos archivos; no incluye contenidos de otras unidades del curso que no forman parte de este conjunto.
+
+Cada capítulo contiene desarrollo teórico y aplicaciones. Se conservan los números de los ejercicios de los prácticos. Los ejemplos de las diapositivas se identifican por su archivo y página; los ejemplos agregados se presentan como aplicaciones o apoyos didácticos.
+
+## Qué significa aprender este apunte
+
+Para cada concepto, deberías poder dar su definición, reconocer cuándo se aplica y resolver un problema usándolo. Para cada teorema, deberías poder indicar sus hipótesis, explicar qué afirma y reproducir el argumento de la demostración. Una fórmula memorizada sin sus hipótesis puede llevar a una conclusión incorrecta.
+
+Por ejemplo, «n valores propios distintos» es una condición suficiente de diagonalización; no es una condición necesaria. «Núcleo trivial» equivale a inyectividad para una transformación lineal; no equivale por sí solo a sobreyectividad cuando las dimensiones de partida y llegada son distintas.
+
+## Notación que usaremos
+
+K significa R o C. V y W son espacios vectoriales; S y U suelen ser subespacios. Pₙ(K) contiene los polinomios de grado menor o igual que n. s.g. y span significan subespacio generado. N(T) y ker(T) significan núcleo. Im(T) significa imagen. r(T) significa rango.
+
+B = (b₁,…,bₙ) es una base **ordenada**. [v]_B es la columna de coordenadas de v en B. A = [T]_(C←B) recibe coordenadas en B y devuelve coordenadas en C; equivale a la notación de las diapositivas con la base de llegada a la izquierda y la de partida a la derecha.
+
+Las tuplas representan columnas al multiplicar matrices. En las fórmulas χ_A significa polinomio característico y E_λ el subespacio propio de λ; se usa χ_A(λ) = det(A - λI), como en las diapositivas. Los subíndices escritos con guion bajo, como E_λ o M_B, también indican índices.
+
+## Cómo está documentada la cobertura
+
+Al final se incluye una correspondencia entre las páginas de los apuntes originales y las secciones de este documento. Las diapositivas que repetían una definición se reúnen en una sola explicación. Se agregan demostraciones de apoyo cuando el original enuncia un resultado sin desarrollar la prueba.
+
+===
+
+# Herramientas previas: ecuaciones y matrices
+
+## Resolver un sistema es describir todas sus soluciones
+
+En un sistema lineal las incógnitas aparecen multiplicadas por números conocidos y sumadas; no se multiplican entre sí ni se elevan a potencias. El sistema Ax = b tiene matriz de coeficientes A y término independiente b. Si b = 0 es homogéneo y siempre admite x = 0.
+
+Un sistema es incompatible si no tiene soluciones, compatible determinado si tiene una sola y compatible indeterminado si tiene más de una. Sobre R o C, un sistema lineal con más de una solución tiene infinitas: aparecerá al menos un parámetro libre.
+
+**Operaciones de Gauss:** intercambiar dos filas, multiplicar una fila por un escalar no nulo y sumar a una fila un múltiplo de otra. Aplicadas a la matriz ampliada [A|b], preservan exactamente las soluciones porque cada operación tiene inversa.
+
+Un pivote es el primer coeficiente no nulo de una fila no nula en una forma escalonada. Los pivotes van desplazándose a la derecha al bajar de fila; las filas cero quedan al final. Las incógnitas sin pivote son libres. Una fila [0 … 0 | c] con c ≠ 0 señala incompatibilidad.
+
+## Ejemplo trabajado
+
+Considerá x + 2y + z = 3 y 2x + 4y + 3z = 7. Restar dos veces la primera ecuación a la segunda da z = 1. Luego x + 2y = 2. Tomando y = t, todas las soluciones son:
+
+= (x,y,z) = (2,0,1) + t(-2,1,0), con t ∈ R.
+
+El vector fijo es una solución particular; la dirección (-2,1,0) resuelve el sistema homogéneo correspondiente. Si el segundo miembro cambiara, podrían cambiar la solución particular o la compatibilidad, pero el sistema homogéneo asociado seguiría siendo el mismo.
+
+## Multiplicar matrices: tamaños y orden
+
+Si A es m × n y B es n × p, AB es m × p. Su entrada (i,j) es la suma de productos de la fila i de A por la columna j de B. La columna j de AB también es A multiplicada por la columna j de B. Esta última interpretación explicará la matriz asociada.
+
+El producto es asociativo: (AB)C = A(BC), y distributivo, pero en general AB ≠ BA. La identidad I tiene unos en la diagonal y ceros fuera; AI = IA = A con los tamaños apropiados. Una matriz cuadrada invertible tiene A⁻¹ tal que A⁻¹A = AA⁻¹ = I. Para obtenerla por Gauss se reduce [A|I] a [I|A⁻¹].
+
+===
+
+# Herramientas previas: determinantes y complejos
+
+## Determinantes que se usarán en todo el apunte
+
+El determinante es un escalar asociado a una matriz cuadrada. Para una matriz 2 × 2, det([[a,b],[c,d]]) = ad - bc. Para una de mayor orden se puede desarrollar por una fila o columna:
+
+= det(A) = Σⱼ aᵢⱼ(-1)^(i+j) det(A sin fila i ni columna j).
+
+Aquí i se mantiene fijo y se suman las columnas j. El patrón de signos empieza con + en (1,1) y alterna. En 3 × 3, por la primera fila: a₁₁(a₂₂a₃₃-a₂₃a₃₂) - a₁₂(a₂₁a₃₃-a₂₃a₃₁) + a₁₃(a₂₁a₃₂-a₂₂a₃₁).
+
+**Reglas de cálculo:** una matriz triangular tiene determinante igual al producto de su diagonal; intercambiar dos filas cambia el signo; multiplicar una fila por c multiplica el determinante por c; sumar a una fila un múltiplo de otra no cambia el determinante. Las mismas reglas valen para columnas.
+
+**Propiedades de apoyo:** det(AB) = det(A)det(B), det(Aᵀ) = det(A), y A es invertible si y solo si det(A) ≠ 0. En ese caso det(A⁻¹) = 1/det(A). Estas propiedades explican la conservación del determinante bajo semejanza.
+
+En dimensión 2, si ad-bc ≠ 0, la inversa es (1/(ad-bc))[[d,-b],[-c,a]]. Podés verificarla multiplicando. La traspuesta Aᵀ intercambia filas y columnas; (AB)ᵀ = BᵀAᵀ, por lo que el orden se invierte.
+
+## Números complejos para los ejercicios
+
+C = {a+bi: a,b ∈ R}, con i² = -1. Se suman las partes reales e imaginarias por separado. Para multiplicar, se distribuye y se reemplaza i² por -1: (a+bi)(c+di) = (ac-bd)+(ad+bc)i.
+
+El conjugado de z = a+bi es z̄ = a-bi. Si z ≠ 0, entonces 1/z = (a-bi)/(a²+b²). En particular 1/i = -i. Las ecuaciones lineales sobre C se resuelven igual que sobre R, pero los coeficientes y parámetros pueden ser complejos.
+
+**Ejemplo de las diapositivas, tema 1, p. 11:** multiplicar v = (1+i,-3,0,i) por i da iv = (-1+i,-3i,0,-1). Se multiplica cada coordenada por el mismo escalar, no se conjuga el vector.
+
+Si λ² + 3 = 0, no hay solución en R, pero en C las soluciones son ±i√3. Esta diferencia será decisiva al estudiar valores propios. Un mismo polinomio puede descomponerse completamente sobre C y no hacerlo sobre R.

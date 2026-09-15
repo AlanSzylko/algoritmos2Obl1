@@ -1,0 +1,430 @@
+PAGE 1
+OPTIMIZACI´ON CON ´ALGEBRA LINEAL - Pr´ actico del Tema 1
+Revisi´ on y complementos de espacios vectoriales y transformaciones lineales
+Agosto 2026
+Ejercicio 1.1
+SeaA=
+{︄(︄
+1 1
+2−1
+)︄
+,
+(︄
+1 0
+1 3
+)︄
+,
+(︄
+0 1
+1−4
+)︄}︄
+⊂I R2×2.
+(a) ¿Agenera a todoI R 2×2? En caso de responder negativamente indicar qu´ e subespacio (S) genera,
+hallando las condiciones que debe cumplir
+(︄
+a b
+c d
+)︄
+para estar en (S).
+(b) ¿Aes linealmente independiente (L.I.)? En caso de responder negativamente indicar cu´ al/cuales
+vectores deAse puede/pueden escribir como combinaci´ on lineal de los restantes vectores deA.
+Ejercicio 1.2
+SeaA={(1,3,1),(2,−1,−1),(5,1, a)} ⊂I R 3.
+(a) ¿Agenera a todoI R 3? En caso de responder negativamente indicar qu´ e subespacio (S) genera.
+Discutir seg´ una.
+(b) ¿Aes linealmente independiente (L.I.)? En caso de responder negativamente indicar cu´ al/cuales
+vectores deAse puede/pueden escribir como combinaci´ on lineal de los restantes vectores deA.
+Discutir seg´ una.
+Ejercicio 1.3
+En cada caso hallar una base de los siguientes subespacios vectoriales:
+S1 =
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+⎡
+⎢⎢⎢⎢⎣
+x
+y
+z
+t
+⎤
+⎥⎥⎥⎥⎦
+∈I R4 :x=y+z, y=z−2t
+⎫
+⎪⎪⎪⎪⎬
+⎪⎪⎪⎪⎭
+;
+S2 =
+{︁
+A∈I R 2×2 :A=A T }︁
+;
+S3 =
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+v
+z
+w
+⎤
+⎥⎦ ∈I C3 :v+z=iw
+⎫
+⎪⎬
+⎪⎭
+.
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 1 de 6
+PAGE 2
+Ejercicio 1.4
+Demostrar que los siguientes conjuntos son bases de los espacios vectoriales indicados y hallar las
+coordenadas de los vectores indicados en las mismas.
+(a)B=
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+1
+0
+0
+⎤
+⎥⎦ ,
+⎡
+⎢⎣
+1
+i
+0
+⎤
+⎥⎦ ,
+⎡
+⎢⎣
+1
+0
+i
+⎤
+⎥⎦
+⎫
+⎪⎬
+⎪⎭
+⊂I C3, v=
+⎡
+⎢⎣
+2
+−i
+1
+⎤
+⎥⎦ .
+(b)B=
+{︄[︄
+1 0
+0 1
+]︄
+,
+[︄
+1 1
+0 1
+]︄
+,
+[︄
+0 0
+1 0
+]︄
+,
+[︄
+1 0
+0−1
+]︄}︄
+⊂I R2×2, M=
+[︄
+1 1
+0 3
+]︄
+.
+Ejercicio 1.5
+Dados los siguientes espacios vectorialesVy los subespacios vectorialesSyWse pide en cada caso
+hallardim(S),dim(W),dim(S ∩ W),dim(S+W).
+(a)V=I R 4;
+S=
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+⎡
+⎢⎢⎢⎢⎣
+x
+y
+z
+t
+⎤
+⎥⎥⎥⎥⎦
+∈I R4 :x+y= 0, t= 0
+⎫
+⎪⎪⎪⎪⎬
+⎪⎪⎪⎪⎭
+;W=
+⎧
+⎪⎪⎪⎪⎨
+⎪⎪⎪⎪⎩
+⎡
+⎢⎢⎢⎢⎣
+x
+y
+z
+t
+⎤
+⎥⎥⎥⎥⎦
+∈I R4 :x+y+z= 0
+⎫
+⎪⎪⎪⎪⎬
+⎪⎪⎪⎪⎭
+.
+(b)V=P 3(I R);
+S={p(x)∈ P 3(I R) :p(0) =p(1) = 0};
+W={p(x)∈ P 3(I R) :p(x) =p(−x)∀x∈I R}.
+(c)V=I C 3;
+S=
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+x
+y
+z
+⎤
+⎥⎦ ∈I C3 :x=z, y=iz
+⎫
+⎪⎬
+⎪⎭
+;W=
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+x
+y
+z
+⎤
+⎥⎦ ∈I C3 :x−y−z= 0
+⎫
+⎪⎬
+⎪⎭
+.
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 2 de 6
+PAGE 3
+Ejercicio 1.6
+Dados los siguientes espacios vectorialesVy los subespacios vectorialesSyWde los mismos, investigar
+en cada caso siV=S ⊕ W.
+(a)V=I R 2×2;S=
+{︁
+A∈I R 2×2 :A=A T }︁
+;W=
+{︁
+A∈I R 2×2 :A=−A T }︁
+.
+(b)V=P 2(I R);S={p(x)∈ P 2(I R) :p(1) = 0};W=s.g.
+(︁
+x2 −x
+)︁
+.
+(c)V=I C 3;S=
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+x
+y
+z
+⎤
+⎥⎦ ∈I C3 :x= 0, y=iz
+⎫
+⎪⎬
+⎪⎭
+;W=
+⎧
+⎪⎨
+⎪⎩
+⎡
+⎢⎣
+x
+y
+z
+⎤
+⎥⎦ ∈I C3 :y=−iz
+⎫
+⎪⎬
+⎪⎭
+.
+Ejercicio 1.7
+Para cada una de las siguientes funciones entre dos espacios vectorialesVyW:
+⋆Determinar si se trata de una transformaci´ on lineal.
+⋆En caso afirmativo caracterizar el n´ ucleo y la imagen.
+(a)V=W=I R 2, yTes la simetr´ ıa respecto de una recta que pasa por el origen.
+Argumentar geom´ etricamente.
+(b)V=W=I C 2×2 (matrices complejas 2×2), yT(A) =A·BdondeB=
+[︄
+1−i
+i1
+]︄
+.
+(c)V=P n(I R) (polinomios de coeficientes reales de grado menor o igual an),W=I R,
+yT[p(x)] =p(5).
+(d)V=P n,W=P n+2, yT[p(x)] =p(x)(x 2 +x+ 1).
+(e)V=P n,W=P n+2, yT[p(x)] = [p(x) + 1](x 2 +x+ 1).
+Ejercicio 1.8
+En el espacio vectorial de polinomios de coeficientes reales, grado menor o igual a 3:
+P3 ={p(x) =p 0 +p 1x+p 2x2 +p 3x3, p k ∈I Rparak= 0,1,2,3},
+definimos la transformaci´ onT:P 3 → P 3 mediante
+T[p(x)] = (x−1)·p ′(x),
+dondep ′(x) denota derivada.
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 3 de 6
+PAGE 4
+(a) Demostrar queTes lineal.
+(b) Caracterizar el n´ ucleo deT.
+(c) Demostrar que su imagen es Im(T) ={q(x)∈ P 3 :q(1) = 0}.
+(d) ¿Es invertible la transformaci´ on?.
+Ejercicio 1.9
+Se considera el espacio vectorialV=I R 2×2 de matrices reales 2×2, y la transformaci´ onT:V → V
+definida por
+T[M] =M+M T ,
+donde T denota traspuesta.
+(a) Demostrar queTes lineal.
+(b) Caracterizar el n´ ucleoN(T), dando una baseB N del n´ ucleo.
+(c) Verdadero o falso: siM 1, M2,son linealmente independientes, tambi´ en lo sonT(M 1),T(M 2).
+(d) Demostrar que la imagen Im(T) ={M∈I R 2×2 :M=M T }, conjunto de matrices sim´ etricas.
+Dar una baseB I de la imagen.
+(e) ¿Se cumple queN(T) + Im(T) =V? En caso afirmativo, ¿la suma es directa?
+Ejercicio 1.10
+Demostrar que:
+(a) Si{v (1), v(2), . . . , v(n)}es generador deV, yT:V − → Wes lineal, entonces
+{T v(1), T v(2), . . . , T v(n)}es generador de Im(T).
+(b) SiT:V − → Wes lineal, biyectiva, entonces la funci´ on inversaT −1 :W − → Ves lineal.
+Ejercicio 1.11
+Para cada una de las siguientes transformaciones lineales:
+T:I C2 − →I C2, T
+(︄[︄
+x
+y
+]︄)︄
+=
+[︄
+iy
+−ix
+]︄
+, x, y∈I C; (1)
+T:I R 3 − →I R3, T
+⎛
+⎜⎝
+⎡
+⎢⎣
+x
+y
+z
+⎤
+⎥⎦
+⎞
+⎟⎠ =
+⎡
+⎢⎣
+x+y+z
+y+z
+x+ 2y+ 2z
+⎤
+⎥⎦ , x, y, z∈I R.(2)
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 4 de 6
+PAGE 5
+(a) Hallar la matriz asociada aTen las bases can´ onicas.
+(b) Hallar una base del n´ ucleo deT.
+(c) Hallar una base de la imagen deT.
+Ejercicio 1.12
+Sean dos transformaciones linealesT, S:I R 2 − →I R2 con las siguientes matrices asociadas en la base
+can´ onicaB:
+B(T) B =
+[︄1√
+2 − 1√
+2
+1√
+2
+1√
+2
+]︄
+B(S)B =
+[︄
+1 0
+0 0
+]︄
+.
+(a) Hallar los n´ ucleos deTyS.
+(b) Estudiar siTySson invertibles.
+(c) ¿ Se cumpleT◦S=S◦T?
+(d) Interpretar geom´ etricamente los resultados.
+Ejercicio 1.13
+Continuaci´ on del problema (1.8).
+(e) HallarA, matriz asociada aTen la base can´ onicaB={1, x, x 2, x3}.
+(f) HallarB, matriz asociada aTen la baseB ′ ={1, x−1,(x−1) 2,(x−1) 3}.
+(g) HallarPinvertible tal queB=P −1AP.
+Ejercicio 1.14
+Continuaci´ on del problema (1.9).
+(f) HallarA, matriz asociada aTen la base can´ onica
+B=
+{︄[︄
+1 0
+0 0
+]︄
+,
+[︄
+0 1
+0 0
+]︄ [︄
+0 0
+1 0
+]︄ [︄
+0 0
+0 1
+]︄}︄
+.
+(g) HallarA ′, matriz asociada aTen la baseB ′ =B N ∪ BI.
+(h) HallarPinvertible tal queA ′ =P −1AP.
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 5 de 6
+PAGE 6
+Ejercicio 1.15
+Dos matricesA, B∈K n×n sonsemejantessi existeP∈K n×n invertible tal queA=P −1BP. SiA,
+Bson semejantes demostrar que:
+(a) Las traspuestasA T ,B T son semejantes.
+(b) Los determinantes son iguales: det(A) = det(B).
+(c) Las trazas son iguales,traza(A) =traza(B). La traza de una matriz cuadrada es la suma de
+su diagonal, y se puede usar la propiedadtraza(P Q) =traza(QP) que vale para cualesquiera
+P∈K m×n,Q∈K n×m (no se pide probar esto, pero no es muy dif´ ıcil).
+(d) Los rangos son iguales:r(A) =r(B).
+(e)A m es semejante aB m para cualquierm∈N.
+(f)Aes invertible s´ ı y solo s´ ıBlo es, y en ese caso sus inversas son semejantes.
+Ejercicio 1.16
+Para las siguientes matrices: hallar su rangor, la dimensi´ on de su n´ ucleo, e identificar una submatriz
+r×rinvertible seleccionando filas y columnas adecuadas.
+A=
+⎡
+⎢⎣
+2 0−1−2
+3 1 0 1
+1 1 1 1
+⎤
+⎥⎦ ;B=
+⎡
+⎢⎣
+1−3 2
+−3 9−6
+2−6 4
+⎤
+⎥⎦ ;C=
+⎡
+⎢⎢⎢⎢⎢⎢⎣
+0 0 1
+2 4 3
+0 0 4
+−2−4 0
+1 1 1
+⎤
+⎥⎥⎥⎥⎥⎥⎦
+.
+Optimizaci´ on con´Algebra Lineal - Pr´ actico Tema 1 - 2026 P´ agina 6 de 6

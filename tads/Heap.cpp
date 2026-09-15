@@ -28,9 +28,9 @@ class Heap{
 
     void flotar(int pos)
     {
-        if(posActual == 1) return;
+        if(pos == 1) return;
         int posPadre = padre(pos);
-        if(comparar(arr[pos],arr[posPadre])){
+        if(Comparar(arr[pos],arr[posPadre])){
             swap(pos,posPadre);
             flotar(posPadre);
         }
@@ -40,20 +40,23 @@ class Heap{
         int posDer = der(pos);
         if(posIzq > ultimoOcupado) return;
         int posMax = posIzq;
-        if(posDer <= ultimoOcupado && comparar(arr[posDer],arr[posIzq])){
+        if(posDer <= ultimoOcupado && Comparar(arr[posDer],arr[posIzq])){
             posMax = posDer;
         }
-        if(comparar(arr[posMax],arr[pos])){
+        if(Comparar(arr[posMax],arr[pos])){
             swap(posMax,pos);
             hundir(posMax);
         }
     }
     public:
+
+
+
     Heap(int capacidad, bool (*Comparar)(T, T)) {
         this->arr = new T[capacidad + 1]();
         this->capacidad = capacidad;
         this->Comparar = Comparar;
-        this->ultimoOcuado = 0;
+        this->ultimoOcupado = 0;
 
     }
 

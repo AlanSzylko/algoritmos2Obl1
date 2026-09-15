@@ -1,0 +1,1766 @@
+TITLE parcial 1 Algebra
+
+## Apunte completo para aprender los temas 1 a 7
+
+Este documento desarrolla la teoría de los siete archivos suministrados y resuelve los ejercicios de los dos prácticos. Está organizado para una primera lectura: introduce los conceptos, explica cómo usarlos y demuestra los resultados que conectan un tema con el siguiente.
+
+**El tema 6 es «vvp.pdf»: valores y vectores propios.** El recorrido termina en diagonalización, de acuerdo con el material indicado para este parcial. La cobertura se refiere a esos archivos; no incluye contenidos de otras unidades del curso que no forman parte de este conjunto.
+
+Cada capítulo contiene desarrollo teórico y aplicaciones. Se conservan los números de los ejercicios de los prácticos. Los ejemplos de las diapositivas se identifican por su archivo y página; los ejemplos agregados se presentan como aplicaciones o apoyos didácticos.
+
+## Qué significa aprender este apunte
+
+Para cada concepto, deberías poder dar su definición, reconocer cuándo se aplica y resolver un problema usándolo. Para cada teorema, deberías poder indicar sus hipótesis, explicar qué afirma y reproducir el argumento de la demostración. Una fórmula memorizada sin sus hipótesis puede llevar a una conclusión incorrecta.
+
+Por ejemplo, «n valores propios distintos» es una condición suficiente de diagonalización; no es una condición necesaria. «Núcleo trivial» equivale a inyectividad para una transformación lineal; no equivale por sí solo a sobreyectividad cuando las dimensiones de partida y llegada son distintas.
+
+## Notación que usaremos
+
+K significa R o C. V y W son espacios vectoriales; S y U suelen ser subespacios. Pₙ(K) contiene los polinomios de grado menor o igual que n. s.g. y span significan subespacio generado. N(T) y ker(T) significan núcleo. Im(T) significa imagen. r(T) significa rango.
+
+B = (b₁,…,bₙ) es una base **ordenada**. [v]_B es la columna de coordenadas de v en B. A = [T]_(C←B) recibe coordenadas en B y devuelve coordenadas en C; equivale a la notación de las diapositivas con la base de llegada a la izquierda y la de partida a la derecha.
+
+Las tuplas representan columnas al multiplicar matrices. En las fórmulas χ_A significa polinomio característico y E_λ el subespacio propio de λ; se usa χ_A(λ) = det(A - λI), como en las diapositivas. Los subíndices escritos con guion bajo, como E_λ o M_B, también indican índices.
+
+## Cómo está documentada la cobertura
+
+Al final se incluye una correspondencia entre las páginas de los apuntes originales y las secciones de este documento. Las diapositivas que repetían una definición se reúnen en una sola explicación. Se agregan demostraciones de apoyo cuando el original enuncia un resultado sin desarrollar la prueba.
+
+===
+# Índice y recorrido de aprendizaje
+
+## Herramientas previas
+
+Ecuaciones, matrices, determinantes y aritmética compleja: páginas 3-4. Son herramientas de apoyo para leer los siete temas sin tener que reconstruir los procedimientos de cálculo.
+
+## 1. Espacios vectoriales | páginas 5-17
+
+Axiomas, ejemplos de espacios finitos e infinitos, subespacios, generación, independencia y sus equivalencias, bases, dimensión, isomorfismo de coordenadas, suma e intersección, suma directa. Práctico 1: ejercicios 1.1-1.6.
+
+## 2. Transformaciones lineales | páginas 18-24
+
+Linealidad, ejemplos del manuscrito, núcleo e imagen como subespacios, preimágenes, inyectividad, sobreyectividad, inversa y prueba del teorema rango-nulidad. Práctico 1: 1.7-1.10.
+
+## 3. Matriz asociada | páginas 25-29
+
+Construcción por columnas, demostración de la propiedad fundamental, composición, identidad, inversa y ejemplo con bases no canónicas. Práctico 1: 1.11, 1.12 y 1.13(e).
+
+## 4. Cambio de base | páginas 30-33
+
+Dirección del pasaje, ejemplo original, fórmulas general y particular, cambios en espacios de dimensiones distintas. Práctico 1: 1.13(f,g) y 1.14.
+
+## 5. Semejanza y rango | páginas 34-37
+
+Relación de equivalencia, invariantes, rango de productos, operaciones elementales, igualdad de rango por filas y columnas y menores. Práctico 1: 1.15-1.16.
+
+## 6. Valores y vectores propios (vvp) | páginas 38-43
+
+Definiciones, sistemas propios, polinomio característico y sus coeficientes, semejanza y traspuesta, geometría y propiedades. Práctico 2: 2.1-2.6.
+
+## 7. Diagonalización | páginas 44-54
+
+Equivalencias de diagonalización, independencia de subespacios propios, multiplicidades, pruebas de la desigualdad y del criterio completo, parámetros y potencias. Práctico 2: 2.7-2.12.
+
+## Consulta y correspondencia con los originales
+
+Fórmulas y controles: página 55. Cobertura de los apuntes y ubicación de los ejercicios: páginas 56-58. El panel de marcadores del PDF permite abrir directamente cada sección.
+===
+
+# Herramientas previas: ecuaciones y matrices
+
+## Resolver un sistema es describir todas sus soluciones
+
+En un sistema lineal las incógnitas aparecen multiplicadas por números conocidos y sumadas; no se multiplican entre sí ni se elevan a potencias. El sistema Ax = b tiene matriz de coeficientes A y término independiente b. Si b = 0 es homogéneo y siempre admite x = 0.
+
+Un sistema es incompatible si no tiene soluciones, compatible determinado si tiene una sola y compatible indeterminado si tiene más de una. Sobre R o C, un sistema lineal con más de una solución tiene infinitas: aparecerá al menos un parámetro libre.
+
+**Operaciones de Gauss:** intercambiar dos filas, multiplicar una fila por un escalar no nulo y sumar a una fila un múltiplo de otra. Aplicadas a la matriz ampliada [A|b], preservan exactamente las soluciones porque cada operación tiene inversa.
+
+Un pivote es el primer coeficiente no nulo de una fila no nula en una forma escalonada. Los pivotes van desplazándose a la derecha al bajar de fila; las filas cero quedan al final. Las incógnitas sin pivote son libres. Una fila [0 … 0 | c] con c ≠ 0 señala incompatibilidad.
+
+## Ejemplo trabajado
+
+Considerá x + 2y + z = 3 y 2x + 4y + 3z = 7. Restar dos veces la primera ecuación a la segunda da z = 1. Luego x + 2y = 2. Tomando y = t, todas las soluciones son:
+
+= (x,y,z) = (2,0,1) + t(-2,1,0), con t ∈ R.
+
+El vector fijo es una solución particular; la dirección (-2,1,0) resuelve el sistema homogéneo correspondiente. Si el segundo miembro cambiara, podrían cambiar la solución particular o la compatibilidad, pero el sistema homogéneo asociado seguiría siendo el mismo.
+
+## Multiplicar matrices: tamaños y orden
+
+Si A es m × n y B es n × p, AB es m × p. Su entrada (i,j) es la suma de productos de la fila i de A por la columna j de B. La columna j de AB también es A multiplicada por la columna j de B. Esta última interpretación explicará la matriz asociada.
+
+El producto es asociativo: (AB)C = A(BC), y distributivo, pero en general AB ≠ BA. La identidad I tiene unos en la diagonal y ceros fuera; AI = IA = A con los tamaños apropiados. Una matriz cuadrada invertible tiene A⁻¹ tal que A⁻¹A = AA⁻¹ = I. Para obtenerla por Gauss se reduce [A|I] a [I|A⁻¹].
+
+===
+
+# Herramientas previas: determinantes y complejos
+
+## Determinantes que se usarán en todo el apunte
+
+El determinante es un escalar asociado a una matriz cuadrada. Para una matriz 2 × 2, det([[a,b],[c,d]]) = ad - bc. Para una de mayor orden se puede desarrollar por una fila o columna:
+
+= det(A) = Σⱼ aᵢⱼ(-1)^(i+j) det(A sin fila i ni columna j).
+
+Aquí i se mantiene fijo y se suman las columnas j. El patrón de signos empieza con + en (1,1) y alterna. En 3 × 3, por la primera fila: a₁₁(a₂₂a₃₃-a₂₃a₃₂) - a₁₂(a₂₁a₃₃-a₂₃a₃₁) + a₁₃(a₂₁a₃₂-a₂₂a₃₁).
+
+**Reglas de cálculo:** una matriz triangular tiene determinante igual al producto de su diagonal; intercambiar dos filas cambia el signo; multiplicar una fila por c multiplica el determinante por c; sumar a una fila un múltiplo de otra no cambia el determinante. Las mismas reglas valen para columnas.
+
+**Propiedades de apoyo:** det(AB) = det(A)det(B), det(Aᵀ) = det(A), y A es invertible si y solo si det(A) ≠ 0. En ese caso det(A⁻¹) = 1/det(A). Estas propiedades explican la conservación del determinante bajo semejanza.
+
+En dimensión 2, si ad-bc ≠ 0, la inversa es (1/(ad-bc))[[d,-b],[-c,a]]. Podés verificarla multiplicando. La traspuesta Aᵀ intercambia filas y columnas; (AB)ᵀ = BᵀAᵀ, por lo que el orden se invierte.
+
+## Números complejos para los ejercicios
+
+C = {a+bi: a,b ∈ R}, con i² = -1. Se suman las partes reales e imaginarias por separado. Para multiplicar, se distribuye y se reemplaza i² por -1: (a+bi)(c+di) = (ac-bd)+(ad+bc)i.
+
+El conjugado de z = a+bi es z̄ = a-bi. Si z ≠ 0, entonces 1/z = (a-bi)/(a²+b²). En particular 1/i = -i. Las ecuaciones lineales sobre C se resuelven igual que sobre R, pero los coeficientes y parámetros pueden ser complejos.
+
+**Ejemplo de las diapositivas, tema 1, p. 11:** multiplicar v = (1+i,-3,0,i) por i da iv = (-1+i,-3i,0,-1). Se multiplica cada coordenada por el mismo escalar, no se conjuga el vector.
+
+Si λ² + 3 = 0, no hay solución en R, pero en C las soluciones son ±i√3. Esta diferencia será decisiva al estudiar valores propios. Un mismo polinomio puede descomponerse completamente sobre C y no hacerlo sobre R.
+===
+# 1. Espacios vectoriales: definición completa
+
+## Los objetos y las operaciones
+
+Un espacio vectorial sobre K es un conjunto V con una suma V × V → V y un producto por escalares K × V → V. Los elementos de V se llaman vectores y los de K, escalares. La suma de dos vectores y el producto de un escalar por un vector deben seguir perteneciendo a V: esto es el cierre de las operaciones.
+
+Para todos u,v,w ∈ V y α,β ∈ K se exigen las siguientes propiedades. Cada igualdad habla de las operaciones del espacio, que no necesariamente son operaciones entre flechas.
+
+**Suma:** (u+v)+w = u+(v+w) (asociatividad); u+v = v+u (conmutatividad); existe 0_V con v+0_V = v; para cada v existe -v con v+(-v) = 0_V.
+
+**Producto por escalares:** α(βv) = (αβ)v; α(u+v) = αu+αv; (α+β)v = αv+βv; 1v = v.
+
+La expresión «grupo conmutativo» usada en las diapositivas resume las cuatro propiedades de la suma. No agrega una operación distinta. La estructura completa se denota (V,K,+,·).
+
+## Consecuencias de los axiomas
+
+**El cero es único:** si 0 y 0' son neutros, 0 = 0+0' = 0'. **El opuesto es único:** si v+w = 0 y v+z = 0, sumar -v a ambas igualdades da w = z. Por la misma razón vale la cancelación: u+v = u+w implica v = w.
+
+**0v = 0_V:** como (0+0)v = 0v+0v, la cancelación deja 0v = 0_V. **α0_V = 0_V:** de α(0_V+0_V) = α0_V+α0_V se obtiene lo mismo. **(-1)v = -v:** v+(-1)v = (1-1)v = 0_V.
+
+Si αv = 0_V, entonces α = 0 o v = 0_V: cuando α ≠ 0, multiplicamos por α⁻¹ y queda v = 0_V. Distinguir el cero escalar del cero vectorial ayuda a interpretar pruebas de independencia.
+
+## Ejemplo: Kⁿ
+
+En Kⁿ los vectores son listas de n escalares. Se suman coordenada a coordenada y α(v₁,…,vₙ) = (αv₁,…,αvₙ). Los axiomas se heredan de las operaciones de K. Por ejemplo, la coordenada j de (u+v)+w es (uⱼ+vⱼ)+wⱼ = uⱼ+(vⱼ+wⱼ).
+
+En R² y R³ se pueden dibujar como flechas desde el origen. Sumar corresponde a la regla del paralelogramo; un escalar positivo cambia la longitud conservando el sentido, uno negativo lo invierte y cero produce el vector nulo. Esta interpretación ayuda, pero las definiciones también valen sin un dibujo.
+
+===
+
+# 1. Matrices, polinomios y funciones como vectores
+
+## El espacio Kᵐˣⁿ
+
+Sus elementos son matrices con m filas y n columnas. La suma y el producto por escalares se hacen entrada a entrada; por eso satisfacen los axiomas. El cero es la matriz de ceros y -A tiene cada entrada cambiada de signo. **El producto de matrices no es la operación escalar-vector de esta definición.**
+
+La matriz Eᵢⱼ tiene un 1 en (i,j) y ceros en el resto. Toda A se escribe de forma única como ΣᵢΣⱼ aᵢⱼEᵢⱼ. Por tanto las mn matrices Eᵢⱼ forman una base y la dimensión es mn.
+
+En la p. 8 del tema 1 se identifican matrices con tuplas apilando columnas. Para 2 × 2, [[a,b],[c,d]] pasa a (a,c,b,d). También se puede ordenar como (a,b,c,d), si se fija la base (E₁₁,E₁₂,E₂₁,E₂₂), como en el práctico. Son convenciones distintas y válidas: no deben mezclarse durante una misma cuenta.
+
+## El espacio Pₙ(K)
+
+Un polinomio p = a₀+a₁x+…+aₙxⁿ se identifica por sus coeficientes. Pₙ incluye polinomios de grado menor que n y al polinomio cero. La suma conserva grado ≤ n y multiplicar por un escalar también; el cero escalar puede anular todos los coeficientes.
+
+Dos polinomios son iguales si coinciden todos los coeficientes. Así 1,x,…,xⁿ generan Pₙ y son L.I.: si c₀+c₁x+…+cₙxⁿ es el polinomio nulo, cada cⱼ es cero. La dimensión es n+1. El conjunto de polinomios de grado **exactamente** n no es un subespacio: no contiene al cero y puede perder grado al sumar.
+
+## Funciones continuas y dimensión infinita
+
+C([a,b],R), con a < b, contiene las funciones continuas del intervalo en R. Sus operaciones se definen punto a punto: (f+g)(x) = f(x)+g(x), (αf)(x) = αf(x). Sumas y múltiplos de funciones continuas son continuos, y los axiomas se verifican evaluando en cada x. El vector cero es la función idénticamente nula.
+
+Este espacio no admite una base finita. Para cualquier n, las funciones 1,x,…,xⁿ son L.I. en el intervalo: un polinomio que vale cero en todo un intervalo tiene infinitas raíces y debe ser el polinomio cero. Hay conjuntos L.I. tan grandes como se quiera. Por eso no hay una identificación **lineal** con Rᵏ para ningún k finito.
+
+## El cuerpo de escalares forma parte del problema
+
+Los mismos axiomas definen espacios complejos usando escalares en C. Cⁿ tiene base compleja (e₁,…,eₙ), dimensión n; visto como espacio real tiene base (e₁,ie₁,…,eₙ,ieₙ), dimensión 2n. Decir «dimensión» sin fijar el cuerpo puede ser ambiguo. En los prácticos, cuando se escribe C³, el cuerpo es C salvo indicación contraria.
+
+===
+
+# 1. Subespacios y subespacio generado
+
+## Criterio de subespacio y demostración
+
+Un subconjunto S de V es subespacio si con las operaciones heredadas también es espacio vectorial. Basta comprobar 0_V ∈ S, cierre por suma y cierre por escalares. Las propiedades asociativa, conmutativa y distributivas ya valen en V y siguen valiendo al restringir los vectores a S; los opuestos pertenecen a S porque -v = (-1)v.
+
+Equivalente: S es no vacío y αu+βv ∈ S para todos u,v ∈ S y α,β ∈ K. Eligiendo α = β = 0 se obtiene el cero; eligiendo α = β = 1 se obtiene el cierre por suma; tomando β = 0 se obtiene el producto escalar.
+
+**No alcanza con que S esté contenido en V.** El plano x+y+z = 1 no contiene al cero. El conjunto xy = 0 contiene al cero, pero no a la suma de (1,0) y (0,1). Cada condición del criterio cumple una función.
+
+## Combinaciones lineales y generación
+
+Una combinación lineal de v₁,…,vₖ es cualquier suma Σcⱼvⱼ con coeficientes en K. El subespacio generado es el conjunto de todas esas sumas. Contiene al cero eligiendo coeficientes cero. Si u = Σaⱼvⱼ y w = Σbⱼvⱼ, entonces αu+βw = Σ(αaⱼ+βbⱼ)vⱼ vuelve a ser una combinación de los mismos vectores. Queda probado que es subespacio.
+
+Es el **menor subespacio que contiene a los generadores**: cualquier subespacio que contenga cada vⱼ debe contener todas sus combinaciones. La lista genera V cuando su subespacio generado es todo V. Agregar un vector que ya era combinación no agranda ese subespacio.
+
+## Ejemplos de las diapositivas
+
+**Tema 1, p. 17:** (1,0,0) y (1,1,0) generan el plano horizontal, pues α(1,0,0)+β(1,1,0) = (α+β,β,0). Cualquier (x,y,0) se obtiene eligiendo β = y y α = x-y.
+
+**Tema 1, p. 7:** en S = {(x,y,z): x-3y+2z=0}, x = 3y-2z. Por tanto S = s.g.((3,1,0),(-2,0,1)). Las coordenadas segunda y tercera prueban independencia, de modo que son base. El vector e₁ = (1,0,0) no satisface la ecuación de S; al agregarlo se completa una base de R³.
+
+**Tema 1, pp. 13 y 15:** S = {p ∈ Pₙ: p(3)=0}. En coeficientes, a₀+3a₁+…+3ⁿaₙ=0. Para n ≥ 1, el teorema del factor da p=(x-3)q con q∈Pₙ₋₁. Una base es (x-3,x(x-3),…,xⁿ⁻¹(x-3)); la multiplicación por x-3 no crea una relación nula entre polinomios distintos. Dimensión n. Para n=0, S={0}.
+
+===
+
+# 1. Independencia: equivalencias y crecimiento
+
+## Tres formulaciones del mismo concepto
+
+Una lista v₁,…,vₖ es L.I. si Σcⱼvⱼ=0 implica que todos los cⱼ son cero. Es L.D. cuando existe una relación nula con algún coeficiente no cero. La relación nula con todos los coeficientes cero existe siempre y se llama trivial.
+
+**Equivalencia 1:** ser L.I. equivale a que ningún vector sea combinación de los restantes. Si una relación no trivial tiene cᵣ ≠ 0, despejar da vᵣ = -Σ_(j≠r)(cⱼ/cᵣ)vⱼ. Recíprocamente, pasar al mismo lado una expresión de vᵣ como combinación de los demás da una relación no trivial: su coeficiente es 1.
+
+**Equivalencia 2:** ser L.I. equivale a que cada vector del subespacio generado tenga una única expresión. Si Σaⱼvⱼ = Σbⱼvⱼ, restar produce Σ(aⱼ-bⱼ)vⱼ = 0 y la independencia obliga a aⱼ=bⱼ. En sentido contrario, si las expresiones son únicas, el cero no puede tener otra expresión que la trivial.
+
+Estas pruebas corresponden a la p. 20 del tema 1. No afirman que cualquier vector de V tenga expresión: eso requiere además que la lista genere V.
+
+## Agregar un vector sin perder independencia
+
+**Proposición, pp. 21-22:** si v₁,…,vₖ son L.I. y w no pertenece a su subespacio generado, entonces v₁,…,vₖ,w son L.I.
+
+**Prueba completa:** supongamos Σcⱼvⱼ + dw = 0. Si d ≠ 0, despejamos w = -Σ(cⱼ/d)vⱼ, contradiciendo la hipótesis. Entonces d = 0. La igualdad restante involucra solo v₁,…,vₖ, que son L.I.; por eso todos los cⱼ son cero. La única relación es la trivial.
+
+Si, por el contrario, w pertenece al subespacio generado, la lista ampliada es L.D. por la primera equivalencia. Esto da un procedimiento para construir bases: solo se agregan vectores que aportan una dirección nueva.
+
+## Ejemplos de las diapositivas
+
+**P. 19:** u=(1,0,1), v=(1,1,0) son L.I.: la segunda coordenada de αu+βv=0 da β=0 y la primera α=0. Al agregar w=(2,1,1), la relación u+v-w=0 demuestra dependencia.
+
+**Pp. 18, 21 y 24:** (1,0,0), (1,1,0), (1,0,2) son L.I.; en una relación nula se despeja primero el tercer coeficiente por la coordenada z, después el segundo por y y luego el primero por x. Generan R³ porque (x,y,z)=(x-y-z/2)(1,0,0)+y(1,1,0)+(z/2)(1,0,2). El cuarto vector de la p. 18, (0,0,1), es la mitad del tercero menos la mitad del primero: es redundante.
+
+===
+
+# 1. Bases, dimensión y extensión
+
+## Por qué la dimensión está bien definida
+
+Una base es una lista L.I. que genera el espacio. La dimensión finita de V es la cantidad de elementos de una base. Para que la definición tenga sentido hay que saber que todas las bases tienen igual tamaño.
+
+**Resultado de comparación:** si u₁,…,uᵣ son L.I. y v₁,…,vₛ generan V, entonces r ≤ s. Es un resultado de apoyo para las afirmaciones de dimensión de las diapositivas.
+
+**Demostración por reemplazo:** expresá u₁ como combinación de los vⱼ. Como u₁ ≠ 0, algún coeficiente no es cero; despejando ese vⱼ se lo puede reemplazar por u₁ sin perder generación. Supongamos que ya reemplazamos k vectores por u₁,…,uₖ. Expresá uₖ₊₁ en ese generador. Debe aparecer algún v todavía no reemplazado con coeficiente no cero; si no, uₖ₊₁ sería combinación de los anteriores u y se contradiría la independencia. Reemplazá ese v. Solo hay s lugares: no se pueden incorporar más de s vectores L.I.
+
+Si B y C son bases, aplicando el resultado en ambos sentidos se obtiene |B| ≤ |C| y |C| ≤ |B|. Luego tienen la misma cantidad de elementos. Esto justifica hablar de dim(V).
+
+## Consecuencias y procedimientos
+
+Si dim(V)=n, toda lista L.I. tiene a lo sumo n elementos y todo generador tiene al menos n. Una lista de n vectores es base si es L.I.: si no generara, se podría agregar otro vector fuera del generado y obtener n+1 L.I., imposible. También es base si genera: una dependencia permitiría quitar un vector y conservar un generador de n-1, imposible.
+
+De un generador finito se obtiene una base quitando vectores que sean combinación de los demás. El proceso termina y no cambia el subespacio generado. Una lista L.I. se completa a una base agregando vectores fuera de lo ya generado; termina a lo sumo al alcanzar n vectores.
+
+Si S es subespacio de V finito, una base de S se puede completar a una de V. Por tanto dim(S) ≤ dim(V). Si S es propio, falta algún vector y se debe agregar al menos uno, así dim(S) < dim(V). En particular, **S ⊆ W y dim(S)=dim(W) finita implican S=W**.
+
+## Bases canónicas y el espacio nulo
+
+En Kⁿ, eⱼ tiene un 1 en la coordenada j y ceros en las demás: (e₁,…,eₙ) es base porque v = Σvⱼeⱼ de forma única. En matrices se usan las Eᵢⱼ y en Pₙ los monomios 1,x,…,xⁿ.
+
+El espacio {0} tiene dimensión cero y base vacía. La lista que contiene al vector cero es dependiente, por lo que no es una base. En dimensión infinita no hay un generador finito; el ejemplo de funciones continuas muestra conjuntos L.I. de tamaños arbitrariamente grandes.
+
+===
+
+# 1. Bases de polinomios y coordenadas
+
+## La base trasladada de la p. 25
+
+Para a fijo, B_a=(1,x-a,(x-a)²,…,(x-a)ⁿ) es una base de Pₙ(K). No se cambia la variable del espacio: se eligen nuevos polinomios como vectores de referencia.
+
+**Generación, por eliminación del término de mayor grado:** si p tiene coeficiente principal cₙ, entonces p-cₙ(x-a)ⁿ tiene grado ≤ n-1, porque (x-a)ⁿ tiene coeficiente principal 1. Repetimos con el resto hasta llegar al término constante. Así p=Σcⱼ(x-a)ʲ. Es la división sucesiva indicada en la diapositiva.
+
+**Independencia:** supongamos Σcⱼ(x-a)ʲ=0 como identidad. Evaluar en x=a da c₀=0. Derivar una vez y evaluar en a da c₁=0. Derivar k veces y evaluar en a da k!cₖ=0: los términos de grado menor desaparecen y los de grado mayor conservan un factor x-a. Sobre R o C, k! ≠ 0, luego cₖ=0 para cada k. La lista es L.I.
+
+Como consecuencia, las coordenadas de p en B_a son p(a),p'(a),p''(a)/2!,…,p⁽ⁿ⁾(a)/n!. Aquí p⁽ⁿ⁾ indica la derivada de orden n. Es una identidad exacta para polinomios, sin resto, porque no hay términos de grado mayor que n.
+
+## Definición y cálculo de coordenadas
+
+Sea B=(b₁,…,bₙ) base de V. Existe una única columna c tal que v=Σcⱼbⱼ; esa columna es [v]_B. Para calcularla se iguala la combinación al vector dado y se resuelve el sistema. Si V son matrices se comparan entradas; si son polinomios se comparan coeficientes.
+
+**Ejemplo de la p. 27:** B=((1,1,0),(1,0,1),(0,0,1)) y v=(2,1,0). Las ecuaciones son c₁+c₂=2, c₁=1 y c₂+c₃=0. Así [v]_B=(1,1,-1). La reconstrucción (1,1,0)+(1,0,1)-(0,0,1)=(2,1,0) verifica el resultado.
+
+## El isomorfismo de coordenadas de la p. 28
+
+La aplicación coord_B: V → Kⁿ, v ↦ [v]_B, es lineal: al sumar expresiones en la base se suman coeficientes, y al multiplicar por α se multiplican los coeficientes por α. Es inyectiva por la unicidad de la expresión y sobreyectiva porque cualquier columna c representa Σcⱼbⱼ. Su inversa es precisamente esa reconstrucción.
+
+Una correspondencia lineal biyectiva se llama **isomorfismo**. Por tanto todo espacio de dimensión n sobre K es isomorfo a Kⁿ. Esto no significa que un polinomio sea literalmente una columna: significa que, elegida una base, las operaciones pueden trasladarse sin perder información. Es el puente que permitirá representar transformaciones mediante matrices.
+
+===
+
+# 1. Suma e intersección: prueba del teorema
+
+## Las operaciones producen subespacios
+
+U∩W contiene los vectores que están simultáneamente en U y W. El cero está en ambos y cualquier combinación de dos vectores de la intersección permanece en ambos. Por tanto la intersección es subespacio.
+
+U+W={u+w:u∈U,w∈W}. Contiene 0=0+0. Si u+w y u'+w' están en la suma, α(u+w)+β(u'+w')=(αu+βu')+(αw+βw') vuelve a estar en ella. Por tanto también es subespacio. Para calcular la intersección se juntan condiciones; para la suma se juntan generadores.
+
+## Teorema de dimensiones, pp. 34-37
+
+= dim(U+W) = dim(U)+dim(W)-dim(U∩W).
+
+**Preparación:** tomá B₀=(z₁,…,zₖ) base de U∩W. Completala con B₁=(u₁,…,uᵣ) hasta una base de U y con B₂=(w₁,…,wₛ) hasta una base de W. Entonces dim(U)=k+r y dim(W)=k+s.
+
+**Generación:** cualquier u+w se escribe combinando B₀ y B₁ para la parte u, y B₀ y B₂ para la parte w. Al sumar queda una combinación de B₀,B₁,B₂. Luego esa lista genera U+W.
+
+**Independencia:** supongamos Σaᵢzᵢ+Σbⱼuⱼ+Σcₗwₗ=0. Entonces h=Σaᵢzᵢ+Σbⱼuⱼ=-Σcₗwₗ pertenece a U y a W. Como B₀ genera la intersección, h=Σdᵢzᵢ. Sustituir en h=-Σcₗwₗ da Σdᵢzᵢ+Σcₗwₗ=0. B₀,B₂ es base de W, luego todos los dᵢ y cₗ son cero. En la relación inicial queda Σaᵢzᵢ+Σbⱼuⱼ=0; B₀,B₁ es base de U, luego también aᵢ=bⱼ=0.
+
+La lista es base y tiene k+r+s=(k+r)+(k+s)-k elementos. Esto prueba la fórmula. No se omitió el paso de independencia: contar generadores sin probar que son base no demostraría la dimensión.
+
+## Ejemplo geométrico de la p. 32
+
+U={(x,y,z):y=0} y W={(x,y,z):x=0}. Su intersección es el eje z, con base ((0,0,1)). Una base de U es (e₃,e₁) y una de W es (e₃,e₂). Juntar sin repetir da (e₃,e₁,e₂), base de R³. Así dim(U+W)=2+2-1=3. La suma no es directa porque comparten el eje z.
+
+La unión U∪W, en cambio, no es todo R³ ni es subespacio: e₁ pertenece a U, e₂ a W, pero e₁+e₂ no está en ninguno. **Unión y suma no son sinónimos.**
+
+===
+
+# 1. Suma directa y aplicaciones complejas
+
+## Definición y todas sus consecuencias
+
+La suma U+W es directa si U∩W={0}; se escribe U⊕W. En ese caso la fórmula de dimensión da dim(U⊕W)=dim(U)+dim(W), y juntar una base de U con una de W produce una base de la suma.
+
+Cada vector de U⊕W se escribe **de forma única** como u+w. La existencia viene de la definición de suma. Para la unicidad, si u+w=u'+w', entonces u-u'=w'-w pertenece a U∩W y debe ser cero. Así u=u' y w=w'.
+
+Recíprocamente, si todas las descomposiciones son únicas, un z∈U∩W proporciona z=z+0=0+z; la unicidad obliga a z=0. Por tanto la unicidad es equivalente a que la suma sea directa.
+
+Escribir **V=U⊕W** agrega la afirmación de que la suma cubre todo V. En dimensión finita puede comprobarse mediante intersección trivial y dim(U)+dim(W)=dim(V). Solamente sumar dimensiones no prueba que la intersección sea trivial.
+
+## Práctico 1, ejercicio 1.5(c)
+
+En C³, S está definido por x=z, y=iz. Así S=s.g.((1,i,1)), dimensión 1. W está definido por x-y-z=0, luego x=y+z y W=s.g.((1,1,0),(1,0,1)), dimensión 2.
+
+Un vector de la intersección debe ser t(1,i,1) y satisfacer x-y-z=0. Sustituir da t-it-t=-it=0, luego t=0. La intersección tiene dimensión 0; la suma tiene dimensión 1+2=3 y coincide con C³. Se cumple C³=S⊕W. Todos los parámetros de este argumento son complejos.
+
+## Práctico 1, ejercicio 1.6(c)
+
+Ahora S={(x,y,z):x=0,y=iz}=s.g.((0,i,1)) y W={(x,y,z):y=-iz}=s.g.((1,0,0),(0,-i,1)). Sus dimensiones son 1 y 2. En la intersección, iz=-iz, luego 2iz=0 y z=0; también x=y=0. Por tanto C³=S⊕W.
+
+Podemos exhibir la descomposición de cualquier v=(x,y,z). Escribimos v=(0,it,t)+(x,-is,s). Las ecuaciones son t+s=z e i(t-s)=y. Como y/i=-iy, resulta t=(z-iy)/2 y s=(z+iy)/2. Son valores únicos: el cálculo hace visible la suma directa.
+
+**Qué conviene poder explicar:** «directa» significa que las contribuciones de cada subespacio se pueden recuperar sin ambigüedad; no significa que deban ser perpendiculares. La definición aquí no usa producto interno ni ángulos.
+===
+
+# 1. Espacios vectoriales
+
+## 1.1 Qué es un espacio vectorial
+
+Un espacio vectorial V sobre K es un conjunto de objetos que se pueden sumar y multiplicar por escalares de K. Los objetos pueden ser flechas, tuplas, matrices, polinomios o funciones. Lo decisivo son las operaciones y sus propiedades.
+
+La suma es asociativa y conmutativa, existe un vector cero y cada vector tiene opuesto. El producto por escalares cumple α(βv) = (αβ)v, α(u + v) = αu + αv, (α + β)v = αv + βv y 1v = v. Las operaciones deben dar elementos del mismo conjunto.
+
+**Ejemplos y dimensiones:** Kⁿ tiene dimensión n; Kᵐˣⁿ tiene dimensión mn; Pₙ(K) tiene dimensión n + 1 y base (1, x, …, xⁿ). La dimensión cuenta los coeficientes independientes, no el tamaño visual del objeto.
+
+El cuerpo importa: C³ tiene dimensión 3 sobre C y dimensión 6 sobre R. En los ejercicios de C³ se trabaja sobre C salvo que se indique otra cosa. Recordá i² = -1 y 1/i = -i.
+
+## 1.2 Cómo demostrar que S es subespacio
+
+Si S está contenido en un espacio vectorial conocido, alcanza con verificar: contiene al cero, es cerrado para la suma y es cerrado para el producto por cualquier escalar. Las dos últimas condiciones también se pueden escribir juntas:
+
+= u, v ∈ S y α, β ∈ K  ⇒  αu + βv ∈ S.
+
+Un conjunto definido por ecuaciones lineales **homogéneas** es subespacio: al combinar dos soluciones, se obtiene otra. Por ejemplo x - 3y + 2z = 0 define un plano que pasa por el origen. En cambio, x - 3y + 2z = 1 no contiene al cero.
+
+**Tener al cero no alcanza:** el conjunto {(x,y): xy = 0} contiene al origen, pero (1,0) y (0,1) pertenecen y su suma (1,1) no. Una condición no lineal exige revisar el cierre; no se puede decidir solamente por su apariencia.
+
+## 1.3 Pasar de condiciones a generadores
+
+Resolvé las ecuaciones y expresá las variables dependientes en función de parámetros libres. Después separá cada parámetro como coeficiente de un vector.
+
+= x - 3y + 2z = 0  ⇒  (x,y,z) = y(3,1,0) + z(-2,0,1).
+
+Los vectores obtenidos generan el conjunto. Aquí son L.I. porque en una combinación nula la segunda coordenada obliga a que el primer coeficiente sea cero y la tercera obliga a que el segundo también lo sea. Por lo tanto forman una base y la dimensión es 2.
+
+===
+
+# 1. Generadores, independencia y bases
+
+## Las tres preguntas que hay que separar
+
+**Generar:** v₁,…,vₖ generan S si todo vector de S se escribe como α₁v₁ + … + αₖvₖ. El conjunto de todas esas combinaciones es s.g.(v₁,…,vₖ), siempre un subespacio.
+
+**Ser L.I.:** la igualdad α₁v₁ + … + αₖvₖ = 0 solamente admite α₁ = … = αₖ = 0. Si hay una solución no trivial, el conjunto es L.D.; alguno de sus vectores puede escribirse usando los demás. Un conjunto que contiene al vector cero es L.D.
+
+**Ser base:** generar y ser L.I. simultáneamente. La generación garantiza que existen coordenadas y la independencia garantiza que son únicas. Todas las bases de un mismo espacio tienen igual cantidad de elementos: su dimensión.
+
+En un espacio de dimensión n: menos de n vectores no generan todo el espacio; más de n son L.D.; exactamente n forman base si son L.I., o equivalentemente si generan. Un conjunto generador puede reducirse a una base, y un conjunto L.I. puede completarse a una base agregando vectores fuera de lo ya generado.
+
+## Procedimiento matricial
+
+Escribí los vectores como columnas de una matriz M. Resolver Mc = 0 decide la independencia; resolver Mc = v decide si v pertenece al subespacio generado. Si M es n × n, det(M) ≠ 0 equivale a que sus columnas sean base de Kⁿ. Para matrices rectangulares, usá rango y pivotes.
+
+## Práctico 1, ejercicio 1.1: generadores de matrices
+
+Sean M₁ = [[1,1],[2,-1]], M₂ = [[1,0],[1,3]] y M₃ = [[0,1],[1,-4]]. Se observa que **M₃ = M₁ - M₂**. Por eso el conjunto es L.D. y basta con M₁ y M₂ para generar el mismo subespacio. Estos dos son L.I.: la entrada superior derecha fija el coeficiente de M₁ y luego la superior izquierda fija el de M₂.
+
+Para conocer exactamente qué matrices generan, escribimos una combinación de esos dos vectores:
+
+MATRIX
+αM₁ + βM₂ = [ α+β      α   ] = [ a  b ]
+             [ 2α+β  -α+3β ]   [ c  d ]
+
+De a = α + β y b = α sale α = b, β = a - b. Sustituyendo: **c = a + b y d = 3a - 4b**. Estas condiciones también son suficientes porque permiten reconstruir los coeficientes.
+
+= S = {[[a,b],[c,d]] : c = a + b, d = 3a - 4b}; dim(S) = 2.
+
+No generan R²ˣ², que tiene dimensión 4. Además de M₃ = M₁ - M₂, se pueden escribir M₁ = M₂ + M₃ y M₂ = M₁ - M₃. Los tres son expresables con los otros dos.
+
+===
+
+# 1. Parámetros y bases de subespacios
+
+## Práctico 1, ejercicio 1.2
+
+Se dan v₁ = (1,3,1), v₂ = (2,-1,-1) y v₃ = (5,1,a). Como son tres vectores en R³, un determinante decide si forman base:
+
+MATRIX
+M = [ 1   2   5 ]
+    [ 3  -1   1 ]       det(M) = -7(a + 1).
+    [ 1  -1   a ]
+
+**Si a ≠ -1:** el determinante no es cero, entonces son L.I. y generan R³. Ninguno es combinación de los otros dos.
+
+**Si a = -1:** no alcanza con decir «son L.D.»; hay que identificar el subespacio y la relación. Las dos primeras coordenadas de αv₁ + βv₂ = v₃ dan α + 2β = 5 y 3α - β = 1. De allí α = 1 y β = 2. La tercera coordenada es 1 - 2 = -1, consistente con el caso estudiado.
+
+= v₃ = v₁ + 2v₂; S = s.g.(v₁,v₂); dim(S) = 2.
+
+Una ecuación de S es **2x - 3y + 7z = 0**: ambos generadores la satisfacen y son L.I., por lo que generan ese plano de dimensión 2. También v₁ = v₃ - 2v₂ y v₂ = (v₃ - v₁)/2.
+
+**Método con parámetros:** encontrá primero los valores que anulan el determinante y estudiá cada uno por separado. No dividas por una expresión que podría ser cero sin separar ese caso.
+
+## Práctico 1, ejercicio 1.3: tres tipos de espacio
+
+**S₁ en R⁴:** x = y + z, y = z - 2t. Tomando z = s y t = r, obtenemos x = 2s - 2r y y = s - 2r. Así, (x,y,z,t) = s(2,1,1,0) + r(-2,-2,0,1). Estos dos vectores forman base; la tercera y la cuarta coordenadas prueban que son L.I. Dimensión: 2.
+
+**S₂ de matrices simétricas 2 × 2:** una matriz general es [[a,b],[b,d]]. Se descompone como aE₁₁ + b(E₁₂ + E₂₁) + dE₂₂. Por comparación de entradas los coeficientes son únicos. Base: (E₁₁, E₁₂ + E₂₁, E₂₂). Dimensión: 3. Eᵢⱼ denota la matriz con un 1 en la posición (i,j) y ceros en las demás.
+
+**S₃ en C³:** v + z = iw. Entonces (v,z,w) = z(-1,1,0) + w(i,0,1). Los parámetros z y w son complejos. Una base sobre C es ((-1,1,0),(i,0,1)); dimensión compleja: 2.
+
+===
+
+# 1. Coordenadas, suma e intersección
+
+## Coordenadas en una base ordenada
+
+Si B = (b₁,…,bₙ), la columna [v]_B contiene los coeficientes de v = c₁b₁ + … + cₙbₙ. El orden de B importa. El vector v y su columna de coordenadas representan cosas diferentes, aunque en la base canónica se identifiquen naturalmente.
+
+**Ejercicio 1.4(a).** En C³, B = ((1,0,0),(1,i,0),(1,0,i)) es base porque la matriz de sus columnas es triangular con determinante i² = -1. Para v = (2,-i,1), las ecuaciones son c₁ + c₂ + c₃ = 2, ic₂ = -i, ic₃ = 1. Entonces c₂ = -1, c₃ = -i y c₁ = 3 + i.
+
+= [v]_B = (3 + i, -1, -i).
+
+**Ejercicio 1.4(b).** Para B = (I, [[1,1],[0,1]], E₂₁, [[1,0],[0,-1]]), una combinación con coeficientes α,β,γ,δ tiene entradas [[α+β+δ,β],[γ,α+β-δ]]. Igualar a cero obliga a β = γ = 0, α + δ = α - δ = 0, luego todos son cero. Hay cuatro matrices L.I. en dimensión 4: es base. Para M = [[1,1],[0,3]], sale **[M]_B = (1,1,0,-1)**.
+
+## Operaciones entre subespacios
+
+**S ∩ W:** vectores que cumplen simultáneamente las condiciones de S y W. Para hallarla, juntá las ecuaciones y resolvé. Si se dan generadores, igualá una combinación de S con otra de W.
+
+**S + W:** vectores de la forma s + w. Para obtener generadores, juntá los generadores de ambos y eliminá dependencias. La unión S ∪ W generalmente no es subespacio y no es lo mismo que la suma.
+
+= dim(S + W) = dim(S) + dim(W) - dim(S ∩ W).
+
+La resta evita contar dos veces la parte común. Una justificación consiste en tomar una base de la intersección, completarla por separado a bases de S y W y juntar los vectores sin repetir la base común. El conjunto obtenido genera S + W y es L.I.
+
+**Ejercicio 1.5(a).** En R⁴, S cumple x + y = 0, t = 0 y W cumple x + y + z = 0. S tiene base ((1,-1,0,0),(0,0,1,0)) y dimensión 2. W tiene base ((1,-1,0,0),(1,0,-1,0),(0,0,0,1)) y dimensión 3. En la intersección además z = 0: base ((1,-1,0,0)), dimensión 1. Por la fórmula, dim(S + W) = 2 + 3 - 1 = 4, luego **S + W = R⁴**.
+
+===
+
+# 1. Suma directa y polinomios
+
+## Qué significa que una suma sea directa
+
+= V = S ⊕ W  ⇔  S + W = V y S ∩ W = {0}.
+
+En dimensión finita se puede reemplazar S + W = V por dim(S) + dim(W) = dim(V), siempre que ya se haya probado que la intersección es trivial. Cada v tiene entonces una descomposición única v = s + w. En efecto, si s + w = s' + w', entonces s - s' = w' - w pertenece a la intersección y debe ser cero.
+
+## Práctico 1, ejercicio 1.5(b)
+
+En P₃(R), S está definido por p(0) = p(1) = 0 y W por p(x) = p(-x). Escribimos p = a + bx + cx² + dx³.
+
+**Para S:** a = 0 y b + c + d = 0. Así p = c(x² - x) + d(x³ - x). Una base es (x² - x, x³ - x), y dim(S) = 2.
+
+**Para W:** comparar p(x) con p(-x) obliga a b = d = 0, por lo que W = s.g.(1,x²) y dim(W) = 2.
+
+**Intersección:** un polinomio de W tiene forma a + cx². Las dos condiciones de S imponen a = 0 y a + c = 0, de donde c = 0. Entonces S ∩ W = {0}. La fórmula da dimensión 4 para la suma; como dim(P₃) = 4, **P₃(R) = S ⊕ W**.
+
+## Práctico 1, ejercicio 1.6(a)
+
+Sea S el subespacio de matrices simétricas y W el de antisimétricas. Para cualquier matriz real M:
+
+= M = (M + Mᵀ)/2 + (M - Mᵀ)/2.
+
+El primer sumando es simétrico y el segundo antisimétrico, luego S + W = R²ˣ². Si M está en ambos, M = Mᵀ y M = -Mᵀ, por lo que 2M = 0 y M = 0. La suma es directa. Sus dimensiones son 3 y 1; una base de W es ([[0,1],[-1,0]]).
+
+## Práctico 1, ejercicio 1.6(b): un caso que falla
+
+En P₂(R), S = {p: p(1) = 0} y W = s.g.(x² - x). Como x² - x se anula en 1, **W está contenido en S**. Entonces S ∩ W = W ≠ {0} y S + W = S, de dimensión 2, menor que dim(P₂) = 3. No es suma directa ni genera todo V.
+
+**Cuidado:** que las dimensiones de S y W sumen dim(V) no garantiza por sí solo que V = S ⊕ W. En este ejemplo 2 + 1 = 3, pero hay superposición.
+
+===
+# 2. Linealidad: definición, alcance y ejemplos
+
+## Qué preserva una transformación lineal
+
+Una transformación lineal T:V→W relaciona espacios sobre el mismo cuerpo K y cumple T(u+v)=T(u)+T(v) y T(αv)=αT(v) para todos los vectores y escalares admisibles. Juntas equivalen a T(αu+βv)=αT(u)+βT(v): una dirección se obtiene aplicando sucesivamente las dos propiedades; la otra, eligiendo α=β=1 o β=0.
+
+Por repetición, T(Σcⱼvⱼ)=ΣcⱼT(vⱼ). Es el principio de superposición de la p. 1 del manuscrito. Se necesita una identidad para entradas arbitrarias; verificar solo algunos números no demuestra linealidad.
+
+Toda transformación lineal lleva 0_V a 0_W: T(0_V)=T(0·v)=0·T(v)=0_W. Si T(0)≠0, no es lineal. La recíproca es falsa: f:R→R, f(x)=x², cumple f(0)=0 pero f(1+1)=4 ≠ 2=f(1)+f(1).
+
+## Ejemplos del manuscrito, pp. 1-2
+
+**Proyección T:R³→R², T(x,y,z)=(x,y).** Para u=(u₁,u₂,u₃), v=(v₁,v₂,v₃), T(αu+βv)=(αu₁+βv₁,αu₂+βv₂)=αT(u)+βT(v). Se pierde la coordenada z. El codominio escrito es R²; si se usara R³ con salida (x,y,0), cambiaría la sobreyectividad.
+
+**Rotación T:R²→R², T(x,y)=(y,-x).** Es lineal por la misma comparación de coordenadas. Geométricamente gira 90° en sentido horario. Conserva el origen, longitudes y ángulos, pero solo la preservación de combinaciones es la definición de linealidad.
+
+**Traslación T(x,y,z)=(x+1,y,z).** No es lineal: T(0,0,0)=(1,0,0). También T(u+v) tiene un solo «+1» en la primera coordenada, mientras que T(u)+T(v) tiene «+2».
+
+**Derivación D:Pₙ→Pₙ, D(p)=p'.** Es lineal porque (αp+βq)'=αp'+βq'. El resultado tiene grado como máximo n-1, pero pertenece a Pₙ. Para n=0 toda derivada es cero. La derivación se utiliza aquí sobre R o C.
+
+## Definir T a partir de una base
+
+Si B=(b₁,…,bₙ) es base y se eligen arbitrariamente w₁,…,wₙ∈W, existe una única transformación lineal con T(bⱼ)=wⱼ. Se define T(Σcⱼbⱼ)=Σcⱼwⱼ. La unicidad de coordenadas hace que la definición no sea ambigua; sumar y escalar coordenadas demuestra linealidad. Toda transformación con esas imágenes debe obedecer la misma fórmula.
+
+Si la lista de entrada fuera dependiente, no se podrían elegir las imágenes arbitrariamente: una relación Σcⱼbⱼ=0 obliga a ΣcⱼT(bⱼ)=0. Esto explica por qué las bases son el punto de partida de la representación matricial.
+
+===
+
+# 2. Núcleo e imagen: definiciones y pruebas
+
+## Núcleo y su carácter de subespacio
+
+N(T)={v∈V:T(v)=0_W}. Vive en el dominio y describe la información que T anula. Contiene al cero. Si u,v∈N(T), entonces T(αu+βv)=α0_W+β0_W=0_W. Por tanto N(T) es subespacio de V, como se demuestra en la p. 3 del manuscrito.
+
+Para la proyección (x,y,z)↦(x,y), N(T)={(0,0,z)}=s.g.(e₃). Para la rotación (x,y)↦(y,-x), T(v)=0 obliga a x=y=0, luego N(T)={0}. Para la derivación, p'=0 significa que p es constante: N(D)=s.g.(1).
+
+## Imagen y su carácter de subespacio
+
+Im(T)={w∈W:existe v∈V con T(v)=w}. Vive en el codominio. Contiene 0_W=T(0_V). Dados y=T(u) y z=T(v), αy+βz=T(αu+βv), por lo que la combinación también pertenece a Im(T). Es un subespacio de W.
+
+La proyección del ejemplo tiene imagen R²: (a,b) es imagen de (a,b,0). La rotación también tiene imagen R²: (a,b) es imagen de (-b,a). Para D:Pₙ→Pₙ con n≥1, Im(D)=Pₙ₋₁: toda derivada tiene ese grado máximo, y cualquier q=Σ_(j=0)^(n-1)aⱼxʲ tiene una primitiva p=Σaⱼxʲ⁺¹/(j+1) en Pₙ. Para n=0, la imagen es {0}.
+
+**La igualdad de conjuntos requiere ambos sentidos.** Mostrar que las imágenes cumplen cierta condición solo prueba una inclusión. Falta demostrar que cada objeto con esa condición puede obtenerse transformando alguna entrada.
+
+## El ejemplo matricial del manuscrito, pp. 4-5
+
+Para una matriz A fija, T_A(v)=Av es lineal porque A(αu+βv)=αAu+βAv. En particular A=[[2,-1],[-4,2]] da T(x,y)=(2x-y,-4x+2y).
+
+El sistema homogéneo exige y=2x; la segunda ecuación es -2 veces la primera. Entonces N(T)=s.g.((1,2)). Para la imagen, sea salida (t,z). El sistema 2x-y=t, -4x+2y=z es compatible si y solo si z=-2t. Si se cumple, x=0, y=-t es una preimagen. Por tanto Im(T)=s.g.((1,-2)).
+
+## Todas las preimágenes de una salida
+
+Si T(v₀)=w, entonces T(v)=w equivale a T(v-v₀)=0. Por tanto las preimágenes son exactamente v₀+N(T). Esta propiedad explica por qué un núcleo no trivial produce varias entradas con una misma salida. Para el ejemplo anterior, las preimágenes de (t,-2t) son (0,-t)+s(1,2).
+
+===
+
+# 2. Invertibilidad y teorema de la dimensión
+
+## Inyectividad, sobreyectividad y biyectividad
+
+T es inyectiva si T(u)=T(v) implica u=v. Para una transformación lineal, esto equivale a N(T)={0}. Si es inyectiva, T(v)=0=T(0) obliga a v=0. Recíprocamente, si el núcleo es trivial, T(u)=T(v) implica u-v∈N(T), luego u=v.
+
+T es sobreyectiva si Im(T)=W: cada elemento del codominio tiene preimagen. Es biyectiva si además esa preimagen es única. Entonces existe T⁻¹:W→V, con T⁻¹∘T=Id_V y T∘T⁻¹=Id_W. La demostración de que T⁻¹ es lineal se desarrolla también en el ejercicio 1.10(b).
+
+## Teorema rango-nulidad, manuscrito pp. 7-9
+
+= dim(V) = dim N(T) + dim Im(T), para V de dimensión finita.
+
+La siguiente es la prueba por preimágenes de una base de la imagen, siguiendo el manuscrito. Elegí (w₁,…,wₘ) base de Im(T). Para cada j existe vⱼ con T(vⱼ)=wⱼ. Elegí además (u₁,…,uₖ) base de N(T). Afirmamos que (v₁,…,vₘ,u₁,…,uₖ) es base de V.
+
+**Independencia:** en una relación Σaⱼvⱼ+Σbᵢuᵢ=0, aplicar T elimina la segunda suma y da Σaⱼwⱼ=0. Como los wⱼ son L.I., aⱼ=0. La relación restante Σbᵢuᵢ=0 obliga a bᵢ=0 porque los uᵢ son L.I.
+
+**Generación:** dado v∈V, su imagen es combinación T(v)=Σaⱼwⱼ=T(Σaⱼvⱼ). Entonces v-Σaⱼvⱼ está en N(T), por lo que vale Σbᵢuᵢ. Despejar v lo expresa usando la lista propuesta. Como es base, dim(V)=m+k.
+
+El rango se define como r(T)=dim Im(T), y la nulidad como dim N(T). De la fórmula, nulidad=dim(V)-rango. El rango no puede superar dim(V) ni dim(W). Cuando ambas dimensiones son n, inyectiva ⇔ rango n ⇔ sobreyectiva ⇔ invertible.
+
+## Aplicaciones del manuscrito y restricciones de dimensión
+
+Para la proyección R³→R², rango 2 y nulidad 1: 3=1+2. Para la derivación Pₙ→Pₙ, con n≥1, rango n y nulidad 1: n+1=1+n. Para [[2,-1],[-4,2]], ambos subespacios tienen dimensión 1: 2=1+1.
+
+Si dim(V)>dim(W), ninguna transformación lineal V→W puede ser inyectiva: el rango no alcanza dim(V). Si dim(V)<dim(W), no puede ser sobreyectiva. En dimensiones distintas no vale intercambiar ambas propiedades. Un isomorfismo entre espacios finitos exige que sus dimensiones sean iguales.
+
+===
+
+# 2. Práctico 1: simetría y matrices complejas
+
+## Ejercicio 1.7(a): simetría respecto de una recta
+
+En R², sea L una recta por el origen. Elegí un vector u sobre L y un vector n perpendicular a L, ambos no nulos. Cada v se escribe de manera única como v=au+bn. La simetría respecto de L conserva la componente sobre L e invierte la perpendicular: T(v)=au-bn.
+
+Sumar dos vectores suma sus dos componentes, y multiplicar por un escalar multiplica ambas por él. Conservar una e invertir la otra respeta esas operaciones: T es lineal. También T(T(v))=v, pues invertir dos veces la componente perpendicular la restaura.
+
+T(v)=0 exige a=b=0, así N(T)={0}. Todo w es imagen de T(w), por lo que Im(T)=R². Es invertible y T⁻¹=T. La hipótesis «recta por el origen» es esencial: una reflexión respecto de una recta que no pase por el origen no conserva el cero.
+
+## Ejercicio 1.7(b): multiplicación a derecha
+
+En V=W=C²ˣ² se define T(A)=AB, con B=[[1,-i],[i,1]]. La multiplicación por una matriz fija es lineal: T(αA+βC)=(αA+βC)B=αAB+βCB.
+
+MATRIX
+A = [ a  b ]       AB = [ a+ib  -ia+b ]
+    [ c  d ]            [ c+id  -ic+d ]
+
+En cada fila, la segunda entrada es -i veces la primera. Para que AB=0 basta y es necesario a+ib=0 y c+id=0. Por tanto a=-ib y c=-id, con b,d libres en C.
+
+= N(T) = s.g.([[ -i,1 ],[ 0,0 ]], [[ 0,0 ],[ -i,1 ]]); dim N(T)=2.
+
+Toda salida tiene forma [[u,-iu],[v,-iv]]. Recíprocamente, tomando A=[[u,0],[v,0]] se obtiene esa salida. Luego:
+
+= Im(T) = s.g.([[ 1,-i ],[ 0,0 ]], [[ 0,0 ],[ 1,-i ]]); r(T)=2.
+
+Las bases son complejas: sus coeficientes pueden ser cualquier número de C. El control rango-nulidad da 4=2+2, ya que C²ˣ² tiene dimensión 4 sobre C. T no es invertible; también se ve que det(B)=1-(-i)i=0.
+
+**Interpretación:** aunque A tenga cuatro entradas libres, AB queda determinado por dos escalares u,v. Las otras dos entradas están forzadas por la relación entre columnas. Ese es el significado del rango 2 en este espacio de matrices.
+===
+
+# 2. Transformaciones lineales
+
+## Definición y primeras pruebas
+
+Una función T: V → W entre espacios sobre el mismo cuerpo es lineal si preserva combinaciones lineales:
+
+= T(αu + βv) = αT(u) + βT(v), para todos u,v ∈ V y α,β ∈ K.
+
+De aquí salen T(0) = 0, T(-v) = -T(v) y la preservación de combinaciones con cualquier cantidad finita de términos. Para demostrar linealidad usá vectores y escalares arbitrarios. Para refutarla basta un contraejemplo. Si T(0) ≠ 0, ya no es lineal; si T(0) = 0, todavía falta demostrar las demás condiciones.
+
+Ejemplos lineales: multiplicar por una matriz fija, derivar polinomios, evaluar en un punto fijo, rotar alrededor del origen. Una traslación no nula no es lineal.
+
+## Núcleo, imagen y dimensiones
+
+= N(T) = {v ∈ V: T(v) = 0}; Im(T) = {T(v): v ∈ V} ⊆ W.
+
+El núcleo es subespacio del **dominio** y la imagen del **codominio**. Para el núcleo resolvé T(v) = 0. Para la imagen podés describir todas las salidas posibles o transformar una base del dominio y extraer una base de los resultados.
+
+**Inyectiva:** T(u) = T(v) implica u = v. Para una transformación lineal esto equivale a N(T) = {0}: la igualdad de imágenes equivale a T(u - v) = 0.
+
+**Sobreyectiva:** Im(T) = W. **Biyectiva o invertible:** es inyectiva y sobreyectiva; cada salida tiene una única preimagen. Su inversa también es lineal.
+
+= dim(V) = dim N(T) + dim Im(T); r(T) = dim Im(T).
+
+El teorema rango-nulidad requiere dominio de dimensión finita. Si dim(V) = n y dim(W) = m, inyectividad exige rango n y sobreyectividad exige rango m. Cuando n = m, inyectividad, sobreyectividad e invertibilidad son equivalentes.
+
+## Por qué vale rango-nulidad
+
+Tomá una base (u₁,…,uₖ) del núcleo y completala a una base (u₁,…,uₖ,v₁,…,vᵣ) de V. Las imágenes T(v₁),…,T(vᵣ) generan Im(T), porque los términos del núcleo desaparecen al transformar cualquier vector.
+
+También son L.I.: si una combinación de sus imágenes es cero, la misma combinación de los vⱼ está en el núcleo. Escribirla usando los uᵢ produciría una relación entre los vectores de la base de V. Todos los coeficientes deben ser cero. Por tanto dim Im(T) = r y dim(V) = k + r.
+
+===
+
+# 2. Ejercicios de linealidad y polinomios
+
+## Práctico 1, ejercicio 1.7(c), (d) y (e)
+
+**Evaluación T: Pₙ(R) → R, T(p) = p(5).** Es lineal porque (αp + βq)(5) = αp(5) + βq(5). El núcleo contiene los polinomios que se anulan en 5: para n ≥ 1 son (x - 5)r(x), con r ∈ Pₙ₋₁. Una base es (x - 5, x(x - 5), …, xⁿ⁻¹(x - 5)). Todo real c es imagen del polinomio constante c, luego Im(T) = R. Rango 1 y nulidad n. Si n = 0, el núcleo es {0} y T es invertible.
+
+**Multiplicación T: Pₙ → Pₙ₊₂, T(p) = p(x)(x² + x + 1).** Es lineal por distributividad. Un producto de polinomios es cero solo si alguno de los factores lo es; como x² + x + 1 ≠ 0, el núcleo es {0}. La imagen está formada por los múltiplos de ese factor con cociente de grado ≤ n. Base: (x²+x+1, x(x²+x+1), …, xⁿ(x²+x+1)). Rango n + 1. Es inyectiva pero no sobreyectiva: el codominio tiene dimensión n + 3.
+
+**T(p) = (p(x) + 1)(x² + x + 1).** No es lineal porque T(0) = x² + x + 1 ≠ 0. El «+1» agregado a la entrada cambia la respuesta.
+
+## Práctico 1, ejercicio 1.8 completo
+
+Sea T: P₃ → P₃, T(p) = (x - 1)p'(x). Está bien definida: derivar baja el grado como mínimo en uno y multiplicar por x - 1 lo aumenta como máximo en uno.
+
+**Linealidad:** T(αp + βq) = (x - 1)(αp' + βq') = αT(p) + βT(q).
+
+**Núcleo:** (x - 1)p' = 0 como identidad de polinomios implica p' = 0, luego p es constante. Así N(T) = s.g.(1), con dimensión 1. No se trata de evaluar solamente en x = 1: la igualdad debe valer para todo x.
+
+**Imagen, primera inclusión:** toda salida q = (x - 1)p' cumple q(1) = 0. Entonces Im(T) está contenida en {q ∈ P₃: q(1) = 0}.
+
+**Inclusión contraria:** si q(1) = 0, el teorema del factor permite escribir q = (x - 1)r, con r ∈ P₂. Existe una primitiva p ∈ P₃ de r. Así p' = r y T(p) = q. Queda demostrada la igualdad, no solo una inclusión.
+
+= N(T) = s.g.(1); Im(T) = s.g.(x - 1, x² - x, x³ - x²).
+
+La nulidad es 1 y el rango es 3; suman dim(P₃) = 4. T no es invertible: distintas constantes tienen la misma imagen cero. Este mismo ejercicio continuará en matriz asociada, cambio de base y diagonalización.
+
+===
+
+# 2. Una transformación de matrices
+
+## Práctico 1, ejercicio 1.9 completo
+
+En V = R²ˣ² se define T(M) = M + Mᵀ. Como la traspuesta distribuye sobre sumas y escalares, T(αM + βN) = α(M + Mᵀ) + β(N + Nᵀ). Por tanto T es lineal.
+
+MATRIX
+M = [ a  b ]       T(M) = [ 2a   b+c ]
+    [ c  d ]              [ b+c  2d  ]
+
+**Núcleo:** T(M) = 0 exige a = d = 0 y c = -b. Así N(T) son las matrices antisimétricas. Elegimos B_N = (K), donde K = [[0,1],[-1,0]]. Nulidad: 1.
+
+**Imagen:** T(M) siempre es simétrica. Recíprocamente, para cualquier simétrica H, tomar M = H/2 da T(M) = H. Entonces la imagen es exactamente el subespacio simétrico. Elegimos B_I = (E₁₁, E₁₂ + E₂₁, E₂₂). Rango: 3.
+
+**¿Preserva independencia?** No en general. M₁ = E₁₂ y M₂ = E₂₁ son L.I., pero T(M₁) = T(M₂) = E₁₂ + E₂₁. Sus imágenes son L.D. Una transformación lineal inyectiva sí preserva conjuntos L.I.; aquí el núcleo no es trivial.
+
+**¿N(T) + Im(T) = V?** Sí, y la suma es directa por la descomposición simétrica/antisimétrica del ejercicio 1.6(a). La unión ordenada de B_N y B_I da una base de V que simplificará mucho la matriz de T.
+
+## Práctico 1, ejercicio 1.10: dos demostraciones útiles
+
+**Las imágenes de un generador generan la imagen.** Si (v₁,…,vₙ) genera V, cualquier y ∈ Im(T) es T(v) para algún v = Σcᵢvᵢ. Por linealidad y = ΣcᵢT(vᵢ). Además, toda combinación de T(vᵢ) es imagen de la misma combinación de vᵢ. Se obtiene la igualdad de subespacios.
+
+**La inversa de una transformación lineal biyectiva es lineal.** Dados y,z ∈ W, escribí u = T⁻¹(y) y v = T⁻¹(z). Entonces T(αu + βv) = αy + βz. Como la preimagen es única, T⁻¹(αy + βz) = αu + βv = αT⁻¹(y) + βT⁻¹(z).
+
+**Control de resultados:** un generador transformado puede contener ceros o vectores repetidos. Sigue generando Im(T), pero antes de llamarlo base hay que eliminar dependencias.
+
+===
+# 3. De una transformación a su matriz
+
+## Definición con todos los índices
+
+Sean dim(V)=n, dim(W)=m, B=(b₁,…,bₙ) base de V y C=(c₁,…,cₘ) base de W. Para cada j, T(bⱼ) pertenece a W y se escribe de forma única como Σ_(i=1)^m aᵢⱼcᵢ. La columna j reúne esos m coeficientes. Al juntar las n columnas se obtiene A=[T]_(C←B), de tamaño m×n.
+
+El primer índice i indica la fila y el vector de la base de llegada. El segundo j indica la columna y el vector de la base de partida que se transformó. En la notación de las diapositivas, C está a la izquierda de T y B a la derecha.
+
+## Propiedad fundamental, demostración de las pp. 3-5
+
+Sea x=[v]_B. Entonces v=Σ_(j=1)^n xⱼbⱼ. Al transformar y sustituir la expresión de cada T(bⱼ):
+
+= T(v) = Σⱼ xⱼT(bⱼ) = Σⱼ xⱼ(Σᵢ aᵢⱼcᵢ) = Σᵢ(Σⱼ aᵢⱼxⱼ)cᵢ.
+
+Las sumas son finitas y se pueden reordenar. Por unicidad de las coordenadas en C, la coordenada i de T(v) es yᵢ=Σⱼaᵢⱼxⱼ. Esa es exactamente la fila i del producto Ax. Por tanto **[T(v)]_C=A[v]_B**.
+
+Esta prueba explica por qué se ponen imágenes en columnas, no en filas. Multiplicar A por x combina sus columnas con los coeficientes de la entrada. También prueba que la matriz asociada es única: al aplicar la fórmula a bⱼ, la entrada de coordenadas es eⱼ y Aeⱼ recupera su columna j.
+
+## Interpretación del diagrama de la p. 6
+
+Hay dos recorridos equivalentes. Uno transforma v en T(v) dentro de los espacios originales y después obtiene coordenadas en C. El otro obtiene [v]_B y multiplica por A. Ambos terminan en la misma columna de Kᵐ.
+
+= T = coord_C⁻¹ ∘ T_A ∘ coord_B, donde T_A(x)=Ax.
+
+Así cualquier transformación lineal entre espacios finitos puede estudiarse con una matriz fija. Recíprocamente, cualquier matriz m×n y dos bases elegidas definen por esta fórmula una transformación lineal V→W.
+
+El núcleo matricial N(A) contiene coordenadas en Kⁿ, mientras que N(T) contiene vectores de V. El isomorfismo coord_B lleva uno al otro y conserva sus dimensiones. Lo mismo ocurre entre Im(T) e Im(A) por coord_C. Por eso r(A)=r(T), aunque los objetos originales sean polinomios o matrices.
+
+===
+
+# 3. Composición, identidad e inversa: pruebas
+
+## Composición de transformaciones
+
+Si S:U→V y T:V→W son lineales, T∘S:U→W se define por (T∘S)(u)=T(S(u)). Es lineal: T(S(αu+βv))=T(αS(u)+βS(v))=αT(S(u))+βT(S(v)).
+
+Sean B_U, B_V y B_W las bases. Si M=[S]_(B_V←B_U) y A=[T]_(B_W←B_V), para x=[u]_(B_U) se obtiene [S(u)]_(B_V)=Mx y [T(S(u))]_(B_W)=A(Mx)=(AM)x.
+
+= [T∘S]_(B_W←B_U) = [T]_(B_W←B_V) [S]_(B_V←B_U).
+
+La base de llegada de la primera transformación aplicada debe coincidir con la base de partida de la siguiente. Si no coincide, se necesita una matriz de cambio intermedia. El orden del producto refleja el orden funcional: S actúa primero, aunque su matriz esté a la derecha.
+
+## Identidad
+
+Id_V(v)=v es lineal. En la misma base B para entrada y salida, su columna j es [bⱼ]_B=eⱼ; por tanto [Id_V]_(B←B)=Iₙ. Usando bases diferentes, la matriz de la identidad será una matriz de cambio de base y generalmente no será I.
+
+## Matriz de la inversa, p. 9
+
+Si T:V→W es biyectiva, su inversa es lineal y las dimensiones coinciden. Sean A=[T]_(C←B) y H=[T⁻¹]_(B←C). Como T⁻¹∘T=Id_V y T∘T⁻¹=Id_W, la fórmula de composición da HA=I y AH=I. Por definición, H=A⁻¹.
+
+Recíprocamente, si A es invertible, la fórmula de coordenadas permite resolver para cada salida y una única entrada x=A⁻¹y. Entonces T es biyectiva y su inversa se obtiene reconstruyendo esa entrada en B. La invertibilidad de una matriz asociada equivale a la de la transformación.
+
+## Por qué un ejemplo con bases canónicas no basta
+
+En bases canónicas, las coordenadas coinciden con las entradas de las tuplas; por eso la construcción parece simplemente «copiar T(eⱼ)». En bases no canónicas hay que resolver una segunda tarea: expresar la salida usando C. La página siguiente lo muestra con polinomios y con un codominio de dimensión distinta.
+
+===
+
+# 3. Ejemplo completo con bases no canónicas
+
+## Aplicación didáctica: derivar de P₂ a P₁
+
+Tomamos T:P₂(R)→P₁(R), T(p)=p'. La base del dominio es B=(1,x-1,(x-1)²) y la del codominio C=(1,x+1). Hay tres vectores de entrada y dos de salida: la matriz será 2×3.
+
+**Primera columna:** T(1)=0=0·1+0·(x+1), luego (0,0). **Segunda:** T(x-1)=1=1·1+0·(x+1), luego (1,0). **Tercera:** T((x-1)²)=2x-2=-4·1+2·(x+1), luego (-4,2).
+
+MATRIX
+A = [ 0  1 -4 ]
+    [ 0  0  2 ]
+
+La tercera columna **no** es (-2,2): esa sería la columna de coeficientes en (1,x), pero la base de salida elegida es (1,x+1).
+
+## Aplicar la propiedad fundamental y comprobar
+
+Sea p=2+3(x-1)+(x-1)², por lo que [p]_B=(2,3,1). La multiplicación da A[p]_B=(-1,2). Reconstruir en C produce T(p)=-1+2(x+1)=2x+1.
+
+Por el otro camino, expandir p da p=x²+x y derivar da p'=2x+1. Coinciden. La entrada de coordenadas, la salida de coordenadas y el polinomio de salida son tres objetos que deben mantenerse diferenciados.
+
+## Núcleo e imagen a partir de la matriz
+
+El sistema A(c₁,c₂,c₃)=0 impone 2c₃=0 y c₂-4c₃=0, luego c₂=c₃=0 y c₁ es libre. N(A)=s.g.((1,0,0)). Reconstruir en B da N(T)=s.g.(1), las constantes.
+
+Las columnas segunda y tercera son L.I. porque det([[1,-4],[0,2]])=2. Entonces Im(A)=R²; al reconstruir en C, Im(T)=P₁. Esta transformación es sobreyectiva pero no inyectiva, pues dim(P₂)=3 y dim(P₁)=2.
+
+Los ejercicios 1.11 y 1.13 siguientes aplican el mismo método en bases canónicas. En 1.14 se volverá a cambiar la base de un espacio cuyos vectores son matrices.
+===
+
+# 3. Matriz asociada
+
+## Construcción y propiedad fundamental
+
+Sean B = (b₁,…,bₙ) una base del dominio V y C = (c₁,…,cₘ) una base del codominio W. La matriz A = [T]_(C←B) tiene tamaño m × n. Su columna j es **[T(bⱼ)]_C**.
+
+= [T(v)]_C = A[v]_B.
+
+Para construir A: transformá cada vector de B, expresá su resultado como combinación de C y colocá los coeficientes como columna. Si C no es la base canónica, no podés usar directamente las entradas de T(bⱼ): tenés que calcular sus coordenadas en C.
+
+La fórmula se explica escribiendo v = Σxⱼbⱼ y usando T(v) = ΣxⱼT(bⱼ). Multiplicar A por la columna x forma justamente esa combinación de columnas.
+
+Resolver Ax = 0 encuentra las **coordenadas** de los vectores del núcleo. Para escribirlos en V hay que volver a la base B. Análogamente, las columnas de A representan coordenadas de vectores de la imagen en C.
+
+## Práctico 1, ejercicio 1.11(2)
+
+T(x,y,z) = (x + y + z, y + z, x + 2y + 2z). En bases canónicas, T(e₁) = (1,0,1), T(e₂) = (1,1,2), T(e₃) = (1,1,2).
+
+MATRIX
+A = [ 1  1  1 ]
+    [ 0  1  1 ]
+    [ 1  2  2 ]
+
+**Núcleo:** y + z = 0 y x + y + z = 0 implican x = 0, y = -z. La tercera ecuación no agrega restricciones. Por tanto N(T) = s.g.((0,-1,1)).
+
+**Imagen:** la tercera columna repite la segunda, y las dos primeras son L.I. Una base es ((1,0,1),(1,1,2)). Si una salida se escribe (u,v,w), cumple w = u + v. Recíprocamente cualquier (u,v,u+v) se obtiene tomando x = u - v, y = v, z = 0. Rango 2 y nulidad 1.
+
+## Práctico 1, ejercicio 1.11(1)
+
+En C², T(x,y) = (iy,-ix). La matriz es [[0,i],[-i,0]], de determinante -1. Por tanto N(T) = {0}, cuya base es el conjunto vacío, e Im(T) = C², con base canónica. Además A² = I: T es su propia inversa.
+
+**Error frecuente:** {0} no es una base del subespacio nulo. El vector cero no puede formar parte de ningún conjunto L.I.; la dimensión de {0} es cero.
+
+===
+
+# 3. Composición y matriz de polinomios
+
+## Componer e invertir
+
+Si S: U → V tiene matriz B y T: V → W tiene matriz A, usando bases compatibles en V, la matriz de T ∘ S es **AB**. La transformación de la derecha actúa primero. En general AB ≠ BA. Para una transformación biyectiva, la matriz de su inversa, intercambiando las bases del dominio y codominio, es A⁻¹.
+
+## Práctico 1, ejercicio 1.12
+
+Sean T la rotación de 45° antihoraria y S la proyección sobre el eje x, con las matrices dadas en la base canónica:
+
+MATRIX
+R = (1/√2)[ 1 -1 ]       H = [ 1  0 ]
+          [ 1  1 ]           [ 0  0 ]
+
+N(T) = {0}: R tiene determinante 1, luego es invertible. Su inversa es la rotación de -45°, de matriz (1/√2)[[1,1],[-1,1]]. Para S, N(S) = s.g.((0,1)); no es invertible porque elimina la coordenada vertical.
+
+MATRIX
+RH = (1/√2)[ 1  0 ]      HR = (1/√2)[ 1 -1 ]
+           [ 1  0 ]                 [ 0  0 ]
+
+Así T ∘ S ≠ S ∘ T. Sobre e₂ = (0,1), proyectar primero produce cero y luego rotar sigue dando cero; rotar primero produce (-1/√2,1/√2), cuya proyección es (-1/√2,0). El orden tiene consecuencias geométricas concretas.
+
+## Práctico 1, ejercicio 1.13(e)
+
+Retomamos T(p) = (x - 1)p' en P₃ y la base B = (1,x,x²,x³). Las imágenes son T(1) = 0, T(x) = x - 1, T(x²) = 2x² - 2x y T(x³) = 3x³ - 3x². Sus coeficientes en orden constante, x, x², x³ forman las columnas:
+
+MATRIX
+A = [ 0 -1  0  0 ]
+    [ 0  1 -2  0 ]
+    [ 0  0  2 -3 ]
+    [ 0  0  0  3 ]
+
+**Verificación:** para p = a + bx + cx² + dx³, A(a,b,c,d) = (-b, b-2c, 2c-3d, 3d). Directamente, (x-1)p' = -b + (b-2c)x + (2c-3d)x² + 3dx³. Ambas expresiones coinciden.
+
+La primera columna cero concuerda con que las constantes están en el núcleo. La matriz es triangular, pero **no es diagonal**. En el capítulo siguiente elegiremos otra base que sí la vuelve diagonal.
+
+===
+# 4. Cambio de base: derivación y ejemplo original
+
+## La identidad entre dos sistemas de coordenadas
+
+Elegimos dos bases B y B' del mismo V. La matriz P=[Id]_(B←B') tiene columna j igual a [b'ⱼ]_B. La propiedad fundamental aplicada a Id da [v]_B=P[v]_B'. Como Id es invertible, P también lo es, y su inversa representa el cambio opuesto: P⁻¹=[Id]_(B'←B).
+
+**El origen y destino se leen en la ecuación.** Esta convención evita la ambigüedad de decir simplemente «cambio de B a B'»: las columnas nuevas están escritas en la base vieja, así P recibe coordenadas nuevas y entrega viejas.
+
+## Ejemplo de «4-cambio de base», pp. 1-2
+
+En R², B=(e₁,e₂) y B'=((1,1),(1,2)). Como B es canónica, P se forma directamente con esos vectores como columnas:
+
+MATRIX
+P = [ 1  1 ]       P⁻¹ = [ 2 -1 ]
+    [ 1  2 ]             [-1  1 ]
+
+La primera columna de P⁻¹ expresa e₁=2(1,1)-(1,2). La segunda expresa e₂=-(1,1)+(1,2). Para v=(3,4), [v]_B'=(2,1), porque 2(1,1)+(1,2)=(3,4). Multiplicar P(2,1) reconstruye las coordenadas viejas.
+
+## Derivar la fórmula general, p. 3
+
+Sea A=[T]_(C←B), y sean P=[Id_V]_(B←B') y Q=[Id_W]_(C←C'). Para una entrada x'=[v]_B', el recorrido es x=Px', y=Ax, y'=Q⁻¹y. Sustituir da y'=Q⁻¹APx'. Como vale para todas las entradas:
+
+= [T]_(C'←B') = Q⁻¹AP.
+
+Es la misma fórmula que surge de T=Id_W∘T∘Id_V, cuidando las bases de cada identidad. P actúa en la entrada; Q⁻¹ en la salida. P es n×n, Q es m×m y A es m×n, por lo que el tamaño final sigue siendo m×n.
+
+Para un operador T:V→V se usa la misma base vieja a ambos lados y la misma nueva a ambos lados. Entonces Q=P y queda A'=P⁻¹AP, la semejanza de matrices de la p. 4.
+
+Si B y B' están dadas en coordenadas canónicas por M_B y M_B', entonces M_B[v]_B=M_B'[v]_B'. Despejando, P=M_B⁻¹M_B'. Así se obtiene el pasaje aun cuando ninguna base sea canónica.
+
+===
+
+# 4. Cambiar bases de entrada y salida distintas
+
+## Aplicación de la fórmula general
+
+Retomamos T:P₂→P₁, T(p)=p'. En las bases canónicas B₀=(1,x,x²), C₀=(1,x), su matriz es A₀=[[0,1,0],[0,0,2]]. Queremos la representación en B'=(1,x-1,(x-1)²) y C'=(1,x+1).
+
+MATRIX
+P = [ 1 -1  1 ]        Q = [ 1  1 ]
+    [ 0  1 -2 ]            [ 0  1 ]
+    [ 0  0  1 ]
+
+P convierte las tres coordenadas de entrada nuevas a canónicas; Q convierte las dos coordenadas de salida nuevas a canónicas. Por tanto **no pueden reemplazarse por una sola matriz**, pues incluso tienen tamaños distintos.
+
+MATRIX
+A₀P = [ 0  1 -2 ]      Q⁻¹ = [ 1 -1 ]
+      [ 0  0  2 ]            [ 0  1 ]
+
+Q⁻¹A₀P = [ 0  1 -4 ]
+         [ 0  0  2 ]
+
+Se obtiene la misma matriz que calculamos transformando los vectores de B' y expresándolos en C'. La coincidencia verifica la fórmula mediante dos procedimientos independientes.
+
+## Componer varios cambios de coordenadas
+
+Si P recibe coordenadas en B' y devuelve en B, y R recibe coordenadas en B'' y devuelve en B', entonces PR recibe coordenadas en B'' y devuelve en B. La ecuación es [v]_B=P[v]_B'=PR[v]_B''. Invertir el recorrido da (PR)⁻¹=R⁻¹P⁻¹.
+
+Esto explica también la transitividad de la semejanza: hacer dos cambios sucesivos equivale a uno solo, con el producto de las matrices de pasaje en el orden correspondiente.
+
+## Método seguro al resolver
+
+Escribí qué significa cada columna antes de multiplicar. Si las columnas son vectores de B' expresados en B, escribí [v]_B=P[v]_B' al lado de P. Construí por separado el cambio de salida si es distinto. Recién después usá A'=Q⁻¹AP.
+
+Un control más corto que invertir P es verificar **AP=PA'** en el caso de un operador. Si ambas matrices representan correctamente la misma transformación, aplicar primero el pasaje y después A debe coincidir con aplicar A' y después el pasaje. Los ejercicios 1.13 y 1.14 muestran este control con operadores de polinomios y de matrices.
+===
+
+# 4. Cambio de base
+
+## Dirección del pasaje: la clave
+
+Sean B la base vieja y B' la nueva del mismo espacio. Definimos P con las coordenadas en B de los vectores de B':
+
+= P = ([b'₁]_B … [b'ₙ]_B); [v]_B = P[v]_B'; [v]_B' = P⁻¹[v]_B.
+
+**P convierte coordenadas nuevas en viejas.** Sus columnas describen los vectores nuevos usando la base vieja. P es invertible porque ambas listas son bases. El vector geométrico no cambia: cambia la lista de coeficientes que lo describe.
+
+Si ambas bases están expresadas en coordenadas canónicas y M_B, M_B' son las matrices con sus vectores como columnas, entonces P = M_B⁻¹ M_B'. Esto sirve cuando ninguna de las dos bases es canónica.
+
+## Cambiar la matriz de una transformación
+
+Para T: V → W, A es la matriz en las bases viejas B,C. Sean P el pasaje de B' a B y Q el pasaje de C' a C. Para una entrada en coordenadas nuevas: primero P, luego A, finalmente Q⁻¹.
+
+= A' = Q⁻¹AP.
+
+Si T: V → V y se cambia de B a B' tanto en el dominio como en el codominio, P = Q y **A' = P⁻¹AP**. Esta es la fórmula de semejanza. Si se cambian de manera diferente las bases de entrada y salida, se usa la fórmula general.
+
+## Práctico 1, ejercicio 1.13(f), (g)
+
+Para T(p) = (x-1)p', tomamos B' = (1, x-1, (x-1)², (x-1)³). Al derivar, T((x-1)ᵏ) = k(x-1)ᵏ para k = 0,1,2,3. Por eso su matriz en B' es D = diag(0,1,2,3).
+
+Expandimos cada polinomio nuevo en la base B = (1,x,x²,x³): (x-1)² = 1-2x+x² y (x-1)³ = -1+3x-3x²+x³. De esas coordenadas sale P:
+
+MATRIX
+P = [ 1 -1  1 -1 ]        P⁻¹ = [ 1  1  1  1 ]
+    [ 0  1 -2  3 ]              [ 0  1  2  3 ]
+    [ 0  0  1 -3 ]              [ 0  0  1  3 ]
+    [ 0  0  0  1 ]              [ 0  0  0  1 ]
+
+P es triangular con determinante 1: B' es base. Se cumple **D = P⁻¹AP**, con A calculada en el capítulo 3. La verificación más simple es AP = PD: cada columna de P es multiplicada por A por el correspondiente número 0,1,2 o 3.
+
+===
+
+# 4. Dos aplicaciones del cambio de base
+
+## Continuación del ejercicio 1.13: usar las coordenadas
+
+Como aplicación adicional del ejercicio, sea p(x) = 2 + 3x + x². En la base canónica sus coordenadas son (2,3,1,0). Al multiplicar por P⁻¹ se obtienen las coordenadas nuevas (6,5,1,0).
+
+= p(x) = 6 + 5(x - 1) + (x - 1)².
+
+La matriz D transforma (6,5,1,0) en (0,5,2,0). Por tanto T(p) = 5(x - 1) + 2(x - 1)² = -3 + x + 2x². La cuenta directa (x-1)(3+2x) da lo mismo. Esta comparación controla tanto la dirección del pasaje como el orden de las bases.
+
+## Práctico 1, ejercicio 1.14 completo
+
+Retomamos T(M) = M + Mᵀ. En la base canónica ordenada B = (E₁₁,E₁₂,E₂₁,E₂₂), transformar cada vector da la matriz A. En la base B' = (K,E₁₁,H,E₂₂), donde K = E₁₂ - E₂₁ y H = E₁₂ + E₂₁, se obtiene A':
+
+MATRIX
+A  = [ 2  0  0  0 ]       A' = diag(0,2,2,2)
+     [ 0  1  1  0 ]
+     [ 0  1  1  0 ]
+     [ 0  0  0  2 ]
+
+¿Por qué A' es tan simple? T(K) = 0 y cada una de las otras tres matrices es simétrica, así que T la multiplica por 2. Son, respectivamente, una base del núcleo y una base de la imagen, como pide el práctico.
+
+MATRIX
+P = [ 0  1  0  0 ]       P⁻¹ = [ 0  1/2 -1/2  0 ]
+    [ 1  0  1  0 ]             [ 1   0    0   0 ]
+    [-1  0  1  0 ]             [ 0  1/2  1/2  0 ]
+    [ 0  0  0  1 ]             [ 0   0    0   1 ]
+
+Las columnas de P son K,E₁₁,H,E₂₂ en coordenadas canónicas. Su determinante es -2 ≠ 0 y **A' = P⁻¹AP**.
+
+La inversa expresa la descomposición de una matriz M = [[a,b],[c,d]]: [M]_B' = ((b-c)/2, a, (b+c)/2, d). El primer coeficiente mide la parte antisimétrica; los restantes describen la parte simétrica.
+
+**Conexión conceptual:** cambiar de base no modifica T. En una base adaptada a sus subespacios, se ve directamente qué parte anula y qué parte duplica. Esta idea es la base de la diagonalización.
+
+===
+# 5. Semejanza y rango: fundamentos
+
+## Semejanza como relación de equivalencia
+
+A y B, matrices n×n sobre K, son semejantes si B=P⁻¹AP para alguna P invertible. **Reflexiva:** A=I⁻¹AI. **Simétrica:** si B=P⁻¹AP, entonces A=PBP⁻¹=(P⁻¹)⁻¹B(P⁻¹). **Transitiva:** si además C=Q⁻¹BQ, entonces C=Q⁻¹P⁻¹APQ=(PQ)⁻¹A(PQ).
+
+Estas tres propiedades justifican agrupar matrices que representan el mismo operador bajo elecciones de base. Las matrices no tienen por qué ser iguales entrada a entrada. Determinante, traza y rango son invariantes; sus demostraciones completas aparecen en el ejercicio 1.15. Más adelante se incorporan polinomio característico y multiplicidades.
+
+## Imagen de una matriz y definición de rango
+
+Para A m×n, escribí sus columnas como A₁,…,Aₙ. Por la definición del producto, Ax=x₁A₁+…+xₙAₙ. Todas las imágenes son combinaciones de columnas, y toda combinación se obtiene eligiendo esos coeficientes como x. Por tanto Im(A)=s.g.(A₁,…,Aₙ).
+
+Se define r(A)=dim Im(A). Como la imagen está dentro de Kᵐ, r(A)≤m. Como tiene un generador de n columnas, r(A)≤n. Por rango-nulidad aplicado a x↦Ax, dim N(A)=n-r(A): es el número de parámetros libres del sistema homogéneo.
+
+## Rango de un producto: demostración
+
+Si AB está definido, Im(AB)=A(Im(B)) está contenida en Im(A), así r(AB)≤r(A). Por otra parte, una base de Im(B) tiene r(B) elementos y sus imágenes por A generan A(Im(B)); por eso r(AB)≤r(B).
+
+= r(AB) ≤ min(r(A),r(B)).
+
+Si B es cuadrada e invertible, sus entradas recorren todo el dominio de A y entonces Im(AB)=Im(A); hay igualdad de rangos. También puede demostrarse con dos desigualdades: r(AB)≤r(A)=r((AB)B⁻¹)≤r(AB).
+
+Si C es cuadrada e invertible y multiplica a la izquierda, C aplica un isomorfismo a Im(A); no cambia su dimensión, luego r(CA)=r(A). En términos de desigualdades, r(CA)≤r(A)=r(C⁻¹CA)≤r(CA).
+
+Las diapositivas escriben estas propiedades por separado para AB y BA. La idea es la misma: multiplicar por una matriz puede perder información, pero una matriz invertible permite recuperarla y conserva el rango. En particular r(P⁻¹AP)=r(A), lo que justifica el invariante bajo semejanza.
+
+===
+
+# 5. Escalerización y rango por filas
+
+## Operaciones elementales como productos invertibles
+
+Intercambiar filas, sumar a una fila un múltiplo de otra y multiplicarla por un escalar no nulo equivale a multiplicar por una matriz elemental invertible a la izquierda. Sus inversas deshacen las operaciones. Las operaciones de columnas se representan mediante multiplicación a la derecha. Por la página anterior, todas conservan el rango.
+
+**Ejemplo original, pp. 3-5:**
+
+MATRIX
+A = [ 1  2  0  1 ]       E = [ 1  0  0 ]
+    [ 0  0  1  1 ]           [ 0  1  0 ]
+    [ 2  4  0  2 ]           [-2  0  1 ]
+
+EA = [ 1  2  0  1 ]
+     [ 0  0  1  1 ]
+     [ 0  0  0  0 ]
+
+E representa F₃←F₃-2F₁ y es invertible. Hay dos pivotes, en columnas 1 y 3. Las columnas originales A₁=(1,0,2) y A₃=(0,1,0) son L.I.; A₂=2A₁ y A₄=A₁+A₃. Por tanto r(A)=2. La imagen original cumple z=2x; no es el plano z=0 que aparece como imagen de EA.
+
+El otro ejemplo de la p. 4 intercambia las filas 2 y 3 mediante la matriz [[1,0,0],[0,0,1],[0,1,0]]. En la p. 5 se intercambian columnas para dejar los pivotes al comienzo. Si se hacen permutaciones de columnas, hay que registrar el nuevo orden.
+
+## Por qué contar pivotes da el rango
+
+En una matriz escalonada con r filas no nulas, las r columnas pivote son L.I.: al tomar las filas de los pivotes se forma una matriz triangular con diagonal no nula. Además toda columna es combinación de ellas, pues en las últimas m-r filas todas las entradas son cero y el sistema triangular de las primeras r filas se resuelve para cualquier columna. Su rango es r, igual al original.
+
+Las r filas no nulas también son L.I.: en una combinación nula, la primera columna pivote fuerza el coeficiente de la primera fila a cero; luego la siguiente fuerza el segundo, y así sucesivamente. Las operaciones de filas no cambian el subespacio generado por filas, porque son combinaciones reversibles. Luego el rango por filas original es r, igual al rango por columnas.
+
+= r(Aᵀ)=r(A), porque las columnas de Aᵀ son las filas de A.
+
+Un menor de orden r no nulo muestra r columnas independientes al restringirlas a esas filas, por lo que el rango es al menos r. Recíprocamente, si el rango es r, elegí r columnas independientes; su matriz tiene rango fila r, así se pueden elegir r filas independientes y el menor resultante es invertible. El rango es, por tanto, el mayor orden de un menor no nulo.
+===
+
+# 5. Semejanza e invariantes
+
+## Qué significa que dos matrices sean semejantes
+
+Dos matrices cuadradas del mismo tamaño son semejantes si B = P⁻¹AP para alguna P invertible. Representan un mismo operador en bases distintas. La semejanza es reflexiva (P = I), simétrica (usar P⁻¹) y transitiva (componer los cambios de base).
+
+Matrices semejantes tienen igual determinante, traza, rango, polinomio característico y valores propios con multiplicidades. **No basta con compartir alguno de esos datos para ser semejantes.** Por ejemplo I₂ y [[1,1],[0,1]] tienen el mismo polinomio característico, traza, determinante y rango, pero no son semejantes: P⁻¹I₂P siempre es I₂.
+
+## Práctico 1, ejercicio 1.15: demostraciones
+
+El enunciado usa A = P⁻¹BP. Con esa convención:
+
+**(a) Traspuestas.** Aᵀ = PᵀBᵀ(P⁻¹)ᵀ. Al definir Q = (P⁻¹)ᵀ, se tiene Q⁻¹ = Pᵀ y Aᵀ = Q⁻¹BᵀQ. Luego las traspuestas son semejantes. Recordá que al trasponer un producto se invierte el orden.
+
+**(b) Determinantes.** det(A) = det(P⁻¹)det(B)det(P) = det(B), porque det(P⁻¹) = 1/det(P).
+
+**(c) Trazas.** Usando tr(XY) = tr(YX): tr(P⁻¹BP) = tr(PP⁻¹B) = tr(B). La traza es la suma de las entradas diagonales; no es el producto.
+
+**(d) Rangos.** Multiplicar a izquierda por P⁻¹ aplica un isomorfismo a la imagen y no cambia su dimensión. Multiplicar a derecha por P solo reparametriza las entradas: como P es sobreyectiva, Im(BP) = Im(B). Por tanto r(A) = r(B).
+
+**(e) Potencias.** A² = P⁻¹BPP⁻¹BP = P⁻¹B²P. Repitiendo la cancelación, Aᵐ = P⁻¹BᵐP para m natural. También vale para m = 0, pues ambas potencias son I.
+
+**(f) Inversas.** Los determinantes iguales muestran que A es invertible si y solo si B lo es. En ese caso, invertir el producto da A⁻¹ = P⁻¹B⁻¹P. Así las inversas también son semejantes.
+
+## Lo que una escalerización no garantiza
+
+Las operaciones elementales de filas conservan el rango, pero generalmente no la semejanza ni los valores propios. Una reducción por filas tiene forma EA, no P⁻¹AP. Usala para resolver sistemas y calcular rangos, pero no leas los valores propios de una matriz escalerizada como si fueran los de la original.
+
+===
+
+# 5. Rango, pivotes y menores
+
+## Procedimientos esenciales
+
+Para A de tamaño m × n, r(A) es la dimensión del espacio generado por sus columnas. Es también la dimensión del espacio generado por sus filas y la cantidad de pivotes de una forma escalonada. Se cumple r(A) ≤ min(m,n) y dim N(A) = n - r(A): **se resta al número de columnas**.
+
+Para una base de Im(A), escalerizá, identificá las columnas pivote y tomá esas columnas de la **matriz original**. Las operaciones de filas preservan las relaciones entre columnas, pero pueden cambiar el subespacio imagen. Las filas no nulas de la forma escalonada sí sirven como base del espacio fila.
+
+El rango también es el mayor orden de un menor no nulo: una submatriz cuadrada r × r invertible prueba rango ≥ r. Para probar igualdad, además hace falta una cota superior. Se cumple r(AB) ≤ min(r(A),r(B)) y r(Aᵀ) = r(A).
+
+## Práctico 1, ejercicio 1.16
+
+MATRIX
+A = [ 2  0 -1 -2 ]       B = [ 1 -3  2 ]
+    [ 3  1  0  1 ]           [-3  9 -6 ]
+    [ 1  1  1  1 ]           [ 2 -6  4 ]
+
+**Matriz A.** Tomá las tres filas y las columnas 1,2,4: el menor [[2,0,-2],[3,1,1],[1,1,1]] tiene determinante -4. Por tanto r(A) ≥ 3; como solo hay tres filas, r(A) = 3. La nulidad es 4 - 3 = 1. De hecho N(A) = s.g.((1,-3,2,0)), lo cual se comprueba multiplicando.
+
+**Matriz B.** La segunda fila es -3 veces la primera y la tercera es 2 veces la primera. Como la primera no es cero, r(B) = 1. Nulidad: 3 - 1 = 2. Un menor invertible de orden 1 es [1], fila 1 y columna 1. La ecuación del núcleo es x - 3y + 2z = 0, así una base es ((3,1,0),(-2,0,1)).
+
+MATRIX
+C = [ 0  0  1 ]
+    [ 2  4  3 ]
+    [ 0  0  4 ]
+    [-2 -4  0 ]
+    [ 1  1  1 ]
+
+**Matriz C.** Seleccioná filas 1,2,5 y las tres columnas. El menor [[0,0,1],[2,4,3],[1,1,1]] tiene determinante -2. Hay tres columnas, luego r(C) = 3 y dim N(C) = 3 - 3 = 0. La transformación C: R³ → R⁵ es inyectiva, aunque no sobreyectiva.
+
+**Control:** un núcleo trivial no exige una matriz cuadrada. Lo que sí exige una matriz cuadrada es tener inversa de dos lados como matriz.
+
+===
+# 6. Valores propios: del operador al sistema
+
+## Definición y significado
+
+Para T:V→V lineal, un valor propio es un escalar λ∈K para el que existe v≠0 con T(v)=λv. Ese v es un vector propio asociado. Se requiere un operador con dominio y codominio iguales para comparar T(v) con un múltiplo de v dentro del mismo espacio.
+
+En un espacio real, si λ>1 se alarga el vector; si 0<λ<1 se acorta; si λ<0 se invierte el sentido; si λ=1 queda fijo; si λ=0 se anula. La recta generada permanece dentro de sí misma. Con λ complejo, la interpretación de «dirección» es una recta sobre C y no debe confundirse con una flecha del plano real.
+
+El cero se excluye porque T(0)=λ0 vale para cualquier λ y no distinguiría valores propios. Un vector propio no nulo determina un único λ: si λv=μv, entonces (λ-μ)v=0 y λ=μ.
+
+## El subespacio propio
+
+Para λ fijo, E_λ={v∈V:T(v)=λv}=N(T-λId). La transformación T-λId es lineal, por lo que su núcleo es subespacio. También se puede comprobar directamente: si T(u)=λu y T(v)=λv, entonces T(αu+βv)=λ(αu+βv).
+
+Así E_λ contiene todos los vectores propios asociados y también el cero. λ es valor propio exactamente cuando E_λ≠{0}. Sus elementos no nulos son los vectores propios. Un múltiplo no nulo de un vector propio sigue siendo propio; una combinación que resulte cero pertenece al subespacio, pero deja de ser vector propio.
+
+## Pasaje a coordenadas, «vvp», p. 3
+
+Sea A=[T]_(B←B) y x=[v]_B. Por la propiedad fundamental y la linealidad de coordenadas, T(v)=λv equivale a Ax=λx. Como coord_B es un isomorfismo, v≠0 equivale a x≠0. Por tanto buscamos soluciones no triviales de (A-λI)x=0.
+
+Para una matriz cuadrada, un sistema homogéneo tiene una solución no trivial si y solo si la matriz no es invertible, lo que equivale a determinante cero. Obtenemos la cadena completa:
+
+= λ es propio ⇔ E_λ≠{0} ⇔ N(A-λI)≠{0} ⇔ det(A-λI)=0.
+
+Una vez encontrado λ, el determinante ya no describe los vectores: hay que resolver el sistema homogéneo. En una base no canónica, la solución x describe coordenadas; el vector propio original se reconstruye como v=Σxⱼbⱼ. Esta distinción también vale cuando v es un polinomio.
+
+===
+
+# 6. Polinomio característico: todos los coeficientes clave
+
+## Definición y grado
+
+Para A n×n se define χ_A(λ)=det(A-λI). Al desarrollar el determinante se obtiene un polinomio pₙλⁿ+p_(n-1)λⁿ⁻¹+…+p₁λ+p₀. Sus raíces en K son exactamente los valores propios sobre K. El grado es n porque el término de mayor grado proviene de multiplicar los n factores -λ de la diagonal.
+
+= pₙ=(-1)ⁿ; p_(n-1)=(-1)ⁿ⁻¹ tr(A); p₀=det(A).
+
+**Por qué aparece la traza:** para obtener grado n-1 se eligen n-1 factores -λ y una entrada aᵢᵢ de la diagonal. Al sumar las n posibilidades se obtiene (-1)ⁿ⁻¹(a₁₁+…+aₙₙ). Ningún producto del determinante que use entradas fuera de la diagonal puede aportar n-1 factores -λ: una permutación no identidad desplaza al menos dos índices.
+
+**Término independiente:** evaluar en λ=0 da χ_A(0)=det(A). En 2×2 queda λ²-tr(A)λ+det(A); en 3×3 el comienzo es -λ³+tr(A)λ² y el término independiente es det(A).
+
+Si χ_A se descompone completamente, χ_A(λ)=∏ⱼ(λⱼ-λ), contando las raíces repetidas. Comparar coeficientes da Σλⱼ=tr(A) y ∏λⱼ=det(A). Sobre C siempre se pueden contar n raíces con multiplicidad; sobre R puede haber raíces fuera del cuerpo. Para una matriz triangular, las raíces se leen de la diagonal porque el determinante es el producto de sus entradas diagonales.
+
+## Invariancia bajo semejanza, p. 5
+
+Si B=P⁻¹AP, entonces B-λI=P⁻¹(A-λI)P. El determinante del producto es det(P⁻¹)det(A-λI)det(P)=det(A-λI). Por tanto χ_B=χ_A. Esto permite definir χ_T como el polinomio de cualquier matriz de T en una misma base de entrada y salida: cambiar esa base no lo modifica.
+
+## Invariancia por traspuesta y su límite
+
+Como Aᵀ-λI=(A-λI)ᵀ y el determinante no cambia por traspuesta, χ_(Aᵀ)=χ_A. Tienen los mismos valores propios y multiplicidades algebraicas, pero sus vectores propios no tienen por qué coincidir.
+
+**Ejemplo de apoyo:** A=[[1,1],[0,2]]. Para λ=1, E₁(A)=s.g.((1,0)), mientras que E₁(Aᵀ)=s.g.((1,-1)). Comparten χ(λ)=(1-λ)(2-λ). Conocer el polinomio no determina los subespacios propios ni alcanza para probar semejanza entre dos matrices arbitrarias; el ejercicio 2.3 aporta el contraejemplo.
+===
+
+# 6. Valores y vectores propios
+
+## Definición y subespacios propios
+
+Para un operador T: V → V, un vector v ≠ 0 es propio si T(v) = λv para algún escalar λ. Para una matriz cuadrada A, la condición es Av = λv. En el caso real, la transformación conserva la recta generada por v: puede estirar, invertir el sentido o anular.
+
+= E_λ = N(A - λI); λ es valor propio ⇔ det(A - λI) = 0.
+
+El subespacio E_λ incluye al cero, pero **el cero no es vector propio**. Hallar «los vectores propios» significa describir todos los elementos no nulos de esos subespacios, normalmente dando bases y sus combinaciones.
+
+Si v,w pertenecen al mismo E_λ, sus combinaciones pertenecen a E_λ. En cambio, sumar vectores propios de valores distintos generalmente no da otro vector propio.
+
+Si A representa a T en una base B, los vectores propios de A son columnas de coordenadas: Ax = λx equivale a T(v) = λv con x = [v]_B. Los valores propios no dependen de la base.
+
+## Polinomio característico y controles
+
+Usamos χ_A(λ) = det(A - λI). Tiene grado n y coeficiente principal (-1)ⁿ. También se usa det(λI - A), que difiere por un factor (-1)ⁿ y tiene las mismas raíces. No mezcles signos al comparar expresiones completas.
+
+Para 2 × 2: χ_A(λ) = λ² - tr(A)λ + det(A). Para una matriz triangular, χ_A(λ) es el producto de (aᵢᵢ - λ); sus valores propios son las entradas diagonales.
+
+Cuando se consideran todas las raíces en C y se cuentan con multiplicidad, su suma es tr(A) y su producto es det(A). Son controles útiles, pero no sustituyen el cálculo de los subespacios propios.
+
+## Práctico 2, ejercicio 2.1
+
+**(a)** A = [[0,1],[-1,0]], v = (1,i). Multiplicar da Av = (i,-1) = i(1,i), ya que i² = -1. Por tanto λ = i. El cálculo se realiza en C²; este vector no pertenece a R².
+
+**(b)** A = [[1,-1,4],[3,2,-1],[2,1,-1]], v = (-1,4,1). Se obtiene Av = (-1-4+4, -3+8-1, -2+4-1) = (-1,4,1). Entonces λ = 1.
+
+**Procedimiento cuando v ya está dado:** calculá Av y compará todas las coordenadas con un mismo múltiplo de v. Si una coordenada de v es cero, la correspondiente de Av también debe ser cero. No hace falta calcular el determinante para esta verificación.
+
+===
+
+# 6. Calcular valores y vectores propios
+
+## Práctico 2, ejercicio 2.4(a)
+
+MATRIX
+A = [-2 -7 ]      χ_A(λ) = (-2-λ)(2-λ) + 7
+    [ 1  2 ]             = λ² + 3.
+
+**Sobre R:** λ² + 3 no tiene raíces reales. No existen valores propios reales ni vectores propios en R². **Sobre C:** λ = i√3 y λ = -i√3.
+
+Para cada raíz, la segunda fila de (A-λI)(x,y) = 0 da x + (2-λ)y = 0, es decir x = (λ-2)y. Al sustituir en la primera fila se obtiene (-λ²-3)y = 0, satisfecha porque λ² = -3. Entonces:
+
+= E_(i√3) = s.g.((-2+i√3,1)); E_(-i√3) = s.g.((-2-i√3,1)).
+
+Los vectores propios son los múltiplos complejos no nulos de esos generadores. Para construir un vector concreto podés elegir y = 1; para describir todo el subespacio hay que conservar el parámetro.
+
+## Práctico 2, ejercicio 2.4(b)
+
+MATRIX
+B = [ 1  0  0 ]        B(x,y,z) = (x,z,y)
+    [ 0  0  1 ]        χ_B(λ) = (1-λ)²(-1-λ).
+    [ 0  1  0 ]
+
+Para λ = 1, Bv = v obliga a z = y y deja x libre. **E₁ = s.g.((1,0,0),(0,1,1))**, de dimensión 2.
+
+Para λ = -1, Bv = -v obliga a x = 0 y z = -y. **E₋₁ = s.g.((0,1,-1))**, de dimensión 1. Las mismas bases sirven sobre R y sobre C, usando escalares del cuerpo correspondiente.
+
+## Práctico 2, ejercicio 2.4(c)
+
+Ahora C = [[1,0,0],[0,0,1],[0,-1,0]]. Su polinomio es (1-λ)(λ²+1). Sobre R solo aparece λ = 1, con E₁ = s.g.((1,0,0)). Sobre C también aparecen i y -i.
+
+Para λ = ±i, la primera ecuación impone x = 0 y la segunda z = λy. La tercera se cumple porque λ² = -1. Así **Eᵢ = s.g.((0,1,i))** y **E₋ᵢ = s.g.((0,1,-i))**.
+
+**Método general:** calculá χ_A, resolvé sus raíces en el cuerpo pedido y después resolvé un sistema homogéneo diferente para cada raíz. El determinante da valores propios; los sistemas dan los vectores propios.
+
+===
+
+# 6. Geometría y verdadero o falso
+
+## Práctico 2, ejercicio 2.2
+
+**(a) Rotación de 90° alrededor del eje z.** Los vectores sobre el eje z quedan fijos: λ = 1 y E₁ = s.g.((0,0,1)). En el plano xy, un vector no nulo gira 90° y no queda como múltiplo real de sí mismo. No hay otros valores propios reales. Un vector con parte horizontal no nula tampoco puede ser propio real: su parte horizontal tendría que ser un vector propio de la rotación plana.
+
+**(b) Simetría respecto al plano z = 0.** T(x,y,z) = (x,y,-z). El plano xy tiene λ = 1 y base ((1,0,0),(0,1,0)); el eje z tiene λ = -1 y base ((0,0,1)).
+
+**(c) Simetría central.** T(v) = -v. El único valor propio es -1 y E₋₁ = R³. Todo vector no nulo es propio.
+
+## Práctico 2, ejercicio 2.3 completo
+
+**(a) «Si v y w son propios y v+w ≠ 0, entonces v+w es propio». Falso.** Con A = diag(1,2), e₁ y e₂ son propios, pero A(e₁+e₂) = (1,2) no es múltiplo de (1,1). Sí sería cierto si ambos corresponden al mismo valor propio.
+
+**(b) «Los vectores no nulos del núcleo son propios». Verdadero.** Av = 0 = 0v, de modo que su valor propio es 0. El subespacio propio E₀ coincide con N(A).
+
+**(c) «Los vectores no nulos de la imagen son propios». Falso.** Para A = diag(1,2), Im(A) = R² y (1,1) pertenece a la imagen, pero no es propio.
+
+**(d) «Matrices semejantes tienen igual polinomio característico». Verdadero.** Si B = P⁻¹AP, entonces B - λI = P⁻¹(A - λI)P. Tomando determinantes se cancelan det(P⁻¹) y det(P), y queda χ_B = χ_A.
+
+**(e) «Igual polinomio característico implica semejanza». Falso.** I₂ y J = [[1,1],[0,1]] comparten χ(λ) = (1-λ)². Sin embargo, cualquier conjugación de I₂ da I₂, nunca J. También se distinguen por dim E₁: 2 para I₂ y 1 para J.
+
+## Qué se conserva y qué cambia
+
+Las matrices A y Aᵀ tienen el mismo polinomio característico porque el determinante no cambia al trasponer. No necesariamente tienen los mismos vectores propios. Bajo semejanza B = P⁻¹AP, si Av = λv entonces B(P⁻¹v) = λ(P⁻¹v): las coordenadas propias se transforman mediante el cambio de base.
+
+===
+
+# 6. Propiedades y cálculos abreviados
+
+## Práctico 2, ejercicio 2.5
+
+**Invertibilidad:** 0 es valor propio si y solo si Av = 0 tiene una solución no nula, es decir, N(A) ≠ {0}. Para una matriz cuadrada, esto equivale a no ser invertible. Así A es invertible si y solo si 0 no es valor propio.
+
+Si Av = λv con v ≠ 0, por inducción Aᵐv = λᵐv. Si A es invertible, λ ≠ 0 y multiplicar Av = λv por A⁻¹ da A⁻¹v = λ⁻¹v; por lo tanto A⁻ᵐv = λ⁻ᵐv.
+
+También (A+kI)v = (λ+k)v. Más generalmente, si f es un polinomio, cada potencia actúa sobre v multiplicando por la potencia correspondiente de λ, de modo que:
+
+= f(A)v = f(λ)v; en particular, (A² - 7A + I)v = (λ² - 7λ + 1)v.
+
+Estas propiedades no requieren diagonalización: valen para cada vector propio individual. Distintos valores de λ pueden producir el mismo f(λ), por lo que la transformación f(A) puede tener subespacios propios más grandes.
+
+## Práctico 2, ejercicio 2.6(a)
+
+Si cada fila de A suma q, el vector u = (1,…,1) cumple Au = (q,…,q) = qu. Por tanto q es valor propio. No se concluye que sea el único: se ha encontrado un vector propio concreto.
+
+## Práctico 2, ejercicio 2.6(b)
+
+MATRIX
+A = [ 0  1  1 ] = J - I,
+    [ 1  0  1 ]       donde J tiene todas sus entradas iguales a 1.
+    [ 1  1  0 ]
+
+Las filas suman 2, así u = (1,1,1) es propio con λ = 2. Además J(x,y,z) = (x+y+z)(1,1,1). Si x+y+z = 0, entonces Jv = 0 y Av = -v.
+
+= E₂ = s.g.((1,1,1)); E₋₁ = {(x,y,z): x+y+z=0}.
+
+Una base de E₋₁ es ((1,-1,0),(1,0,-1)). Las dimensiones son 1 y 2; estos espacios aportan tres vectores L.I., así no faltan valores propios. Controles: tr(A) = 0 = 2-1-1 y det(A) = 2 = 2(-1)(-1).
+
+**(c)** La matriz con 5 en la diagonal y 1 fuera de ella es A + 5I. Sus valores propios son **7 y 4**, con multiplicidades 1 y 2, respectivamente. Conserva los mismos subespacios propios, porque (A+5I)-(λ+5)I = A-λI.
+
+===
+# 7. Diagonalizar: equivalencias y construcción
+
+## Una base de vectores propios
+
+Sea B=(v₁,…,vₙ) una base de V formada por vectores propios de T, con T(vⱼ)=λⱼvⱼ. La columna j de [T]_(B←B) tiene λⱼ en la fila j y ceros en las otras, porque esas son las coordenadas de λⱼvⱼ en B. Su matriz es D=diag(λ₁,…,λₙ).
+
+Recíprocamente, si la matriz de T en una base es diagonal, su columna j dice que T(vⱼ)=λⱼvⱼ. Los vectores de la base son no nulos y propios. Por tanto «tener una base de vectores propios» equivale a «admitir una matriz asociada diagonal».
+
+## La matriz P y la igualdad AP=PD
+
+Si A es la matriz en una base inicial, y las columnas de P son las coordenadas de v₁,…,vₙ en esa base, el cambio de base da D=P⁻¹AP. Equivalentemente A=PDP⁻¹. Se dice que A es diagonalizable si es semejante a una diagonal.
+
+También se demuestra columna a columna: AP tiene columnas Avⱼ y PD tiene columnas λⱼvⱼ. AP=PD afirma que cada columna de P es propia con el valor situado en la misma posición de D. Además hace falta P invertible, es decir, que esas columnas formen base.
+
+Se pueden multiplicar los vectores propios por escalares no nulos o cambiar la base dentro de un subespacio propio: P no es única. También se pueden permutar columnas, siempre permutando en el mismo orden la diagonal de D.
+
+## Por qué no siempre es posible, diapositiva 3
+
+**Falta de valores propios en el cuerpo:** una rotación real de 90° tiene matriz [[0,-1],[1,0]], con χ(λ)=λ²+1. No tiene raíces reales ni base propia de R². Sobre C aparecen i y -i y el impedimento desaparece.
+
+**Falta de vectores propios independientes:** J=[[2,1],[0,2]] tiene χ(λ)=(2-λ)². Su único valor propio es 2 y (J-2I)(x,y)=(y,0), así E₂=s.g.((1,0)), dimensión 1. No se puede formar una base de dos vectores propios, ni siquiera sobre C.
+
+La identidad muestra el caso opuesto: todos los vectores no nulos son propios con λ=1, así cualquier base diagonaliza I. Tener valores repetidos puede ser compatible con diagonalizar; lo que cuenta es cuántas direcciones independientes aportan.
+
+===
+
+# 7. Independencia de valores propios distintos
+
+## Lema de la diapositiva 4: prueba para cualquier cantidad
+
+Si v₁,…,vᵣ son vectores propios asociados a valores λ₁,…,λᵣ distintos dos a dos, entonces son L.I.
+
+**Caso r=1:** v₁≠0, luego a₁v₁=0 implica a₁=0. **Paso inductivo:** supongamos probado el resultado para r-1 vectores. Consideremos Σ_(j=1)^r aⱼvⱼ=0. Aplicar T da Σaⱼλⱼvⱼ=0. Restar λᵣ veces la igualdad original elimina el último término:
+
+= Σ_(j=1)^(r-1) aⱼ(λⱼ-λᵣ)vⱼ=0.
+
+Por hipótesis inductiva, v₁,…,vᵣ₋₁ son L.I., luego aⱼ(λⱼ-λᵣ)=0. Como λⱼ≠λᵣ, cada aⱼ=0 para j<r. La relación original queda aᵣvᵣ=0, así aᵣ=0. Esto completa la inducción.
+
+## Corolario y su recíproca falsa, diapositiva 5
+
+Si dim(V)=n y T tiene n valores propios distintos en K, elegimos un vector propio de cada uno. El lema da n vectores L.I., que forman base. Por tanto T es diagonalizable.
+
+La condición no es necesaria. Por ejemplo, Iₙ es diagonalizable y solo tiene el valor propio 1. El criterio completo debe permitir que un mismo valor aporte varias direcciones independientes.
+
+## Suma directa de subespacios propios
+
+Una versión más general afirma que, para valores distintos, E_(λ₁)+…+E_(λᵣ) es suma directa. Para probarlo, supongamos u₁+…+uᵣ=0 con uⱼ∈E_(λⱼ). Si alguno no es cero, los términos no nulos son vectores propios asociados a valores distintos. Por el lema son L.I., de modo que no pueden sumar cero con todos sus coeficientes iguales a 1. Entonces todos los uⱼ deben ser cero.
+
+Ahora elegí una base de cada E_(λⱼ). Una relación entre todos los vectores elegidos se agrupa en una suma u₁+…+uᵣ=0. La suma directa obliga a cada uⱼ=0; la independencia dentro de cada base obliga a todos los coeficientes a cero. Por eso juntar las bases de los subespacios propios da siempre una lista L.I.
+
+La cantidad total de vectores de esa lista es Σdim E_(λⱼ). Diagonalizar será posible exactamente cuando alcance n. Esta afirmación enlaza el lema con el criterio de multiplicidades y explica por qué se suman las dimensiones, sin descontar intersecciones.
+
+===
+
+# 7. Multiplicidades: definición y desigualdad
+
+## Qué mide cada una, diapositivas 6-7
+
+La multiplicidad algebraica m.a.(λ₀) es el orden de λ₀ como raíz de χ_A. Formalmente, χ_A(λ)=(λ-λ₀)ᵏq(λ), con q(λ₀)≠0; entonces m.a.(λ₀)=k. El factor constante de signo no afecta ese orden.
+
+La multiplicidad geométrica m.g.(λ₀)=dim E_(λ₀) cuenta cuántos vectores propios L.I. se pueden elegir para ese valor. Se calcula resolviendo (A-λ₀I)x=0 o usando m.g.(λ₀)=n-r(A-λ₀I).
+
+= 1 ≤ m.g.(λ₀) ≤ m.a.(λ₀) ≤ n.
+
+El primer 1 proviene de que λ₀ es valor propio y existe algún vector propio no nulo. La última desigualdad proviene de que χ_A tiene grado n. La desigualdad central necesita una demostración: la incluimos aunque la diapositiva solo indica que requiere prueba.
+
+## Demostración de m.g. ≤ m.a.
+
+Sea g=dim E_(λ₀). Tomá una base (v₁,…,v_g) de ese subespacio y completala a una base de Kⁿ. En esa base, las primeras g columnas de la matriz de A tienen λ₀ en su posición diagonal y ceros en las demás, porque Avⱼ=λ₀vⱼ.
+
+MATRIX
+Matriz en esa base: [ λ₀I_g   H ]
+                   [   0     C ]
+
+Los bloques H y C recogen las imágenes de los vectores agregados. Al restar λI queda una matriz triangular por bloques; su determinante es el producto de los determinantes diagonales. Esto se ve, por ejemplo, desarrollando sucesivamente por las primeras g columnas, cuyas entradas inferiores son cero.
+
+= χ_A(λ) = (λ₀-λ)^g det(C-λI).
+
+La igualdad usa además que el cambio de base conserva el polinomio característico. Por tanto (λ-λ₀)^g divide χ_A, así su orden como raíz es al menos g. Queda probado m.g.(λ₀)≤m.a.(λ₀).
+
+Si g=n, no hay bloque C y el determinante se reduce a (λ₀-λ)ⁿ. Para J=[[2,1],[0,2]], el orden de la raíz 2 es 2, pero el núcleo de J-2I tiene dimensión 1. En cambio 2I₂ tiene m.a.(2)=m.g.(2)=2. La misma raíz repetida produce dos comportamientos distintos.
+
+===
+
+# 7. Criterio necesario y suficiente: demostración
+
+## Teorema de la diapositiva 8
+
+Para A n×n sobre K, son equivalentes: A es diagonalizable; existe una base de vectores propios; χ_A se descompone en n factores lineales sobre K contando multiplicidades y m.g.(λ)=m.a.(λ) para cada raíz λ.
+
+**Necesidad:** si D=P⁻¹AP es diagonal, sus entradas diagonales son valores propios en K y χ_A=χ_D=∏(dⱼ-λ). Para una raíz λ₀, el núcleo de D-λ₀I deja libres exactamente las coordenadas cuyas posiciones diagonales valen λ₀. Su dimensión es la cantidad de repeticiones de λ₀ en D, igual a su multiplicidad algebraica.
+
+El cambio x=Py lleva N(D-λ₀I) biyectivamente a N(A-λ₀I), porque (A-λ₀I)P=P(D-λ₀I). Por tanto esas dimensiones coinciden. Así, también para A, m.g.(λ₀)=m.a.(λ₀).
+
+**Suficiencia:** supongamos que todas las raíces están en K y se cumple la igualdad de multiplicidades. Elegí una base de cada subespacio propio. La suma directa probada antes permite juntarlas conservando independencia. La cantidad total es Σm.g.(λ)=Σm.a.(λ)=n, porque el polinomio de grado n se descompone por completo. Obtenemos n vectores L.I., una base propia. Entonces A es diagonalizable.
+
+Sobre C, la primera condición siempre se cumple por el teorema fundamental del álgebra. Aun así puede fallar la igualdad de multiplicidades. Sobre R deben verificarse ambas. No alcanza con que las raíces reales que se encontraron cumplan m.g.=m.a. si quedan factores sin raíces reales.
+
+## Ejemplo del curso: T(p)=(x-1)p'
+
+En P₃, para k=0,1,2,3, T((x-1)ᵏ)=k(x-1)ᵏ. Los valores 0,1,2,3 son distintos y B'=(1,x-1,(x-1)²,(x-1)³) es base. Por eso T es diagonalizable. El ejercicio 1.13 construye explícitamente el pasaje y D=diag(0,1,2,3).
+
+Como E₀ corresponde a las constantes, el valor 0 no impide diagonalizar; solo impide que T sea invertible. Los demás subespacios son las rectas generadas por x-1, (x-1)² y (x-1)³. Un polinomio general se descompone de forma única como suma de componentes en esas cuatro rectas propias.
+
+## Procedimiento con raíces repetidas o parámetros
+
+Factorizá χ_A en el cuerpo pedido. Para cada raíz calculá una base completa del núcleo de A-λI; no te quedes con un solo vector si el sistema tiene varias variables libres. Si hay parámetros, separá antes los valores que hacen coincidir raíces o anulan los coeficientes usados para despejar. Los ejercicios 2.8 y 2.12 muestran por qué esas separaciones son necesarias.
+===
+
+# 7. Diagonalización: el criterio completo
+
+## Qué se busca y por qué funciona
+
+Una matriz A de tamaño n × n es diagonalizable sobre K si existe una base de Kⁿ formada por vectores propios. Si P tiene esos vectores como columnas y D contiene sus valores propios en el mismo orden, entonces:
+
+= AP = PD  ⇔  D = P⁻¹AP  ⇔  A = PDP⁻¹.
+
+P debe ser invertible. Tener algunos vectores propios no alcanza: hacen falta n L.I. Tampoco alcanza escribir n vectores si son dependientes. El orden de las columnas de P debe coincidir con el orden de la diagonal de D.
+
+## Multiplicidades algebraica y geométrica
+
+La **multiplicidad algebraica**, m.a.(λ), es la cantidad de veces que λ aparece como raíz de χ_A. La **multiplicidad geométrica**, m.g.(λ), es dim E_λ = n - r(A - λI).
+
+= 1 ≤ m.g.(λ) ≤ m.a.(λ), para cada valor propio λ.
+
+A es diagonalizable sobre K si y solo si χ_A se descompone completamente en factores lineales sobre K y, para cada raíz, m.g.(λ) = m.a.(λ). Equivalentemente, la suma de las dimensiones de todos los subespacios propios sobre K es n.
+
+Sobre C el polinomio siempre se descompone en factores lineales, pero todavía puede faltar multiplicidad geométrica. Sobre R, la presencia de raíces no reales impide una diagonalización real.
+
+## Valores propios distintos
+
+Vectores propios asociados a valores propios distintos son L.I. Para dos de ellos, si αv + βw = 0, aplicar A y restar μ veces la igualdad original da α(λ-μ)v = 0. Como λ ≠ μ y v ≠ 0, α = 0; entonces β = 0. El argumento se extiende por inducción.
+
+Por eso **n valores propios distintos implican diagonalización**. La condición es suficiente, pero no necesaria: Iₙ es diagonal y solo tiene el valor propio 1. En general, las bases de subespacios propios distintos se pueden juntar sin introducir dependencias.
+
+## Procedimiento para un parcial
+
+1. Escribí A en la base indicada y calculá χ_A. 2. Encontrá las raíces en el cuerpo pedido y sus multiplicidades algebraicas. 3. Para cada raíz, resolvé (A-λI)v = 0 y obtené una base. 4. Compará multiplicidades o sumá dimensiones. 5. Si alcanza, construí P y D. 6. Verificá AP = PD y que P sea invertible.
+
+Si χ_A tiene una raíz repetida, **no concluyas todavía**. Precisamente en ese caso hay que calcular la dimensión del subespacio propio.
+
+===
+
+# 7. Un caso que falla y otro que funciona
+
+## Práctico 2, ejercicio 2.7(a)
+
+T(x,y,z) = (y,-4x+4y,2x+y+2z). Su matriz canónica y su polinomio son:
+
+MATRIX
+A = [ 0  1  0 ]       χ_A(λ) = (2-λ)[λ²-4λ+4]
+    [-4  4  0 ]              = (2-λ)³.
+    [ 2  1  2 ]
+
+Solo hay λ = 2 y m.a.(2) = 3. Para el subespacio propio, (A-2I)v = 0 da -2x+y = 0, -4x+2y = 0 y 2x+y = 0. La primera impone y = 2x y la última impone 4x = 0. Por tanto x = y = 0 y z es libre.
+
+= E₂ = s.g.((0,0,1)); m.g.(2) = 1 < 3. No es diagonalizable.
+
+Que A sea invertible (det(A) = 8) no ayuda a diagonalizarla. Invertibilidad y diagonalización son propiedades distintas.
+
+## Práctico 2, ejercicio 2.7(b)
+
+T(x,y,z) = (2y+z,2x+z,x+y+z), con A = [[0,2,1],[2,0,1],[1,1,1]]. Expandiendo el determinante se obtiene χ_A(λ) = -λ(λ-3)(λ+2). Hay tres valores reales distintos: -2, 0 y 3.
+
+**Para λ = -2:** sumar la condición Av = -2v lleva a x+y = 0 y z = 0. Una base es ((1,-1,0)).
+
+**Para λ = 0:** 2y+z = 0 y 2x+z = 0 dan x = y, z = -2x; la tercera ecuación se cumple. Una base es ((1,1,-2)).
+
+**Para λ = 3:** las dos primeras ecuaciones, al restarse, dan x = y; después resulta z = x. Una base es ((1,1,1)).
+
+MATRIX
+P = [ 1  1  1 ]        D = diag(-2,0,3)
+    [-1  1  1 ]
+    [ 0 -2  1 ]
+
+det(P) = 6 ≠ 0 y cada columna satisface Avⱼ = λⱼvⱼ, luego AP = PD. Por tanto **D = P⁻¹AP**. Esta matriz sí es diagonalizable aunque no es invertible: el valor propio 0 implica núcleo no trivial.
+
+===
+
+# 7. Valores repetidos y matrices simétricas
+
+## Práctico 2, ejercicio 2.8(iii)
+
+MATRIX
+A = [ 0  0 -2 ]       χ_A(λ) = (1-λ)(2-λ)².
+    [ 1  2  1 ]
+    [ 1  0  3 ]
+
+**Para λ = 1:** las ecuaciones son -x-2z = 0, x+y+z = 0 y x+2z = 0. Quedan x = -2z, y = z. Así E₁ = s.g.((-2,1,1)), dimensión 1.
+
+**Para λ = 2:** se obtiene x+z = 0 y y libre. Entonces E₂ = {(x,y,z): x=-z} = s.g.((0,1,0),(-1,0,1)), dimensión 2.
+
+Las multiplicidades geométricas coinciden con las algebraicas: 1 y 2. Por tanto es diagonalizable, aunque repite el valor propio 2.
+
+MATRIX
+P = [-2  0 -1 ]       D = diag(1,2,2)
+    [ 1  1  0 ]
+    [ 1  0  1 ]
+
+det(P) = -1 ≠ 0. Verificar las tres igualdades de vector propio prueba AP = PD y, con ello, D = P⁻¹AP. Dentro de E₂ se podría elegir cualquier otra base; P no es única.
+
+## Práctico 2, ejercicio 2.9
+
+Sea A = [[a,b],[b,c]], real simétrica. Su polinomio es λ² - (a+c)λ + ac - b². El discriminante vale:
+
+= Δ = (a+c)² - 4(ac-b²) = (a-c)² + 4b² ≥ 0.
+
+Por tanto las raíces son reales. Si Δ > 0 hay dos valores propios distintos y la matriz es diagonalizable. Si Δ = 0, como ambos sumandos son cuadrados reales, a = c y b = 0. Entonces A = aI, que ya es diagonal. Esto prueba lo pedido en dimensión 2 sin necesitar un teorema adicional.
+
+## Práctico 2, ejercicio 2.11
+
+Si A es diagonalizable y tiene un único valor propio λ, entonces su diagonal D es λI. De A = PDP⁻¹ se deduce A = P(λI)P⁻¹ = λI. Recíprocamente, λI es diagonalizable.
+
+Para [[2,1],[0,2]], el único valor propio es 2 y la matriz no es 2I. Por lo tanto no es diagonalizable, sin necesidad de calcular el subespacio propio. Este atajo también permite resolver el ejercicio 2.7(a).
+
+===
+
+# 7. Diagonalización con parámetros
+
+## Práctico 2, ejercicio 2.10
+
+Sea A = [[a,1,-1],[2,a,2],[1,1,a]]. Escribimos **A = aI + B**, con B = [[0,1,-1],[2,0,2],[1,1,0]]. El parámetro solo desplaza la diagonal.
+
+Para B, χ_B(μ) = -μ³ + 3μ = -μ(μ²-3), por lo que sus valores propios son 0, √3 y -√3. Los de A son a, a+√3 y a-√3, siempre tres números reales distintos, cualquiera sea a.
+
+= A es diagonalizable sobre R para todo a ∈ R.
+
+Además los subespacios propios no dependen del parámetro, salvo por el nombre del valor propio: A-(a+μ)I = B-μI. No hace falta calcular P para responder lo que pide este ejercicio. Si alguno de los valores propios vale cero, cambia la invertibilidad, pero no la diagonalización.
+
+## Práctico 2, ejercicio 2.12(a), (b)
+
+MATRIX
+A = [ 0  0  1 ]      α ≥ 0
+    [ 0  α  1 ]      χ_A(λ) = (α-λ)(λ²-1).
+    [ 1  0  0 ]
+
+Los valores son 1, -1 y α. Como α ≥ 0, la única coincidencia posible es α = 1. Las ecuaciones de Av = λv son z = λx, (α-λ)y + z = 0 y x = λz.
+
+**Caso α ≠ 1:** los tres valores son distintos. Para λ = 1, x = z y (α-1)y+x = 0; podemos elegir v₁ = (1-α,1,1-α). Para λ = -1, z = -x y (α+1)y-x = 0; elegimos v₋₁ = (α+1,1,-α-1). Para λ = α, como α² ≠ 1, x = z = 0 y y es libre: v_α = (0,1,0).
+
+MATRIX
+P = [ 1-α   α+1    0 ]      D = diag(1,-1,α)
+    [  1     1     1 ]
+    [ 1-α  -α-1    0 ]
+
+det(P) = 2(1-α²) ≠ 0 en este caso. Sus columnas satisfacen las ecuaciones de vector propio, luego D = P⁻¹AP.
+
+**Caso α = 1:** λ = 1 tiene multiplicidad algebraica 2. Sus ecuaciones dan z = x y z = 0, luego x = z = 0: E₁ = s.g.((0,1,0)), dimensión 1. Para λ = -1, E₋₁ = s.g.((2,1,-2)), dimensión 1. Solo hay dos direcciones propias L.I.; **no es diagonalizable**.
+
+===
+
+# 7. Potencias y el papel del cuerpo
+
+## Potencias a partir de una diagonalización
+
+Si A = PDP⁻¹, entonces A² = PD(P⁻¹P)DP⁻¹ = PD²P⁻¹. Por inducción:
+
+= Aᵐ = PDᵐP⁻¹; Dᵐ = diag(λ₁ᵐ,…,λₙᵐ).
+
+Para m negativo se requiere que A sea invertible, es decir, que todos los λⱼ sean distintos de cero. Para m = 0, A⁰ = I por definición. También f(A) = Pf(D)P⁻¹ para cualquier polinomio f.
+
+## Práctico 2, ejercicio 2.12(c)
+
+Se pide A¹³ cuando α = 0, sin calcular A². El caso anterior es diagonalizable y D = diag(1,-1,0). Como 13 es impar y positivo, 1¹³ = 1, (-1)¹³ = -1 y 0¹³ = 0. Así D¹³ = D.
+
+MATRIX
+A¹³ = PD¹³P⁻¹ = PDP⁻¹ = A = [ 0  0  1 ]
+                              [ 0  0  1 ]
+                              [ 1  0  0 ]
+
+No se multiplicaron trece matrices ni fue necesario obtener A². El mismo razonamiento muestra Aᵐ = A para todo m impar positivo. No se puede aplicar a exponentes negativos porque 0 es valor propio y A no es invertible.
+
+## Práctico 2, ejercicio 2.7(c): diagonalizar sobre C
+
+T(x,y,z) = (-ix+2z, iy+z, -2iz). La matriz A = [[-i,0,2],[0,i,1],[0,0,-2i]] es triangular. Sus valores propios son -i, i y -2i, tres complejos distintos.
+
+Para λ = -i: la tercera ecuación obliga a z = 0 y la segunda a y = 0; E₋ᵢ = s.g.((1,0,0)). Para λ = i: z = 0 y x = 0; Eᵢ = s.g.((0,1,0)).
+
+Para λ = -2i: ix+2z = 0 y 3iy+z = 0. Entonces x = 2iz y y = iz/3. Elegimos z = 3 para evitar fracciones: E₋₂ᵢ = s.g.((6i,i,3)).
+
+MATRIX
+P = [ 1  0  6i ]        D = diag(-i,i,-2i).
+    [ 0  1   i ]
+    [ 0  0   3 ]
+
+det(P) = 3 y AP = PD; queda diagonalizada sobre C. El enunciado define el operador en C³: los escalares complejos forman parte del problema.
+
+**Comparación:** la matriz real del ejercicio 2.4(c) no es diagonalizable sobre R, porque le faltan valores propios reales, pero sí sobre C, donde tiene tres valores distintos. Siempre indicá el cuerpo antes de concluir.
+
+===
+# 7. Práctico 2: todas las matrices del ejercicio 2.8
+
+## Inciso (i): una diagonalización real 2 × 2
+
+A=[[0,2],[2,0]] tiene χ_A(λ)=λ²-4=(λ-2)(λ+2). Para λ=2, 2y=2x impone y=x: E₂=s.g.((1,1)). Para λ=-2, 2y=-2x impone y=-x: E₋₂=s.g.((1,-1)).
+
+MATRIX
+P = [ 1  1 ]          D = diag(2,-2)
+    [ 1 -1 ]
+
+det(P)=-2 y AP=PD. Es diagonalizable sobre R y, por la misma base, sobre C. También P⁻¹=(1/2)P, lo que permite comprobar directamente P⁻¹AP=D.
+
+## Inciso (ii): una matriz compleja 2 × 2
+
+A=[[4,1-i],[1+i,5]]. Como (1-i)(1+i)=2, χ_A(λ)=(4-λ)(5-λ)-2=λ²-9λ+18=(λ-3)(λ-6).
+
+**Para λ=3:** x+(1-i)y=0, luego x=(-1+i)y. La segunda ecuación se cumple al sustituir: (1+i)(-1+i)y+2y=-2y+2y=0. Así E₃=s.g.((-1+i,1)).
+
+**Para λ=6:** -2x+(1-i)y=0, luego x=(1-i)y/2. Elegimos y=2 para evitar fracciones: E₆=s.g.((1-i,2)).
+
+MATRIX
+P = [ -1+i  1-i ]      D = diag(3,6)
+    [   1    2  ]
+
+det(P)=-3+3i ≠ 0. Las columnas verifican sus ecuaciones de vector propio, así D=P⁻¹AP. La matriz se estudia sobre C aunque sus dos valores propios sean reales: sus entradas y sus vectores de referencia son complejos.
+
+No es necesario suponer un teorema especial sobre matrices hermíticas para resolver este inciso. Basta calcular el polinomio y obtener una base propia. El inciso (iii), desarrollado en las aplicaciones, incluye una raíz repetida y requiere comparar multiplicidades.
+
+===
+
+# 7. Práctico 2: ejercicio 2.8(iv)
+
+## Separar el bloque que ya está diagonal
+
+MATRIX
+A = [ 5    0      0   ]
+    [ 0   -1    -1+i  ]
+    [ 0  -1-i     0   ]
+
+La primera coordenada no se mezcla con las otras. El polinomio es (5-λ) por el determinante del bloque inferior: (-1-λ)(-λ)-(-1+i)(-1-i)=λ²+λ-2=(λ+2)(λ-1).
+
+Los valores propios son 5,-2 y 1, distintos. Ya sabemos que A es diagonalizable sobre C, pero para responder el inciso se deben construir las bases y las matrices P y D.
+
+**Para λ=5:** el bloque inferior menos 5I es invertible, así y=z=0 y x es libre. E₅=s.g.((1,0,0)).
+
+**Para λ=-2:** la primera ecuación fuerza x=0. En el bloque inferior, y+(-1+i)z=0 da y=(1-i)z. La otra ecuación, (-1-i)y+2z=0, se satisface porque (-1-i)(1-i)=-2. Por tanto E₋₂=s.g.((0,1-i,1)).
+
+**Para λ=1:** x=0 y -2y+(-1+i)z=0, de donde y=(-1+i)z/2. Tomar z=2 da E₁=s.g.((0,-1+i,2)).
+
+MATRIX
+P = [ 1    0      0   ]       D = diag(5,-2,1)
+    [ 0   1-i   -1+i  ]
+    [ 0    1      2   ]
+
+det(P)=3-3i ≠ 0, y AP=PD. Así D=P⁻¹AP. La suma de los valores propios es 5-2+1=4, que coincide con la traza 5-1+0. El producto es -10, que coincide con det(A).
+
+## Qué enseña el conjunto del ejercicio 2.8
+
+Los incisos (i), (ii) y (iv) tienen tantos valores distintos como su dimensión, por lo que el criterio suficiente decide la existencia de diagonalización. En el inciso (iii), el valor 2 aparece dos veces y hay que mostrar que E₂ tiene dimensión 2. En todos los casos construir P exige vectores, no solo raíces del polinomio.
+
+Las matrices complejas de este ejercicio no requieren cambiar los métodos: Gauss, determinantes y comparación de dimensiones siguen funcionando sobre C. Lo que cambia es la aritmética de los escalares.
+===
+
+# Consulta final: fórmulas y controles
+
+## Una hoja de fórmulas con condiciones
+
+**Subespacio:** contiene 0 y es cerrado bajo combinaciones lineales. **Base:** generador + L.I. **Coordenadas:** v = Σcᵢbᵢ y [v]_B = (c₁,…,cₙ).
+
+**Suma:** dim(S+W) = dim(S)+dim(W)-dim(S∩W). **Suma directa:** S∩W = {0}; para que además V = S⊕W, verificar que S+W = V.
+
+**Transformación lineal:** T(αu+βv) = αT(u)+βT(v). **Inyectividad:** N(T) = {0}. **Sobreyectividad:** Im(T) = W. **Rango-nulidad:** dim(V) = dim N(T)+r(T).
+
+**Matriz asociada:** columna j = [T(bⱼ)]_C. **Aplicación:** [T(v)]_C = A[v]_B. **Composición:** matriz de T∘S = [T][S], usando bases intermedias compatibles.
+
+**Pasaje:** P tiene las bases nuevas en coordenadas viejas. [v]_vieja = P[v]_nueva. **Cambio general:** A' = Q⁻¹AP. **Mismo operador y mismo cambio en ambos extremos:** A' = P⁻¹AP.
+
+**Rango de m × n:** cantidad de pivotes; nulidad = n-rango. **Valor propio:** det(A-λI) = 0. **Subespacio propio:** E_λ = N(A-λI). **Multiplicidad geométrica:** n-r(A-λI).
+
+**Diagonalizable sobre K:** χ_A se descompone en K y m.g. = m.a. para cada raíz. **Construcción:** P = (v₁ … vₙ), D = diag(λ₁,…,λₙ). **Control:** AP = PD y det(P) ≠ 0. **Potencias:** Aᵐ = PDᵐP⁻¹.
+
+## Errores que conviene detectar antes de entregar
+
+No confundas generar con ser L.I. ni cantidad de generadores con dimensión. En Pₙ hay n+1 coeficientes. No llames base a una lista sin verificar independencia. Para probar igualdad entre subespacios, justificá ambas inclusiones o una inclusión y dimensiones iguales.
+
+No uses el número de filas para la nulidad de una matriz rectangular. No tomes columnas de la matriz escalerizada como base de la imagen original. No armes P con filas ni inviertas el sentido del cambio sin revisar qué coordenadas recibe.
+
+No incluyas el cero como vector propio. Una raíz repetida no impide diagonalizar: compará multiplicidades. Ser triangular, ser invertible y ser diagonalizable son tres propiedades diferentes. Un determinante cero no impide la diagonalización.
+
+## Autoevaluación rápida
+
+¿Podés justificar por qué los ejercicios 2.7(a) y 2.8(iii) se comportan distinto si ambos tienen raíces repetidas? ¿Podés obtener P del 1.13 sin memorizarla? ¿Podés explicar por qué el 2.12 falla solo en α = 1 dentro de α ≥ 0? Si podés resolverlos desde las definiciones, conectaste los conceptos centrales.
+
+===
+# Correspondencia con los originales: temas 1-2
+
+## Tema 1: «01-Espacios vectoriales (repaso) 2026_v1.pdf»
+
+**Pp. 1-6:** concepto de vector, operaciones, axiomas y estructura (V,K,+,·). Desarrollo en «Espacios vectoriales: definición completa», página 5.
+
+**Pp. 7-15:** plano x-3y+2z=0; matrices; polinomios; funciones continuas; escalares complejos; polinomios con raíz 3; criterio de subespacio. Desarrollo en «Matrices, polinomios y funciones como vectores» y «Subespacios y subespacio generado», páginas 6-7. La multiplicación compleja de p. 11 se trabaja en la página 4.
+
+**Pp. 16-22:** combinación lineal, generación, ejemplos, independencia, equivalencias y ampliación de una lista L.I. Desarrollo en «Subespacios y subespacio generado» e «Independencia: equivalencias y crecimiento», páginas 7-8.
+
+**Pp. 23-29:** dimensión finita e infinita, bases, monomios y base trasladada, coordenadas, ejemplo numérico, isomorfismo y extensión de bases. Desarrollo en «Bases, dimensión y extensión» y «Bases de polinomios y coordenadas», páginas 9-10. El ejemplo infinito se encuentra también en la página 6.
+
+**Pp. 30-38:** suma, intersección, ejemplo de los planos coordenados, procedimientos, prueba completa del teorema de dimensiones y suma directa. Desarrollo en páginas 11-12.
+
+## Tema 2: «2-repaso transformaciones lineales.pdf»
+
+**Pp. 1-2:** definición, superposición, proyección, rotación, traslación, derivación y T(0)=0. Desarrollo en «Linealidad: definición, alcance y ejemplos», página 18.
+
+**Pp. 3-5:** definiciones y pruebas de núcleo e imagen como subespacios, imágenes de los ejemplos, T_A y sistemas homogéneos/no homogéneos, matriz [[2,-1],[-4,2]]. Desarrollo en «Núcleo e imagen: definiciones y pruebas», página 19.
+
+**P. 6:** inyectividad y núcleo trivial, sobreyectividad, biyectividad, inversa y caso matricial. Desarrollo en «Invertibilidad y teorema de la dimensión» y las aplicaciones de 1.10; la prueba de la matriz inversa también aparece en el tema 3.
+
+**Pp. 7-9:** imágenes de generadores, prueba del teorema rango-nulidad y ejemplos de rango. Desarrollo en «Invertibilidad y teorema de la dimensión», página 20, y ejercicio 1.10(a).
+===
+# Correspondencia con los originales: temas 3-7
+
+## Tema 3: «3-matriz asociada.pdf»
+
+**Pp. 1-2:** construcción y notación de la matriz. **Pp. 3-5:** propiedad fundamental y demostración por coordenadas. **P. 6:** equivalencia entre transformación y multiplicación por una matriz. Se desarrollan en la página 25.
+
+**Pp. 7-9:** composición, identidad, inversa y sus matrices, con demostraciones. Se desarrollan en la página 26. El capítulo completo, con ejemplos y práctico, ocupa las páginas 25-29.
+
+## Tema 4: «4-cambio de base.pdf»
+
+**Pp. 1-2:** identidad, dirección del pasaje, inversa y ejemplo de bases ((1,0),(0,1)) y ((1,1),(1,2)). **P. 3:** A'=Q⁻¹AP. **P. 4:** A'=P⁻¹AP y semejanza. Desarrollo en página 30, con aplicaciones en el resto del capítulo, páginas 30-33.
+
+## Tema 5: «5-semejanza y rango.pdf»
+
+**P. 1:** semejanza como equivalencia e invariantes. **Pp. 2-3:** imagen por columnas, definición de rango, cotas, núcleo y productos. Desarrollo en página 34 y ejercicio 1.15.
+
+**Pp. 3-6:** ejemplo 3×4, operaciones elementales como matrices invertibles, forma escalonada y rango por filas. Desarrollo y justificaciones en página 35; ejercicios de menores en 1.16. Al usar una matriz escalerizada, se distingue su imagen de la imagen de la matriz original.
+
+## Tema 6: «vvp.pdf»
+
+**Pp. 1-3:** definiciones, interpretación, subespacio propio y equivalencias con el sistema homogéneo y el determinante. Desarrollo en página 38.
+
+**Pp. 4-5:** polinomio, grado, coeficientes, invariancia por semejanza y traspuesta, polinomio del operador. Desarrollo en página 39. Capítulo con aplicaciones: páginas 38-43.
+
+## Tema 7: «7-Diagonalizacion.pdf»
+
+**Pp. 1-3:** base propia, diagonalización matricial y contraejemplos. **Pp. 4-5:** independencia para valores distintos, corolario y ejemplo polinómico. **Pp. 6-7:** multiplicidades y desigualdades. **P. 8:** condición necesaria y suficiente y caso complejo. Desarrollo completo con pruebas en páginas 44-47; aplicaciones y prácticos en el resto del capítulo.
+===
+# Prácticos completos y alcance del apunte
+
+## Práctico Tema 1: ubicación de los ejercicios
+
+**1.1-1.6:** capítulo 1. Se incluyen las matrices generadoras, el parámetro a, las tres bases de subespacios, las dos bases para coordenadas, los tres casos de suma/intersección y los tres de suma directa. Los incisos complejos 1.5(c) y 1.6(c) están en «Suma directa y aplicaciones complejas».
+
+**1.7-1.10:** capítulo 2. La simetría y la multiplicación por una matriz compleja se resuelven en «Práctico 1: simetría y matrices complejas». Evaluación, multiplicación de polinomios y el caso no lineal se resuelven en las aplicaciones. Se desarrollan íntegramente los operadores 1.8 y 1.9 y las dos demostraciones de 1.10.
+
+**1.11-1.12:** capítulo 3; **1.13:** capítulos 3 y 4, junto con su conexión con diagonalización en el 7; **1.14:** capítulo 4, continuando el operador de matrices de 1.9; **1.15-1.16:** capítulo 5, con todas las propiedades e identificación de menores invertibles.
+
+## Práctico Tema 2: ubicación de los ejercicios
+
+**2.1-2.6:** capítulo 6. Se incluyen los dos controles de vector propio, las tres interpretaciones geométricas, los cinco verdadero/falso, las tres matrices sobre R y C, las propiedades de potencias/inversa/desplazamientos/polinomios y los tres incisos sobre sumas de filas. El original salta de (e) a (g) en 2.5; se incluye también ese último inciso.
+
+**2.7:** capítulo 7, casos reales (a,b) y caso complejo (c). **2.8:** capítulo 7, las cuatro matrices; la tercera se desarrolla junto a multiplicidades repetidas y las restantes en las páginas finales del capítulo. **2.9-2.12:** capítulo 7, con prueba para simétricas 2×2, discusión en a, caso de único valor propio y discusión en α con cálculo de A¹³.
+
+## Qué se tomó de cada material
+
+Se desarrollan los contenidos teóricos de los siete apuntes, incluidos los resultados que en las diapositivas se enuncian brevemente, los ejemplos y las demostraciones presentes en ellas. Las repeticiones de una misma definición se reúnen en un único desarrollo. Los ejercicios conservan la numeración de los originales y sus enunciados se expresan en forma abreviada antes de resolverlos.
+
+Los apoyos sobre Gauss, determinantes, complejos, comparación de tamaños de bases y las pruebas adicionales completan pasos necesarios para comprender los temas. No se agregan otras unidades del curso, como Jordan, producto interno o mínimos cuadrados, que no estaban entre los archivos indicados para este documento.
+
+Dominar este apunte significa comprender y poder aplicar lo aquí desarrollado. Para comprobarlo, rehacé los ejercicios sin consultar las soluciones y explicá en voz alta las hipótesis y el razonamiento de cada demostración; reconocer una fórmula al leerla no equivale a saber usarla en un problema nuevo.

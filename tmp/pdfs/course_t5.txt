@@ -1,0 +1,58 @@
+# 5. Semejanza y rango: fundamentos
+
+## Semejanza como relación de equivalencia
+
+A y B, matrices n×n sobre K, son semejantes si B=P⁻¹AP para alguna P invertible. **Reflexiva:** A=I⁻¹AI. **Simétrica:** si B=P⁻¹AP, entonces A=PBP⁻¹=(P⁻¹)⁻¹B(P⁻¹). **Transitiva:** si además C=Q⁻¹BQ, entonces C=Q⁻¹P⁻¹APQ=(PQ)⁻¹A(PQ).
+
+Estas tres propiedades justifican agrupar matrices que representan el mismo operador bajo elecciones de base. Las matrices no tienen por qué ser iguales entrada a entrada. Determinante, traza y rango son invariantes; sus demostraciones completas aparecen en el ejercicio 1.15. Más adelante se incorporan polinomio característico y multiplicidades.
+
+## Imagen de una matriz y definición de rango
+
+Para A m×n, escribí sus columnas como A₁,…,Aₙ. Por la definición del producto, Ax=x₁A₁+…+xₙAₙ. Todas las imágenes son combinaciones de columnas, y toda combinación se obtiene eligiendo esos coeficientes como x. Por tanto Im(A)=s.g.(A₁,…,Aₙ).
+
+Se define r(A)=dim Im(A). Como la imagen está dentro de Kᵐ, r(A)≤m. Como tiene un generador de n columnas, r(A)≤n. Por rango-nulidad aplicado a x↦Ax, dim N(A)=n-r(A): es el número de parámetros libres del sistema homogéneo.
+
+## Rango de un producto: demostración
+
+Si AB está definido, Im(AB)=A(Im(B)) está contenida en Im(A), así r(AB)≤r(A). Por otra parte, una base de Im(B) tiene r(B) elementos y sus imágenes por A generan A(Im(B)); por eso r(AB)≤r(B).
+
+= r(AB) ≤ min(r(A),r(B)).
+
+Si B es cuadrada e invertible, sus entradas recorren todo el dominio de A y entonces Im(AB)=Im(A); hay igualdad de rangos. También puede demostrarse con dos desigualdades: r(AB)≤r(A)=r((AB)B⁻¹)≤r(AB).
+
+Si C es cuadrada e invertible y multiplica a la izquierda, C aplica un isomorfismo a Im(A); no cambia su dimensión, luego r(CA)=r(A). En términos de desigualdades, r(CA)≤r(A)=r(C⁻¹CA)≤r(CA).
+
+Las diapositivas escriben estas propiedades por separado para AB y BA. La idea es la misma: multiplicar por una matriz puede perder información, pero una matriz invertible permite recuperarla y conserva el rango. En particular r(P⁻¹AP)=r(A), lo que justifica el invariante bajo semejanza.
+
+===
+
+# 5. Escalerización y rango por filas
+
+## Operaciones elementales como productos invertibles
+
+Intercambiar filas, sumar a una fila un múltiplo de otra y multiplicarla por un escalar no nulo equivale a multiplicar por una matriz elemental invertible a la izquierda. Sus inversas deshacen las operaciones. Las operaciones de columnas se representan mediante multiplicación a la derecha. Por la página anterior, todas conservan el rango.
+
+**Ejemplo original, pp. 3-5:**
+
+MATRIX
+A = [ 1  2  0  1 ]       E = [ 1  0  0 ]
+    [ 0  0  1  1 ]           [ 0  1  0 ]
+    [ 2  4  0  2 ]           [-2  0  1 ]
+
+EA = [ 1  2  0  1 ]
+     [ 0  0  1  1 ]
+     [ 0  0  0  0 ]
+
+E representa F₃←F₃-2F₁ y es invertible. Hay dos pivotes, en columnas 1 y 3. Las columnas originales A₁=(1,0,2) y A₃=(0,1,0) son L.I.; A₂=2A₁ y A₄=A₁+A₃. Por tanto r(A)=2. La imagen original cumple z=2x; no es el plano z=0 que aparece como imagen de EA.
+
+El otro ejemplo de la p. 4 intercambia las filas 2 y 3 mediante la matriz [[1,0,0],[0,0,1],[0,1,0]]. En la p. 5 se intercambian columnas para dejar los pivotes al comienzo. Si se hacen permutaciones de columnas, hay que registrar el nuevo orden.
+
+## Por qué contar pivotes da el rango
+
+En una matriz escalonada con r filas no nulas, las r columnas pivote son L.I.: al tomar las filas de los pivotes se forma una matriz triangular con diagonal no nula. Además toda columna es combinación de ellas, pues en las últimas m-r filas todas las entradas son cero y el sistema triangular de las primeras r filas se resuelve para cualquier columna. Su rango es r, igual al original.
+
+Las r filas no nulas también son L.I.: en una combinación nula, la primera columna pivote fuerza el coeficiente de la primera fila a cero; luego la siguiente fuerza el segundo, y así sucesivamente. Las operaciones de filas no cambian el subespacio generado por filas, porque son combinaciones reversibles. Luego el rango por filas original es r, igual al rango por columnas.
+
+= r(Aᵀ)=r(A), porque las columnas de Aᵀ son las filas de A.
+
+Un menor de orden r no nulo muestra r columnas independientes al restringirlas a esas filas, por lo que el rango es al menos r. Recíprocamente, si el rango es r, elegí r columnas independientes; su matriz tiene rango fila r, así se pueden elegir r filas independientes y el menor resultante es invertible. El rango es, por tanto, el mayor orden de un menor no nulo.
