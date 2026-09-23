@@ -19,7 +19,7 @@ Hice las funciones altura, balance, rotaciones(izq y der) y equilibrio. Usé alt
 Consulté a Codex para entender el funcionamiento y como escribir en codigo templates, struct, class, public y private.
 
 ## 2026-10-09 - Tiago
-Creé el TAD TablaHash en el archivo TablaHash.cpp. Implementé las declaraciones privadas de la clase y comencé con las públicas. 
+Creé el TAD TablaHash en el archivo TablaHash.cpp. Implementé las declaraciones privadas de la clase y comencé con las públicas, falta bastante.
 
 ## 2026-10-09 — Alan
 Termine el tad AVL con las funciones rango, búsquedas y recorridos. 
@@ -33,4 +33,4 @@ Terminé el ejercicio1. Implementé la lógica para chequear la busqueda y el ra
 Implemente funcionnes main y  fusionar, quedo terminado el ejercicio 3
 
 ## 2026-22-09 - Tiago
-Terminé el TAD TablaHash y el ejercicio 2. Corregí un template inicial que me habia hecho Copilot cuando cree el TAD, borre las funciones que creó (tenía el completado automático) y las hice yo de 0. 
+Terminé el TAD TablaHash y el ejercicio 2. Corregí un template inicial que me habia hecho Copilot cuando cree el TAD, borre las funciones que creó (tenía el completado automático) y las hice yo de 0. Creamos una función de dispersión de hash dependiente de la cantidad de letras y su posición en el array, para realizarlo de la forma más dispersa posible. Corrí tests con Claude para confirmar que el output esperado y el obtenido es el mismo.
