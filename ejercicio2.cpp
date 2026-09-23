@@ -36,7 +36,6 @@ int* convertirAInt(string p){
 int main()
 {
     int n;
-    cout << "ingrese cantidad de palabras a registrar";
     cin >> n;
     int cantCajones = 0;
     TablaHash tabla(n*10/7, funcionHash, sonIguales);
@@ -52,7 +51,6 @@ int main()
         }
     }
     int q;
-    cout << "ingrese cantidad de consultas";
     cin >> q;
     for(int i = 0; i< q; i++){
         string r;
