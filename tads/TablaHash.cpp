@@ -2,14 +2,13 @@
 #include <functional>
 using namespace std;
 
-template<typename K, typename V>
 class TablaHash {
 private:
     struct Nodo {
-        K clave;
-        V valor;
+        int* clave;
+        int valor;
         Nodo* siguiente;
-        Nodo(K c, V v){
+        Nodo(int* c, int v){
             clave = c;
             valor = v;
             siguiente = NULL;
@@ -17,11 +16,13 @@ private:
     };
     Nodo** tabla;
     int largo;
-    int (*funcionDeHash)(K);
-    bool (*sonIguales)(K,K);
+    int cantMax = 1;
+    int (*funcionDeHash)(int*, int);
+    bool (*sonIguales)(int*,int*);
 
 public:
-    TablaHash(int nuevoLargo, int (*funcionDeHashParam)(K), bool (*sonIgualesParam)(K,K)){
+
+    TablaHash(int nuevoLargo, int (*funcionDeHashParam)(int*, int), bool (*sonIgualesParam)(int*,int*)){
         largo = nuevoLargo;
         funcionDeHash = funcionDeHashParam;
         sonIguales = sonIgualesParam;
@@ -32,6 +33,7 @@ public:
             while(tabla[i]){
                 Nodo* temp = tabla[i];
                 tabla[i] = tabla[i]->siguiente;
+                delete[] temp->clave;
                 delete temp;
             }
             delete tabla[i];
@@ -40,16 +42,54 @@ public:
         delete[] tabla;
         tabla = NULL;
     }
-    void insertar(K clave, V valor) {
-        Nodo* nuevo = new Nodo(clave, valor);
+    bool insertar(int* clave, int valor) {
+        int pos = funcionDeHash(clave, largo);
+        bool v = false;
+        Nodo* inicio = tabla[pos];
+        while(inicio && inicio->siguiente != NULL){
+            if(sonIguales(clave, inicio->clave)){
+                inicio->valor++;
+                if(inicio->valor > cantMax) cantMax = inicio->valor;
+                return false;
+            }
+            inicio = inicio->siguiente;
+        }
+        if(inicio == NULL){
+            Nodo* nuevo = new Nodo(clave, valor);
+            tabla[pos] = nuevo;
+            v = true;
+        }
+        else{
+            if(sonIguales(clave, inicio->clave)){
+                inicio->valor++;
+                if(inicio->valor > cantMax) cantMax = inicio->valor;
+                return false;
+            }
+            else{
+                Nodo* nuevo = new Nodo(clave, valor);
+                nuevo->siguiente = tabla[pos];
+                tabla[pos] = nuevo;
+                v = true;
+            }
+        }
+        return v;
     }
 
-    V buscar(K clave) {
-        // Search implementation
+    int buscar(int* clave){
+        int pos = funcionDeHash(clave, largo);
+        Nodo* inicio = tabla[pos];
+        while(inicio){
+            if(sonIguales(clave, inicio->clave)){
+                return inicio->valor;
+            }
+            inicio = inicio->siguiente;
+        }
+        return 0;
     }
 
-    void eliminar(K clave) {
-        // Delete implementation
+    int darCantMax(){
+        return cantMax;
     }
+
 };
 
