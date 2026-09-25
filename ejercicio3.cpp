@@ -40,7 +40,7 @@ int main()
     }
 
     int r = fusionar(heap, cant);
-    cout << r << "\n" << endl;   
+    cout << r << "\n";   
      return 0;
 
 }
