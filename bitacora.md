@@ -49,3 +49,8 @@ Trabajé el ejercicio 4
 - Use claude para entender bien la letra y el algoritmo, con un diagrama paso a paso; me
   ayudó a encontrar los errores de sintaxis, algunos cin <<,  en vez de ->, un = en lugar de == cuando no me compilaban las pruebas.
   Revisé todo y lo probé con los ejemplos.
+
+## 2026-10-11 - Tiago
+Realicé la implementación de la clase MFSet en un archivo cpp por separado, dentro de la carpeta de Tads, con las dos optimizaciones vistas. Implementé el algoritmo de Kruskal como vimos en la clase, dentro del ejercicio 5. Por otro lado, separe la definición de arista en un cpp solo ya que me estaba complicando para acceder en distintos archivos. Realicé el ejercicio 5. 
+
+Investigué con Claude el uso de #ifndef, #define, y #endif, ya que me estaba tirando errores de doble definición cuando trataba de complicar. Después de compilar sin errores y hacer un par de ejemplos a mano, corrí pruebas con claude para asegurarme que el resultado esperado y obtenido es el mismo.

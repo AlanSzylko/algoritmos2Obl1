@@ -1,24 +1,17 @@
+#ifndef LISTA_ADY
+#define LISTA_ADY
+
 #include <iostream>
 #include <cassert>
+#include "defArista.cpp"
 
 class GrafoLista{
     private:
-    struct Arista{
-        int origen;
-        int destino;
-        int peso;
-        Arista* sig;
-        Arista(int unOrigen, int unDestino, int unPeso, Arista* unSig = nullptr){
-            this->destino = unDestino;
-            this->origen = unOrigen;
-            this->peso = unPeso;
-            this->sig = unSig;
-        }
-    };
     bool dirigido;
     bool ponderado;
     int cantidadVertices;
     Arista** vertices;
+    
     public:
     GrafoLista(bool esDirigido, bool esPonderado, int cantV){
         dirigido = esDirigido;
@@ -41,33 +34,12 @@ class GrafoLista{
     }
 
     Arista* adyacentes(int vertice){
-        return vertices[vertice]; //aca se puede acceder a la memoria real. Chequear forma de pasarlo por copia (clonar la lista).
+        return vertices[vertice]; 
     }
-
-    //Arista* clonar(Arista* a)
 
     int cantVertices(){
         return cantidadVertices;
     }
-
-   /* void BFS(int inicio, GrafoLista* grafo){
-        Queue<int>* cola = new Queue<int>();
-        int cantV = grafo->cantVertices();
-        bool* visitados = new bool[cantV + 1];
-        cola->encolar(inicio);
-        visitados[inicio] = true;
-        while(!cola->estaVacia()){
-            int v = cola->descencolar();
-            cout << "Procesando:" << v << endl;
-            Arista* ady = grafo->adyacentes(vertice);
-            while(ady){
-                if(!visitados[ady->destino]){
-                    cola->encolar(ady->destino);
-                    
-                }
-            }
-        }
-
-    }
-    */
 };
+
+#endif

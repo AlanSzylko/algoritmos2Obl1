@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef MFSET
+#define MFSET
 
 class MFSet{
     private:
@@ -23,7 +24,7 @@ class MFSet{
         }
 
         int find(int a){
-            if(padres[a] = a) return a;
+            if(padres[a] == a) return a;
             padres[a] = find(padres[a]);
             return padres[a];
         }
@@ -44,3 +45,5 @@ class MFSet{
             altura[padreA]++;       
         }
 };
+
+#endif
