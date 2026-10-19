@@ -20,6 +20,9 @@ bool comparar(NodoVertice a, NodoVertice b) {
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     int aristas=0;
     int vertices=0;
     cin >> vertices >> aristas;

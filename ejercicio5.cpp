@@ -48,6 +48,9 @@ long long caminoKruskal(GrafoLista* grafo, int cantAristas){
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     int cantRefugios;
     int cantSenderos;
     cin >> cantRefugios >> cantSenderos;

@@ -7,14 +7,12 @@
 using namespace std;
 
 int funcionHash(int* k, int l){
-    int ret = 0;
-    for(int i = 0; i<26;i++){
-        if(k[i] != 0){
-            ret = ret + 37*(i+1)*(k[i]*k[i]);
-        };
+    long long ret = 0;
+    const long long BASE = 131;
+    for(int i = 0; i < 26; i++){
+        ret = (ret * BASE + k[i]) % l;
     }
-    ret = ret % l;
-    return ret;
+    return (int)ret;
 }
 
 bool sonIguales(int* a, int* b){
@@ -35,6 +33,9 @@ int* convertirAInt(string p){
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     int n;
     cin >> n;
     int cantCajones = 0;

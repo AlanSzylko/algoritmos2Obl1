@@ -6,41 +6,42 @@
 
 using namespace std;
 
-bool Comparar(int a, int b){
+bool Comparar(long long a, long long b){
     return a<b;
 }
 
-    int fusionar(Heap<int>* h, int cant){
-        int retorno=0;
-        for (int i = 0; i < cant-1; i++)
-        {
-            int a=h->tope();
-            h->eliminarTope();
-            int b= h->tope();
-            h->eliminarTope();
-            int fusion= a+b;
-            retorno += fusion;
-            h->insertar(fusion);
+        long long fusionar(Heap<long long>* h, int cant){
+            long long retorno=0;
+            for (int i = 0; i < cant-1; i++)
+            {
+                long long a=h->tope();
+                h->eliminarTope();
+                long long b= h->tope();
+                h->eliminarTope();
+                long long fusion= a+b;
+                retorno += fusion;
+                h->insertar(fusion);
+            }
+            return retorno;
         }
-        return retorno;
-        
-    }
 
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+
     int cant;
     cin >> cant;
-    Heap<int>* heap = new Heap<int>(cant + 1, Comparar);
+    Heap<long long>* heap = new Heap<long long>(cant + 1, Comparar);
 
     for(int i = 1 ; i<cant + 1 ; i++){
-        int agrego;
+        long long agrego;
         cin >> agrego;
         heap->insertar(agrego);
     }
 
-    int r = fusionar(heap, cant);
-    cout << r << "\n";   
-     return 0;
+        long long r =fusionar(heap, cant);
+        cout <<r <<"\n";
 
 }
