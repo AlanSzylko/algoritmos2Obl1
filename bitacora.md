@@ -51,3 +51,6 @@ Corregí ejercicio3 pasando el heap, el comparador y la suma de fusionar a long 
 anterior distribuia casi todas las palabras en pocos buckets. Agregué
 ios::sync_with_stdio(false) y cin.tie(0) a los 5 main.
 Usé Claude para que me explique por qué fallaba cada cosa, mas que nada los long long.
+
+## 2026-10-22 - Tiago
+Realicé toda la justificación de órdenes de cada ejercicio.
