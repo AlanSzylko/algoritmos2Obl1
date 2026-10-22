@@ -32,13 +32,9 @@ Terminé el TAD TablaHash y el ejercicio 2. Corregí un template inicial que me 
 ## 2026-09-25 — Alan
 Trabajé el ejercicio 4
   Reutilicé el Heap del ejercicio 3 (con un struct de prioridad y número de
-  módulo, y un comparador que desempata por número) y el GrafoLista que armó Tiago. El
-  orden se guarda en un arreglo y se imprime recién al final, porque si hay ciclo no
-  se puede imprimir nada.
+  módulo, y un comparador que desempata por número) y el GrafoLista que armó Tiago. El orden se guarda en un arreglo y se imprime recién al final, porque si hay ciclo no se puede imprimir nada.
   Cree un contador de dependencias por vertice (se suma 1 al destino de cada
-  arista). Los módulos con contador 0 entran a un heap. Cada vez que saco uno, lo
-  guardo en el orden y resto 1 a sus vecinos, los que llegan a 0 entran al heap. Al
-  final, si guardé menos de V módulos hay un ciclo y imprimo "imposible".
+  arista). Los módulos con contador 0 entran a un heap. Cada vez que saco uno, lo guardo en el orden y resto 1 a sus vecinos, los que llegan a 0 entran al heap. Al final, si guardé menos de V módulos hay un ciclo y imprimo "imposible".
 - Use claude para entender bien la letra y el algoritmo, con un diagrama  me
   ayudó a encontrar los errores de sintaxis, algunos cin <<,  en vez de ->, un = en lugar de == cuando no me compilaban las pruebas.
   Revisé todo y lo probé con los ejemplos.
@@ -50,11 +46,8 @@ Investigué con Claude el uso de #ifndef, #define, y #endif, ya que me estaba ti
 
 ## 2026-10-19 — Alan
 Ultimos arreglos pre entrega:
-Revisé con Tiago los bugs que encontramos contra la letra teniamos overflow en ejercicio3,
-hash mal distribuido en ejercicio2, y falta de sync_with_stdio en los 5 ejercicios.
-Corregí ejercicio3 pasando el heap, el comparador y la suma de fusionar a long long,
-porque el acumulado superaba el rango de int. En ejercicio2 reemplacé la
-función de hash por una sobre el array de 26 conteos, porque la
+Revisé con Tiago los bugs que encontramos contra la letra teniamos overflow en ejercicio3, hash mal distribuido en ejercicio2, y falta de sync_with_stdio en los 5 ejercicios.
+Corregí ejercicio3 pasando el heap, el comparador y la suma de fusionar a long long, porque el acumulado superaba el rango de int. En ejercicio2 reemplacé la función de hash por una sobre el array de 26 conteos, porque la
 anterior distribuia casi todas las palabras en pocos buckets. Agregué
 ios::sync_with_stdio(false) y cin.tie(0) a los 5 main.
 Usé Claude para que me explique por qué fallaba cada cosa, mas que nada los long long.
