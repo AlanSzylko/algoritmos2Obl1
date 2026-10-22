@@ -26,7 +26,7 @@ Terminé el ejercicio1. Implementé la lógica para chequear la busqueda y el ra
 Implemente funciones main y  fusionar, quedo terminado el ejercicio 3
 
 ## 2026-22-09 - Tiago
-Terminé el TAD TablaHash y el ejercicio 2. Corregí un template inicial que me habia hecho Copilot cuando cree el TAD, borre las funciones que creó (tenía el completado automático) y las hice yo de 0. Creamos una función de dispersión de hash dependiente de la cantidad de letras y su posición en el array, para realizarlo de la forma más dispersa posible. Corrí tests con Claude para confirmar que el output esperado y el obtenido es el mismo.
+Terminé el TAD TablaHash y el ejercicio 2. Corregí un template inicial que me habia hecho Claude cuando cree el TAD, borre las funciones que creó (tenía el completado automático) y las hice yo de 0. Creamos una función de dispersión de hash dependiente de la cantidad de letras y su posición en el array, para realizarlo de la forma más dispersa posible. Corrí tests con Claude para confirmar que el output esperado y el obtenido es el mismo.
 
 
 ## 2026-09-25 — Alan
