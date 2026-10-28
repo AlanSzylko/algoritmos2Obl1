@@ -58,10 +58,7 @@ int main(){
   };
   int cont = 0;
   int* corrOrdenados = mergeSort(corr, 0, n - 1, cont);
-  for(int i = 0; i<n;i ++){
-    cout << corrOrdenados[i];
-  }
-  cout << '\n' << cont;
+  cout << cont;
   return 0;
 };
 
