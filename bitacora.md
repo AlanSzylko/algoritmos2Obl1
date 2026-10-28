@@ -54,3 +54,6 @@ Usé Claude para que me explique por qué fallaba cada cosa, mas que nada los lo
 
 ## 2026-10-22 - Tiago
 Realicé toda la justificación de órdenes de cada ejercicio.
+
+## 2026-10-28 - Tiago
+Hice el ejercicio 7 completo con el merge sort que se habló en clase. Modifiqué este para que vaya teniendo un contador por referencia que se vaya actualizando (cantidad de *remontadas epicas*). Le pedí ayuda a claude para resolver errores de compilación del cin y cout, me ayudó a darme cuenta que faltaba el "using namespace std". Modifiqué el intercalar original del mergeSort para que detecte una remontada épica. En las compilaciones iniciales contaba mal las remontadas ya que me faltaba el "arr1[r] > arr2[j]*2" dentro del while. 
